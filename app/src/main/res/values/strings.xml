@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">HorrorMagazine</string>
+    <string name="watch_more">Watch   More</string>
+    <string name="region">Region</string>
+    <string name="millitary">Millitary Horror Story</string>
+    <string name="more_btn">More</string>
+    <string name="real">Real Horror Story</string>
+    <string name="college">College Horror Story</string>
+    <string name="cartoon">Horror Cartoon</string>
+    <string name="roar">Lore Story</string>
+    <string name="understand">Horror When You Understand</string>
+    <string name="city">City Horror Story</string>
+    <string name="open_drawer">open</string>
+    <string name="close_drawer">close</string>
+
+</resources>

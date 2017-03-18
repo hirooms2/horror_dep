@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/expandable_parent"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/colorBackWhite"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+        android:id="@+id/board_parent_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="30dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:text="AndroidDhina"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+</RelativeLayout>
