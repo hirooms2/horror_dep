@@ -12,5 +12,6 @@
     <string name="city">City Horror Story</string>
     <string name="open_drawer">open</string>
     <string name="close_drawer">close</string>
+    <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
 
 </resources>

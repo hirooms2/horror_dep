@@ -34,6 +34,9 @@
             android:screenOrientation="portrait" />
         <activity android:name=".Activities.Content" />
         <activity android:name=".Activities.Favorite"></activity>
+        <activity android:name=".CounsilClass.YoutubeActivity"/>
+        <activity android:name=".CounsilClass.Counsil"/>
+        <activity android:name=".CounsilClass.HorrorListActivity"/>
     </application>
 
 </manifest>

@@ -3,6 +3,7 @@ package com.horrornumber1.horrormagazine.Activities;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -25,6 +26,7 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.horrornumber1.horrormagazine.Adapters.DrawerAdapter;
+import com.horrornumber1.horrormagazine.CounsilClass.Counsil;
 import com.horrornumber1.horrormagazine.R;
 import com.horrornumber1.horrormagazine.SetView.SetCard;
 import com.horrornumber1.horrormagazine.SetView.SetRecycler;
@@ -97,6 +99,15 @@ public class MainActivity extends ActionBarActivity implements  BaseSliderView.O
         listView2.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if(i==0) {
+                    Intent intent = new Intent(MainActivity.this, Counsil.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                    startActivity(intent);
+
+                    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.main_drawer);
+                    drawer.closeDrawer(GravityCompat.START);
+
+                }
                 //favorite
                 if(i==2) {
                     Intent intent = new Intent(MainActivity.this, Favorite.class);
@@ -121,15 +132,11 @@ public class MainActivity extends ActionBarActivity implements  BaseSliderView.O
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
 
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("Hannibal", R.drawable.hannibal);
-        file_maps.put("Big Bang Theory", R.drawable.bigbang);
-        file_maps.put("House of Cards", R.drawable.house);
-        file_maps.put("Game of Thrones", R.drawable.game_of_thrones);
-        file_maps.put("Incheon", R.drawable.incheon);
-        file_maps.put("Assasination", R.drawable.assasination);
+        file_maps.put("youtube", R.drawable.ad_youtube);
+        file_maps.put("facebook", R.drawable.ad_facebook);
 
         for (String name : file_maps.keySet()) {
-            TextSliderView textSliderView = new TextSliderView(this);
+            final TextSliderView textSliderView = new TextSliderView(this);
             // initialize a SliderLayout
             textSliderView
                     .description(name)
@@ -142,6 +149,17 @@ public class MainActivity extends ActionBarActivity implements  BaseSliderView.O
             textSliderView.getBundle()
                     .putString("extra", name);
 
+            textSliderView.setOnSliderClickListener(new TextSliderView.OnSliderClickListener(){
+                @Override
+                public void onSliderClick(BaseSliderView slider) {
+                    if(mDemoSlider.getCurrentPosition()==0)
+                       startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCQbKk4fa3B23YDmVXjv-j4w")));
+                    else if (mDemoSlider.getCurrentPosition()==1)
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/horrorNo.1/?fref=ts")));
+
+                }
+            });
+
             mDemoSlider.addSlider(textSliderView);
         }
         mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
@@ -149,7 +167,6 @@ public class MainActivity extends ActionBarActivity implements  BaseSliderView.O
         mDemoSlider.setCustomAnimation(new DescriptionAnimation());
         mDemoSlider.setDuration(4000);
         mDemoSlider.addOnPageChangeListener(this);
-
 
         //Set Home RecyclerView(군대, 대학, 로어, 도시)
         SetRecycler homeRecycler = new SetRecycler(getApplicationContext(), this);

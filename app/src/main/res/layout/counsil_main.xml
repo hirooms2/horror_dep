@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#00000000"
+    tools:context=".CounsilClass.Counsil">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#00000000"
+        android:layout_weight="4">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00000000">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00000000"
+                android:src="@drawable/door"
+                android:scaleType="fitXY"
+                android:id="@+id/interview"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/introduceFrame"
+            android:background="#AA000000"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00000000"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:id="@+id/introduceText"
+                    android:background="#00000000"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical"
+                    android:textColor="@android:color/white"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/closeBtn"
+                    android:background="#00000000"
+                    android:layout_gravity="end"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginRight="30dp"
+                    android:text="창닫기"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/holo_red_light"/>
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/youtubeButtonFrame"
+            android:background="#00000000"
+            android:padding="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00000000"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="#00000000"/>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/youtubeBtn"
+                    android:src="@drawable/youtubelogo"
+                    android:background="#00000000"
+                    android:layout_gravity="end"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginRight="30dp"/>
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00000000">
+
+            <com.horrornumber1.horrormagazine.CounsilClass.TypeWriter
+                android:id="@+id/effectText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|center_vertical"
+                android:background="#00000000"
+                android:textColor="@android:color/white"
+                android:textSize="25sp" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00000000"
+            android:id="@+id/mainscreen">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="#00000000">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00000000"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:orientation="horizontal"
+                        android:background="#00000000"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="#00000000"
+                            android:gravity="center"
+                            android:textColor="@android:color/white"
+                            android:id="@+id/word1"
+                            android:textSize="20sp"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="#00000000"
+                            android:gravity="center|bottom"
+                            android:textColor="@android:color/white"
+                            android:id="@+id/word2"
+                            android:textSize="20sp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:orientation="horizontal"
+                        android:background="#00000000"
+                        android:layout_weight="1">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="#00000000"
+                            android:gravity="center"
+                            android:textColor="@android:color/white"
+                            android:id="@+id/word3"
+                            android:textSize="20sp"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="#00000000"
+                            android:gravity="center"
+                            android:textColor="@android:color/white"
+                            android:id="@+id/word4"
+                            android:textSize="20sp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </FrameLayout>
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="#000000"
+                    android:id="@+id/bottomFrame"
+                    android:layout_weight="1">
+
+                    <!--스토리 창-->
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#00000000"
+                        android:id="@+id/storyFrame">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#00000000"
+                            android:orientation="horizontal">
+
+                            <com.horrornumber1.horrormagazine.CounsilClass.TypeWriter
+
+                                android:id="@+id/storyText"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:background="@android:color/black"
+                                android:textColor="@android:color/white"
+                                android:layout_centerInParent="true"
+                                android:textSize="17sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0"
+                                android:background="@android:color/black"
+                                android:textColor="@android:color/white"
+                                android:id="@+id/indicator"
+                                android:paddingEnd="10dp"
+                                android:paddingRight="10dp"
+                                android:text="▽"
+                                android:textSize="20sp"
+                                android:gravity="center_vertical"/>
+                        </LinearLayout>
+                    </FrameLayout>
+
+                    <!--보기 1개짜리(돌아본다)-->
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#000000"
+                        android:id="@+id/oneOptionLookBack">
+
+                        <Button
+                            android:layout_width="150dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/button_img"
+                            android:textColor="@android:color/black"
+                            android:id="@+id/lookBackBtn"
+                            android:layout_gravity="center"
+                            android:text="뒤 돌아본다"/>
+
+                    </FrameLayout>
+
+                    <!--보기 1개짜리(돌아간다)-->
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#000000"
+                        android:id="@+id/oneOptionQuit">
+
+                        <Button
+                            android:layout_width="150dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@drawable/button_img"
+                            android:textColor="@android:color/black"
+                            android:textStyle="bold"
+                            android:id="@+id/quitBtn"
+                            android:text="돌아간다"/>
+
+                    </FrameLayout>
+
+                    <!--보기 2개짜리(노크한다, 돌아간다)-->
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#000000"
+                        android:id="@+id/twoOptionKnock">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:background="#AA000000"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:id="@+id/knockBtn"
+                                android:textColor="@android:color/black"
+                                android:background="@drawable/button_img"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginLeft="15dp"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:text="노크한다"/>
+
+                            <Button
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:id="@+id/knockQuitBtn"
+                                android:textColor="@android:color/black"
+                                android:background="@drawable/button_img"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginRight="15dp"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:text="돌아간다"/>
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#000000"
+                        android:id="@+id/dotoriSelect">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#AA000000"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:id="@+id/strokeBtn"
+                                android:textColor="@android:color/black"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginLeft="15dp"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:text="쓰다듬는다"/>
+
+                            <Button
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:id="@+id/feedBtn"
+                            android:textColor="@android:color/black"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginLeft="15dp"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:text="간식을 준다"/>
+
+                            <Button
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:id="@+id/dotoirQuitBtn"
+                                android:textColor="@android:color/black"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginEnd="15dp"
+                                android:layout_marginRight="15dp"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:text="돌아간다"/>
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                    <!--보기 5개짜리(교수 둘다 첫 보기창)-->
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#000000"
+                        android:id="@+id/fourBothoption">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#000000"
+                            android:orientation="vertical">
+
+                             <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                 android:layout_weight="1"
+                                android:background="#00000000"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:id="@+id/introduceBtn"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp"
+                                    android:text="공포학과 배경을 알려주세요"/>
+
+                                <Button
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:id="@+id/horrorStoryBtn"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp"
+                                    android:text="무서운 이야기 들려주세요"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:background="#000000"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:id="@+id/dreamBtn"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp"
+                                    android:text="꿈자리가 사나워요"/>
+
+                                <Button
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:id="@+id/bothBackBtn"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp"
+                                    android:text="돌아간다"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                    <!--보기 5개짜리(m교수 첫 보기창)-->
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#000000"
+                        android:id="@+id/fourMoption">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#000000"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:background="#00000000"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:id="@+id/toLookGhostBtn"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp"
+                                    android:text="귀신을 보는 방법을 알려주세요"/>
+
+                                <Button
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:id="@+id/mHorrorStoryBtn"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp"
+                                    android:text="무서운 이야기 들려주세요"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:background="#000000"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:id="@+id/ghostSpotBtn"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp"
+                                    android:text="흉가 탐방이 가고 싶어요"/>
+
+                                <Button
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:id="@+id/mBackBtn"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp"
+                                    android:text="돌아간다"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                    <!--보기 5개짜리(w교수 첫 보기창)-->
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#000000"
+                        android:id="@+id/fourWoption">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#000000"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:background="#00000000"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:id="@+id/aboutGhostBtn"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp"
+                                    android:text="대체 귀신이란 무엇인가요?"/>
+
+                                <Button
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:id="@+id/wHorrorStoryBtn"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp"
+                                    android:text="무서운 이야기 들려주세요"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:background="#000000"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:id="@+id/mostHorrorBtn"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp"
+                                    android:text="세상에서 가장 무서운건 뭐에요?"/>
+
+                                <Button
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:id="@+id/wBackBtn"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp"
+                                    android:text="돌아간다"/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+
+                    <!--꿈 프레임 레이아웃 -->
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#000000"
+                        android:id="@+id/dreamOption">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#000000"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:background="#00000000"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:id="@+id/paralysisBtn"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp"
+                                    android:text="가위에 자주 눌려요"/>
+
+                                <Button
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:id="@+id/followBtn"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp"
+                                    android:text="누가 자꾸 따라와요"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:background="#000000"
+                                android:orientation="horizontal">
+
+                                <Button
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:id="@+id/reaperBtn"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp"
+                                    android:text="저승사자를 본 것 같아요"/>
+
+                                <Button
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:id="@+id/noBtn"
+                                    android:textColor="@android:color/black"
+                                    android:textSize="15sp"
+                                    android:text="말하기 싫어요.."/>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                </FrameLayout>
+
+
+    </LinearLayout>
