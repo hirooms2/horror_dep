@@ -20,7 +20,7 @@ import java.util.List;
  * Created by 김태호 on 2017-01-18.
  */
 
-public class CartoonPagerAdapter extends PagerAdapter{
+public class CartoonPagerAdapter extends PagerAdapter {
     LayoutInflater inflater;
     Activity activity;
     int num;

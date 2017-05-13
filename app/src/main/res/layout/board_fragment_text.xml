@@ -7,10 +7,9 @@
 
     <ImageView
         android:id="@+id/board_tab_image"
-        android:background="@drawable/bigbang"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:scaleType="fitCenter" />
+        android:layout_height="200dp"
+        android:scaleType="fitXY" />
 
     <ListView
         android:layout_width="match_parent"

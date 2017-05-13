@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_weight="0"
-        android:src="@drawable/adsample"
+        android:src="@drawable/ad_youtube"
         android:scaleType="fitXY"/>
 
 </LinearLayout>

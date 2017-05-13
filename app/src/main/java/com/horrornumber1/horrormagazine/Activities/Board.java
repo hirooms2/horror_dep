@@ -1,6 +1,7 @@
 package com.horrornumber1.horrormagazine.Activities;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -28,9 +29,15 @@ public class Board extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board);
 
-        Intent intent = getIntent();
-        name = intent.getStringExtra(PARAM_INPUT_NAME);
+        //************************BackGround Music*************************************************
+        DataHouse.mp = MediaPlayer.create(this, R.raw.bgm);
+        DataHouse.mp.setLooping(true);
+        if(DataHouse.musicCheck)
+            DataHouse.mp.start();
 
+       // Intent intent = getIntent();
+       // name = intent.getStringExtra(PARAM_INPUT_NAME);
+        name ="군대괴담";
         //*************************************Toolbar**********************************************
         if(absmenu!=null) {
             absmenu.clear();
@@ -63,9 +70,7 @@ public class Board extends AppCompatActivity {
         TabPagerAdapter pagerAdapter = new TabPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(pagerAdapter);
         viewPager.setCurrentItem(whichContents(name));
-
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

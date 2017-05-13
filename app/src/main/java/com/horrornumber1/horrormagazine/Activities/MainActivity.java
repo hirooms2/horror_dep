@@ -132,8 +132,10 @@ public class MainActivity extends ActionBarActivity implements  BaseSliderView.O
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
 
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("youtube", R.drawable.ad_youtube);
-        file_maps.put("facebook", R.drawable.ad_facebook);
+
+        file_maps.put("magazine", R.drawable.horrormagazine);
+        file_maps.put("facebook", R.drawable.horrorfacebook);
+        file_maps.put("youtube", R.drawable.horrorradio);
 
         for (String name : file_maps.keySet()) {
             final TextSliderView textSliderView = new TextSliderView(this);

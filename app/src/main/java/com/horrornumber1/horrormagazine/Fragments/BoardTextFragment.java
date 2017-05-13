@@ -3,6 +3,7 @@ package com.horrornumber1.horrormagazine.Fragments;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.horrornumber1.horrormagazine.Activities.Content;
 import com.horrornumber1.horrormagazine.Adapters.TabListViewAdapter;
@@ -41,12 +43,10 @@ public class BoardTextFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         final ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.board_fragment_text, container, false);
-
         name = getArguments().getString("name");
         contents=whichContents(name);
 
         Typeface hanna = Typeface.createFromAsset(getContext().getAssets(), "fonts/HANNA.ttf");
-
         //제목, 부제
         listview_title = (TextView) rootView.findViewById(R.id.board_listview_title);
         listview_title.setTypeface(hanna);
@@ -70,6 +70,15 @@ public class BoardTextFragment extends Fragment {
         stickyView = (RelativeLayout) rootView.findViewById(R.id.stickyView);
         stickyViewSpacer = listHeader.findViewById(R.id.stickyViewPlaceholder);
 
+        imageView.setImageResource(R.drawable.ad_facebook);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), " sdadasd ", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCQbKk4fa3B23YDmVXjv-j4w")));
+            }
+        });
 
         listView = (ListView) rootView.findViewById(R.id.board_tab_listView);
         listView.addHeaderView(listHeader, null, false);
