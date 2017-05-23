@@ -5,10 +5,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
-import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -27,19 +27,19 @@ import java.util.List;
 public class Counsil extends AppCompatActivity {
 
     private Button knock, knockBack, oneQuit, stroke, feed, dotoriBack, lookBack, introduce,
-            horrorStoryBtn, bothOptionBack, dream, paralysis, reaper, follow, noBtn, mBack, wBack,
-            mHorrorStory, wHorrorStory, toLookGhost, ghostSpotBtn, aboutGhost, mostHorror; //선택 버튼
-    private ImageView interview, youtubeImg; // 이미지
+            dream, paralysis, reaper, follow, noBtn,
+            mHorrorStory, mostHorror, radio, ghostspot; //선택 버튼
+    private ImageView interview; // 이미지
     private LinearLayout screen;//전체화면
     private Handler layoutHandler, imageviewHandler, answerHandler;
     private Animation fadeout;
     private Typeface nanumBold;
-    private TypeWriter storyText, effectText;
+    private TypeWriter storyText;
     private TextView word1, word2, word3, word4, introduceText, closeText; // 효과음
     private int i, random, count; //for문, 경우의수, 면담하기 이야기 카운트
-    private List<String> enter, paralysisStory, followStory, reaperStory, noTalk, watchGhost, ghostSpot,  mostHorrible; //첫화면 케이스들 담아두는곳, 무서운이야기 테스트
-    private FrameLayout storyFrame, oneLookBackFrame, oneQuitFrame,
-            twoOptionKnockFrame, dotoriSelectFrame, bothOptionFrame, dreamOption, mOptionFrame, wOptionFrame, youtubeBtnFrame;
+    private List<String> enter, paralysisStory, followStory, reaperStory, noTalk,  mostHorrible; //첫화면 케이스들 담아두는곳, 무서운이야기 테스트
+    private FrameLayout storyFrame, oneLookBackFrame, oneQuitFrame, radio_and_ghostspot,
+            twoOptionKnockFrame, dotoriSelectFrame,  dreamOption, mOptionFrame;
     private View introduceFrame;
     private Animation topShow, topHide;
     public static MediaPlayer dooropen, scream, knocksound, eating, growl, girllaugh, grandmother, knockbark, ringonce, ringseveral;
@@ -54,11 +54,9 @@ public class Counsil extends AppCompatActivity {
         followStory = new ArrayList<>(); //누가 따라와요 스토리
         reaperStory = new ArrayList<>();//저승사자를 본 것 같아요 스토리
         noTalk = new ArrayList<>();//이야기하기 싫어요
-        watchGhost = new ArrayList<>();//귀신 보는 방법
-        ghostSpot = new ArrayList<>(); // 흉가 탐방이 가고 싶어요
         mostHorrible = new ArrayList<>(); // 가장 무서운것은 뭔가요?
 
-//        nanumBold = Typeface.createFromAsset(getApplicationContext().getAssets(), "font/nanumgothic.ttf");
+        nanumBold = Typeface.createFromAsset(getAssets(), "fonts/nanumbold.ttf");
 
         dooropen = MediaPlayer.create(this, R.raw.dooropen);
         dooropen.setLooping(false);
@@ -93,8 +91,7 @@ public class Counsil extends AppCompatActivity {
         topShow = AnimationUtils.loadAnimation(this, R.anim.top_in);
         topHide = AnimationUtils.loadAnimation(this, R.anim.top_out);
 
-        //random = (int) (Math.random()*5);  // 경우의 수 5개 할당(교수없음, 도토리, 둘다, m혼자, w혼자
-        random = 4;
+        random = (int) (Math.random()*10);  // 경우의 수 5개 할당(교수없음, 도토리,  m혼자)
 
         count = 0;
 
@@ -105,15 +102,12 @@ public class Counsil extends AppCompatActivity {
         oneQuitFrame = (FrameLayout)findViewById(R.id.oneOptionQuit);
         twoOptionKnockFrame = (FrameLayout)findViewById(R.id.twoOptionKnock);
         dotoriSelectFrame = (FrameLayout)findViewById(R.id.dotoriSelect);
-        bothOptionFrame = (FrameLayout)findViewById(R.id.fourBothoption);
         introduceFrame = (FrameLayout)findViewById(R.id.introduceFrame);
         dreamOption = (FrameLayout)findViewById(R.id.dreamOption);
         mOptionFrame = (FrameLayout)findViewById(R.id.fourMoption);
-        wOptionFrame = (FrameLayout)findViewById(R.id.fourWoption);
-        youtubeBtnFrame = (FrameLayout)findViewById(R.id.youtubeButtonFrame);
+        radio_and_ghostspot = (FrameLayout)findViewById(R.id.radio_and_ghostspot);
 
         interview = (ImageView)findViewById(R.id.interview);
-        youtubeImg = (ImageView)findViewById(R.id.youtubeBtn);
 
         word1 = (TextView)findViewById(R.id.word1); word2 = (TextView)findViewById(R.id.word2);
         word3 = (TextView)findViewById(R.id.word3); word4 = (TextView)findViewById(R.id.word4);
@@ -121,19 +115,15 @@ public class Counsil extends AppCompatActivity {
         closeText = (TextView)findViewById(R.id.closeBtn); //창닫기 버튼
 
         storyText = (TypeWriter) findViewById(R.id.storyText); //이야기 창 텍스트뷰
-        effectText = (TypeWriter)findViewById(R.id.effectText); //노크 등등 효과음용
 
         oneLookBackFrame.setVisibility(View.GONE); // 뒤돌아 본다 프레임 레이아웃 Gone 처리
         oneQuitFrame.setVisibility(View.GONE); // 돌아간다 프레임 레이아웃 Gone 처리
         storyFrame.setVisibility(View.GONE); // 이야기 프레임 레이아웃 Gone 처리
         dotoriSelectFrame.setVisibility(View.GONE); // 도토리 선택창 GONE 처리
-        bothOptionFrame.setVisibility(View.GONE); //교수 둘 선택창 사라지도록
-        effectText.setVisibility(View.GONE); //효과음 창 Gone 처리
         introduceFrame.setVisibility(View.GONE); //공포학과 소개 창 Gone 처리
         dreamOption.setVisibility(View.GONE); //꿈 프레임 Gone 처리
         mOptionFrame.setVisibility(View.GONE);//M교수 선택창 사라지도록
-        wOptionFrame.setVisibility(View.GONE);//W교수 선택창 사라지도록
-        youtubeBtnFrame.setVisibility(View.GONE); // 유튜브 보러가기 창 Gone
+        radio_and_ghostspot.setVisibility(View.GONE); // 공포라디오, 흉가탐방영상 창 GONE
 
         knock = (Button) findViewById(R.id.knockBtn); //노크 한다 버튼
         knockBack = (Button)findViewById(R.id.knockQuitBtn);  //돌아간다 버튼
@@ -143,27 +133,20 @@ public class Counsil extends AppCompatActivity {
         dotoriBack = (Button)findViewById(R.id.dotoirQuitBtn); //도토리 3선택 창 돌아가기 버튼
         lookBack = (Button)findViewById(R.id.lookBackBtn); //돌아본다 버튼
         introduce = (Button)findViewById(R.id.introduceBtn); //공포학과 소개 버튼
-        horrorStoryBtn = (Button)findViewById(R.id.horrorStoryBtn);//무서운이야기 들려주세요 버튼
-        bothOptionBack = (Button)findViewById(R.id.bothBackBtn); // 교수 면담 뒤로가기
         dream = (Button)findViewById(R.id.dreamBtn); // 꿈자리가 사나워요 버튼
         paralysis = (Button)findViewById(R.id.paralysisBtn);//가위에 눌려요 버튼
         follow = (Button)findViewById(R.id.followBtn); //누가 따라와요 버튼
         reaper = (Button)findViewById(R.id.reaperBtn);//저승사자 버튼
         noBtn = (Button)findViewById(R.id.noBtn); //말하기 싫어요 버튼
-        mBack = (Button)findViewById(R.id.mBackBtn); //m교수 뒤로가기 버튼
-        wBack = (Button)findViewById(R.id.wBackBtn); //w교수 뒤로가기 버튼
         mHorrorStory = (Button)findViewById(R.id.mHorrorStoryBtn); //m교수 무서운이야기 버튼
-        wHorrorStory = (Button)findViewById(R.id.wHorrorStoryBtn); //w교수 무서운이야기 버튼
-        toLookGhost = (Button)findViewById(R.id.toLookGhostBtn); //귀신을 보는 법을 알려주세요 버튼
-        ghostSpotBtn = (Button)findViewById(R.id.ghostSpotBtn); //흉가탐방이 가고 싶어요 버튼
-        aboutGhost = (Button)findViewById(R.id.aboutGhostBtn); // 귀신이란 무엇인가요 버튼
         mostHorror = (Button)findViewById(R.id.mostHorrorBtn); // 가장 무서운것은 무엇인가요 버튼
+        radio = (Button)findViewById(R.id.radioBtn); // 공포라디오
+        ghostspot = (Button)findViewById(R.id.ghostSpotBtn); //흉가탐방영상
 
         layoutHandler = new Handler();
         imageviewHandler = new Handler();
         answerHandler = new Handler();
 
-        effectText.setTypeface(nanumBold);
 
         introduceText.setText("공포학과는 2016년 1월 11일부터 시작한 페이스북 페이지로 공포 전문 플랫폼입니다.\n" +
                 "공포 학과는 M교수, W교수가 대표로 있으며 광고 하나 없이 청정한 순수 공포 콘텐츠만을 다루는 플랫폼으로, 활동량 국내 NO.1의 공포 페이지 입니다.\n" +
@@ -200,31 +183,29 @@ public class Counsil extends AppCompatActivity {
 
                 //-------노크하기 버튼 눌렀을때의 뷰변경------
 
-                if(random==0 || random==2 || random==3 || random==4) {
+                if(random==0 || random==1 || random==4 || random==5 || random==6 || random==7 || random==8 || random==9) {
                     knocksound.start();
                 }
-                else if(random==1){
+                else if(random==2 || random==3){
                     knockbark.start();
                 }
-
-                effectText.setVisibility(View.VISIBLE);
-                setStory("똑 똑 똑..", 200);
 
                 twoOptionKnockFrame.setVisibility(View.GONE); // 노크하기, 돌아간다 프레임 사라짐
                 storyFrame.setVisibility(View.VISIBLE);
 
-                switch (random){
+                switch (random) {
 
-                    case 0:
+                    case 0 :
+                    case 1 : {
                         //-------방안에 아무도 없을 경우에 대한 뷰변경------
 
-                        (new Thread(){
+                        (new Thread() {
                             @Override
-                            public void run(){
+                            public void run() {
 
-                                answerHandler.postDelayed(new Runnable(){
-                                    public void run(){
-                                        setStory(enter.get(random));
+                                answerHandler.postDelayed(new Runnable() {
+                                    public void run() {
+                                        setStory(enter.get(0));
                                     }
                                 }, 2000);
                             }
@@ -234,7 +215,6 @@ public class Counsil extends AppCompatActivity {
                             @Override
                             public void onClick(View v) {
 
-                                effectText.setVisibility(View.GONE);
                                 knocksound.stop();
                                 knocksound.release();
 
@@ -243,236 +223,143 @@ public class Counsil extends AppCompatActivity {
                             }
                         });
                         break;
+                    }
 
-                    case 1:
+                    case 2:
+                    case 3: {
                         //-------도토리만 방안에 있는 상황에 대한 뷰변경------
 
-                        (new Thread(){
+                        (new Thread() {
                             @Override
-                            public void run(){
+                            public void run() {
 
-                                answerHandler.postDelayed(new Runnable(){
-                                    public void run(){
-                                        setStory(enter.get(random));
+                                answerHandler.postDelayed(new Runnable() {
+                                    public void run() {
+                                        setStory(enter.get(1));
                                     }
                                 }, 2500);
                             }
                         }).start();
 
 
-                                storyFrame.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-
-                                        effectText.setVisibility(View.GONE);
-
-                                        knockbark.stop();
-                                        knockbark.release();
-                                        setStory("도토리가 안에 있는 것 같다. 들어갈까요?");
-
-                                        storyFrame.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-
-                                                storyFrame.setVisibility(View.GONE);
-                                                twoOptionKnockFrame.setVisibility(View.VISIBLE);
-
-                                                knock.setText("들어가기");
-                                                knock.setOnClickListener(new View.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(View v) {
-
-                                                        dooropen.start();
-
-                                                        twoOptionKnockFrame.setVisibility(View.GONE);
-                                                        storyFrame.setVisibility(View.GONE);
-
-                                                        (new Thread(){
-                                                            @Override
-                                                            public void run(){
-
-                                                                imageviewHandler.postDelayed(new Runnable(){
-                                                                    public void run(){
-                                                                        interview.setVisibility(View.VISIBLE);
-                                                                        interview.startAnimation(fadeout);
-                                                                    }
-                                                                }, 500);
-                                                            }
-                                                        }).start();
-
-                                                        (new Thread(){
-                                                            @Override
-                                                            public void run(){
-
-                                                                imageviewHandler.postDelayed(new Runnable(){
-                                                                    public void run(){
-                                                                        dooropen.stop();
-                                                                        dooropen.release();
-                                                                        storyFrame.setVisibility(View.VISIBLE);
-                                                                        setStory("도토리가 혼자 놀고 있다. 당신에게 놀아달라는 듯이 바라본다.");
-                                                                    }
-                                                                }, 1500);
-                                                            }
-                                                        }).start();
-
-                                                        interview.setVisibility(View.GONE);
-                                                        interview.setImageResource(R.drawable.room);
-                                                        screen.setBackgroundColor(Color.BLACK);
-
-                                                        word1.setText("");
-                                                        word4.setText("");
-
-
-                                                        (new Thread(){
-                                                            @Override
-                                                            public void run(){
-                                                                for(i=0; i<255; i++){
-                                                                    layoutHandler.post(new Runnable(){
-                                                                        public void run(){
-                                                                            screen.setBackgroundColor(Color.argb(255, i, i, i));
-                                                                        }
-                                                                    });
-                                                                    // next will pause the thread for some time
-                                                                    try{
-                                                                        sleep(30);
-                                                                    }
-                                                                    catch(InterruptedException e){
-                                                                        break;
-                                                                    }
-                                                                }
-                                                            }
-                                                        }).start();
-
-                                                        storyFrame.setOnClickListener(new View.OnClickListener() {
-                                                            @Override
-                                                            public void onClick(View v) {
-                                                                storyFrame.setVisibility(View.GONE);
-                                                                dotoriSelectFrame.setVisibility(View.VISIBLE);
-
-                                                            }
-                                                        });
-                                                    }
-
-                                                });
-
-                                            }
-                                        });
-
-                                    }
-                                });
-
-
-                        break;
-                    case 2:
-
-                        //-------교수 두명이 안에 있는 상황에 대한 뷰 변경------
-
-                        (new Thread(){
-                            @Override
-                            public void run(){
-
-                                answerHandler.postDelayed(new Runnable(){
-                                    public void run(){
-                                        setStory(enter.get(random));
-                                    }
-                                }, 2000);
-                            }
-                        }).start();
-
                         storyFrame.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
 
-                                storyFrame.setVisibility(View.GONE);
-                                twoOptionKnockFrame.setVisibility(View.VISIBLE);
 
-                                effectText.setVisibility(View.GONE);
-                                knocksound.stop();
-                                knocksound.release();
 
-                                knock.setText("들어가기");
-                                knock.setOnClickListener(new View.OnClickListener() {
+                                knockbark.stop();
+                                knockbark.release();
+                                setStory("도토리가 안에 있는 것 같다. 들어갈까요?");
+
+                                storyFrame.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        dooropen.start();
-                                        twoOptionKnockFrame.setVisibility(View.GONE);
+
                                         storyFrame.setVisibility(View.GONE);
+                                        twoOptionKnockFrame.setVisibility(View.VISIBLE);
 
-                                        (new Thread(){
+                                        knock.setText("들어가기");
+                                        knock.setOnClickListener(new View.OnClickListener() {
                                             @Override
-                                            public void run(){
+                                            public void onClick(View v) {
 
-                                                imageviewHandler.postDelayed(new Runnable(){
-                                                    public void run(){
+                                                dooropen.start();
 
-                                                        interview.setVisibility(View.VISIBLE);
-                                                        interview.startAnimation(fadeout);
-                                                        bothOptionFrame.setVisibility(View.VISIBLE);
-                                                        bothOptionFrame.startAnimation(fadeout);
+                                                twoOptionKnockFrame.setVisibility(View.GONE);
+                                                storyFrame.setVisibility(View.GONE);
+
+                                                (new Thread() {
+                                                    @Override
+                                                    public void run() {
+
+                                                        imageviewHandler.postDelayed(new Runnable() {
+                                                            public void run() {
+                                                                interview.setVisibility(View.VISIBLE);
+                                                                interview.startAnimation(fadeout);
+                                                            }
+                                                        }, 500);
                                                     }
-                                                }, 500);
-                                            }
-                                        }).start();
+                                                }).start();
 
-                                        (new Thread(){
-                                            @Override
-                                            public void run(){
+                                                (new Thread() {
+                                                    @Override
+                                                    public void run() {
 
-                                                imageviewHandler.postDelayed(new Runnable(){
-                                                    public void run(){
-
-                                                        dooropen.stop();
-                                                        dooropen.release();
+                                                        imageviewHandler.postDelayed(new Runnable() {
+                                                            public void run() {
+                                                                dooropen.stop();
+                                                                dooropen.release();
+                                                                storyFrame.setVisibility(View.VISIBLE);
+                                                                setStory("도토리가 혼자 놀고 있다. 당신에게 놀아달라는 듯이 바라본다.");
+                                                            }
+                                                        }, 1500);
                                                     }
-                                                }, 1000);
-                                            }
-                                        }).start();
+                                                }).start();
 
-                                        interview.setVisibility(View.GONE);
-                                        interview.setImageResource(R.drawable.room);
-                                        screen.setBackgroundColor(Color.BLACK);
+                                                interview.setVisibility(View.GONE);
+                                                interview.setImageResource(R.drawable.dotorinormal);
+                                                screen.setBackgroundColor(Color.BLACK);
 
-                                        word1.setVisibility(View.GONE);
-                                        word4.setVisibility(View.GONE);
+                                                word1.setText("");
+                                                word4.setText("");
 
-                                        setStory("");
 
-                                        (new Thread(){
-                                            @Override
-                                            public void run(){
-                                                for(i=0; i<255; i++){
-                                                    layoutHandler.post(new Runnable(){
-                                                        public void run(){
-                                                            screen.setBackgroundColor(Color.argb(255, i, i, i));
+                                                (new Thread() {
+                                                    @Override
+                                                    public void run() {
+                                                        for (i = 0; i < 255; i++) {
+                                                            layoutHandler.post(new Runnable() {
+                                                                public void run() {
+                                                                    screen.setBackgroundColor(Color.argb(255, i, i, i));
+                                                                }
+                                                            });
+                                                            // next will pause the thread for some time
+                                                            try {
+                                                                sleep(30);
+                                                            } catch (InterruptedException e) {
+                                                                break;
+                                                            }
                                                         }
-                                                    });
-                                                    // next will pause the thread for some time
-                                                    try{
-                                                        sleep(30);
                                                     }
-                                                    catch(InterruptedException e){
-                                                        break;
+                                                }).start();
+
+                                                storyFrame.setOnClickListener(new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View v) {
+                                                        storyFrame.setVisibility(View.GONE);
+                                                        dotoriSelectFrame.setVisibility(View.VISIBLE);
+
                                                     }
-                                                }
+                                                });
                                             }
-                                        }).start();
+
+                                        });
 
                                     }
                                 });
 
                             }
                         });
+
+
                         break;
+                    }
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9: {
 
-                    case 3:
                         //-----------ㅡm교수만 있는 상황--------------
-                        (new Thread(){
+                        (new Thread() {
                             @Override
-                            public void run(){
+                            public void run() {
 
-                                answerHandler.postDelayed(new Runnable(){
-                                    public void run(){
-                                        setStory(enter.get(random));
+                                answerHandler.postDelayed(new Runnable() {
+                                    public void run() {
+                                        setStory(enter.get(2));
                                     }
                                 }, 2000);
                             }
@@ -484,7 +371,6 @@ public class Counsil extends AppCompatActivity {
                                 storyFrame.setVisibility(View.GONE);
                                 twoOptionKnockFrame.setVisibility(View.VISIBLE);
 
-                                effectText.setVisibility(View.GONE);
                                 knocksound.stop();
                                 knocksound.release();
 
@@ -496,12 +382,12 @@ public class Counsil extends AppCompatActivity {
                                         twoOptionKnockFrame.setVisibility(View.GONE);
                                         storyFrame.setVisibility(View.GONE);
 
-                                        (new Thread(){
+                                        (new Thread() {
                                             @Override
-                                            public void run(){
+                                            public void run() {
 
-                                                imageviewHandler.postDelayed(new Runnable(){
-                                                    public void run(){
+                                                imageviewHandler.postDelayed(new Runnable() {
+                                                    public void run() {
 
                                                         interview.setVisibility(View.VISIBLE);
                                                         interview.startAnimation(fadeout);
@@ -512,12 +398,12 @@ public class Counsil extends AppCompatActivity {
                                             }
                                         }).start();
 
-                                        (new Thread(){
+                                        (new Thread() {
                                             @Override
-                                            public void run(){
+                                            public void run() {
 
-                                                imageviewHandler.postDelayed(new Runnable(){
-                                                    public void run(){
+                                                imageviewHandler.postDelayed(new Runnable() {
+                                                    public void run() {
 
                                                         dooropen.stop();
                                                         dooropen.release();
@@ -527,7 +413,7 @@ public class Counsil extends AppCompatActivity {
                                         }).start();
 
                                         interview.setVisibility(View.GONE);
-                                        interview.setImageResource(R.drawable.room);
+                                        interview.setImageResource(R.drawable.mprofessor);
                                         screen.setBackgroundColor(Color.BLACK);
 
                                         word1.setVisibility(View.GONE);
@@ -535,20 +421,19 @@ public class Counsil extends AppCompatActivity {
 
                                         setStory("");
 
-                                        (new Thread(){
+                                        (new Thread() {
                                             @Override
-                                            public void run(){
-                                                for(i=0; i<255; i++){
-                                                    layoutHandler.post(new Runnable(){
-                                                        public void run(){
+                                            public void run() {
+                                                for (i = 0; i < 255; i++) {
+                                                    layoutHandler.post(new Runnable() {
+                                                        public void run() {
                                                             screen.setBackgroundColor(Color.argb(255, i, i, i));
                                                         }
                                                     });
                                                     // next will pause the thread for some time
-                                                    try{
+                                                    try {
                                                         sleep(30);
-                                                    }
-                                                    catch(InterruptedException e){
+                                                    } catch (InterruptedException e) {
                                                         break;
                                                     }
                                                 }
@@ -560,105 +445,7 @@ public class Counsil extends AppCompatActivity {
                             }
                         });
                         break;
-                    case 4:
-                        //-----------ㅡw교수만 있는 상황--------------
-                        (new Thread(){
-                            @Override
-                            public void run(){
-
-                                answerHandler.postDelayed(new Runnable(){
-                                    public void run(){
-                                        setStory(enter.get(random));
-                                    }
-                                }, 2000);
-                            }
-                        }).start();
-
-                        storyFrame.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                storyFrame.setVisibility(View.GONE);
-                                twoOptionKnockFrame.setVisibility(View.VISIBLE);
-
-                                effectText.setVisibility(View.GONE);
-                                knocksound.stop();
-                                knocksound.release();
-
-                                knock.setText("들어가기");
-                                knock.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        dooropen.start();
-                                        twoOptionKnockFrame.setVisibility(View.GONE);
-                                        storyFrame.setVisibility(View.GONE);
-
-                                        (new Thread(){
-                                            @Override
-                                            public void run(){
-
-                                                imageviewHandler.postDelayed(new Runnable(){
-                                                    public void run(){
-
-                                                        interview.setVisibility(View.VISIBLE);
-                                                        interview.startAnimation(fadeout);
-                                                        wOptionFrame.setVisibility(View.VISIBLE);
-                                                        wOptionFrame.startAnimation(fadeout);
-                                                    }
-                                                }, 500);
-                                            }
-                                        }).start();
-
-                                        (new Thread(){
-                                            @Override
-                                            public void run(){
-
-                                                imageviewHandler.postDelayed(new Runnable(){
-                                                    public void run(){
-
-                                                        dooropen.stop();
-                                                        dooropen.release();
-                                                    }
-                                                }, 1000);
-                                            }
-                                        }).start();
-
-                                        interview.setVisibility(View.GONE);
-                                        interview.setImageResource(R.drawable.room);
-                                        screen.setBackgroundColor(Color.BLACK);
-
-                                        word1.setVisibility(View.GONE);
-                                        word4.setVisibility(View.GONE);
-
-                                        setStory("");
-
-                                        (new Thread(){
-                                            @Override
-                                            public void run(){
-                                                for(i=0; i<255; i++){
-                                                    layoutHandler.post(new Runnable(){
-                                                        public void run(){
-                                                            screen.setBackgroundColor(Color.argb(255, i, i, i));
-                                                        }
-                                                    });
-                                                    // next will pause the thread for some time
-                                                    try{
-                                                        sleep(30);
-                                                    }
-                                                    catch(InterruptedException e){
-                                                        break;
-                                                    }
-                                                }
-                                            }
-                                        }).start();
-
-                                    }
-                                });
-                            }
-                        });
-                        break;
-
-
-
+                    }
                 }
             }
         });
@@ -697,7 +484,7 @@ public class Counsil extends AppCompatActivity {
                                     @Override
                                     public void onClick(View v) {
                                         storyFrame.setVisibility(View.GONE);
-                                        bothOptionFrame.setVisibility(View.VISIBLE);
+                                        mOptionFrame.setVisibility(View.VISIBLE);
                                         count=0;
                                     }
                                 });
@@ -733,7 +520,7 @@ public class Counsil extends AppCompatActivity {
                                     public void onClick(View v) {
                                         grandmother.stop();
                                         storyFrame.setVisibility(View.GONE);
-                                        bothOptionFrame.setVisibility(View.VISIBLE);
+                                        mOptionFrame.setVisibility(View.VISIBLE);
                                         count=0;
                                     }
                                 });
@@ -771,7 +558,7 @@ public class Counsil extends AppCompatActivity {
                                     @Override
                                     public void onClick(View v) {
                                         storyFrame.setVisibility(View.GONE);
-                                        bothOptionFrame.setVisibility(View.VISIBLE);
+                                        mOptionFrame.setVisibility(View.VISIBLE);
                                         count=0;
                                     }
                                 });
@@ -805,9 +592,9 @@ public class Counsil extends AppCompatActivity {
                                             @Override
                                             public void onClick(View v) {
                                                 count=0;
-                                                interview.setImageResource(R.drawable.room);
+                                                interview.setImageResource(R.drawable.mprofessor);
                                                 storyFrame.setVisibility(View.GONE);
-                                                bothOptionFrame.setVisibility(View.VISIBLE);
+                                                mOptionFrame.setVisibility(View.VISIBLE);
                                             }
                                         });
                                     }
@@ -819,89 +606,11 @@ public class Counsil extends AppCompatActivity {
             }
         });
 
-        //-------귀신 보는 법 알려주세요 버튼 --------
-        toLookGhost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mOptionFrame.setVisibility(View.GONE);
-                storyFrame.setVisibility(View.VISIBLE);
-                setStory(watchGhost.get(count++));
-                for(int i=0; i<24; i++){
-                    storyFrame.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            setStory(watchGhost.get(count++));
-                            if(count==10){
-                                interview.setImageResource(R.drawable.ready);
-                            }
-                            if(count==11){
-                                interview.setImageResource(R.drawable.cotton);
-                            }
-                            if(count==14){
-                                interview.setImageResource(R.drawable.ghosttv);
-                            }
-                            if(count==15){
-                                interview.setImageResource(R.drawable.needle);
-                            }
-                            if(count==17){
-                                interview.setImageResource(R.drawable.hiding);
-                            }
-                            if(count==19){
-                                interview.setImageResource(R.drawable.room);
-                            }
-                            if(count==24){
-                                storyFrame.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        count=0;
-                                        mOptionFrame.setVisibility(View.VISIBLE);
-                                        storyFrame.setVisibility(View.GONE);
-                                    }
-                                });
-
-                            }
-                        }
-                    });
-                }
-            }
-        });
-        //흉가 탐방이 가고 싶어요
-        ghostSpotBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mOptionFrame.setVisibility(View.GONE);
-                storyFrame.setVisibility(View.VISIBLE);
-                setStory(ghostSpot.get(count++));
-
-                for(int i=0; i<14; i++){
-                    storyFrame.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            setStory(ghostSpot.get(count++));
-
-                            if(count==14){
-                                youtubeBtnFrame.setVisibility(View.VISIBLE);
-                                storyFrame.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        count=0;
-                                        mOptionFrame.setVisibility(View.VISIBLE);
-                                        youtubeBtnFrame.setVisibility(View.GONE);
-                                        storyFrame.setVisibility(View.GONE);
-                                    }
-                                });
-                            }
-
-                        }
-                    });
-                }
-            }
-        });
         // 가장 무서운것은 무엇인가요? 버튼
         mostHorror.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                wOptionFrame.setVisibility(View.INVISIBLE);
+                mOptionFrame.setVisibility(View.INVISIBLE);
                 storyFrame.setVisibility(View.VISIBLE);
                 setStory(mostHorrible.get(count++));
 
@@ -916,7 +625,7 @@ public class Counsil extends AppCompatActivity {
                                     @Override
                                     public void onClick(View v) {
                                         count=0;
-                                        wOptionFrame.setVisibility(View.VISIBLE);
+                                        mOptionFrame.setVisibility(View.VISIBLE);
                                         storyFrame.setVisibility(View.GONE);
                                     }
                                 });
@@ -929,14 +638,6 @@ public class Counsil extends AppCompatActivity {
 
             }
         });
-        //-------흉가탐방 유튜브 보러가기-----
-        youtubeBtnFrame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), GhostSpotYoutube.class);
-                startActivity(intent);
-            }
-        });
 
         //-------공포학과 배경 버튼---------
         introduce.setOnClickListener(new View.OnClickListener() {
@@ -944,7 +645,7 @@ public class Counsil extends AppCompatActivity {
             public void onClick(View v) {
                 introduceFrame.setVisibility(View.VISIBLE);
                 introduceFrame.startAnimation(topShow);
-                bothOptionFrame.setVisibility(View.GONE);
+                mOptionFrame.setVisibility(View.GONE);
             }
         });
 
@@ -954,52 +655,10 @@ public class Counsil extends AppCompatActivity {
             public void onClick(View v) {
                 introduceFrame.setVisibility(View.INVISIBLE);
                 introduceFrame.startAnimation(topHide);
-                bothOptionFrame.setVisibility(View.VISIBLE);
+                mOptionFrame.setVisibility(View.VISIBLE);
             }
         });
 
-        //------교수 둘다 무서운이야기 들려주세요 버튼------
-
-        horrorStoryBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bothOptionFrame.setVisibility(View.GONE);
-                storyFrame.setVisibility(View.VISIBLE);
-                setStory("무서운이야기요??     흠.........");
-                storyFrame.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        setStory("그냥 무서운 이야기는 그렇고..좀 많이 무서우실텐데 괜찮으시겠어요??");
-                        storyFrame.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                setStory("좋습니다...  직접 들려드리겠습니다. 마음의 준비 단단히 하고 듣기를 권장합니다.");
-                                storyFrame.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        (new Thread(){
-                                            @Override
-                                            public void run(){
-
-                                                imageviewHandler.postDelayed(new Runnable(){
-                                                    public void run(){
-                                                        storyFrame.setVisibility(View.GONE);
-                                                        bothOptionFrame.setVisibility(View.VISIBLE);
-                                                    }
-                                                }, 500);
-                                            }
-                                        }).start();
-
-                                        Intent intent = new Intent(getApplicationContext(), HorrorListActivity.class);
-                                        startActivity(intent);
-                                    }
-                                });
-                            }
-                        });
-                    }
-                });
-            }
-        });
 
         //------m교수 무서운이야기 들려주세요 버튼------
 
@@ -1008,33 +667,22 @@ public class Counsil extends AppCompatActivity {
             public void onClick(View v) {
                 mOptionFrame.setVisibility(View.GONE);
                 storyFrame.setVisibility(View.VISIBLE);
-                setStory("무서운이야기요??     흠.........");
+                setStory("좋습니다....직접 들려드리고 보여드리겠습니다");
                 storyFrame.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        setStory("그냥 무서운 이야기는 그렇고..좀 많이 무서우실텐데 괜찮으시겠어요??");
+                        setStory("공포라디오와 흉가 탐방 영상이 준비되어있습니다");
                         storyFrame.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                setStory("좋습니다...  직접 들려드리겠습니다. 마음의 준비 단단히 하고 듣기를 권장합니다.");
+                                setStory(" 마음의 준비 단단히 하고 듣기를 권장합니다.");
                                 storyFrame.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        (new Thread(){
-                                            @Override
-                                            public void run(){
 
-                                                imageviewHandler.postDelayed(new Runnable(){
-                                                    public void run(){
-                                                        storyFrame.setVisibility(View.GONE);
-                                                        mOptionFrame.setVisibility(View.VISIBLE);
-                                                    }
-                                                }, 500);
-                                            }
-                                        }).start();
+                                        storyFrame.setVisibility(View.GONE);
+                                        radio_and_ghostspot.setVisibility(View.VISIBLE);
 
-                                        Intent intent = new Intent(getApplicationContext(), HorrorListActivity.class);
-                                        startActivity(intent);
                                     }
                                 });
                             }
@@ -1043,49 +691,51 @@ public class Counsil extends AppCompatActivity {
                 });
             }
         });
-
-        //------w교수 무서운이야기 들려주세요 버튼------
-
-        wHorrorStory.setOnClickListener(new View.OnClickListener() {
+        //------공포 라디오 버튼-----
+        radio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                wOptionFrame.setVisibility(View.GONE);
-                storyFrame.setVisibility(View.VISIBLE);
-                setStory("무서운이야기요??     흠.........");
-                storyFrame.setOnClickListener(new View.OnClickListener() {
+                Intent intent = new Intent(getApplicationContext(), HorrorListActivity.class);
+                startActivity(intent);
+                (new Thread(){
                     @Override
-                    public void onClick(View v) {
-                        setStory("그냥 무서운 이야기는 그렇고..좀 많이 무서우실텐데 괜찮으시겠어요??");
-                        storyFrame.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                setStory("좋습니다...  직접 들려드리겠습니다. 마음의 준비 단단히 하고 듣기를 권장합니다.");
-                                storyFrame.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        (new Thread(){
-                                            @Override
-                                            public void run(){
+                    public void run(){
 
-                                                imageviewHandler.postDelayed(new Runnable(){
-                                                    public void run(){
-                                                        storyFrame.setVisibility(View.GONE);
-                                                        wOptionFrame.setVisibility(View.VISIBLE);
-                                                    }
-                                                }, 500);
-                                            }
-                                        }).start();
-
-                                        Intent intent = new Intent(getApplicationContext(), HorrorListActivity.class);
-                                        startActivity(intent);
-                                    }
-                                });
+                        imageviewHandler.postDelayed(new Runnable(){
+                            public void run(){
+                                storyFrame.setVisibility(View.GONE);
+                                radio_and_ghostspot.setVisibility(View.GONE);
+                                mOptionFrame.setVisibility(View.VISIBLE);
                             }
-                        });
+                        }, 500);
                     }
-                });
+                }).start();
             }
         });
+
+        //------흉가 탐방 버튼-----
+        ghostspot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), GhostSpotYoutube.class);
+                startActivity(intent);
+                (new Thread(){
+                    @Override
+                    public void run(){
+
+                        imageviewHandler.postDelayed(new Runnable(){
+                            public void run(){
+                                storyFrame.setVisibility(View.GONE);
+                                radio_and_ghostspot.setVisibility(View.GONE);
+                                mOptionFrame.setVisibility(View.VISIBLE);
+                            }
+                        }, 500);
+                    }
+                }).start();
+
+            }
+        });
+
 
         //-------뒤로가기 버튼은 무조건 finish------
 
@@ -1107,31 +757,13 @@ public class Counsil extends AppCompatActivity {
                 finish();
             }
         });
-        bothOptionBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        mBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        wBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
 
         //-------꿈자리가 사나워요 버튼 ----------------
         dream.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bothOptionFrame.setVisibility(View.GONE);
+                mOptionFrame.setVisibility(View.GONE);
                 storyFrame.setVisibility(View.VISIBLE);
                 setStory("음...사람한테 잠이 참 중요한데...꿈자리가 사나우면 숙면을 취하기가 힘들죠");
                 storyFrame.setOnClickListener(new View.OnClickListener() {
@@ -1157,12 +789,14 @@ public class Counsil extends AppCompatActivity {
                 dotoriSelectFrame.setVisibility(View.GONE);
                 storyFrame.setVisibility(View.VISIBLE);
                 setStory("쓰담쓰담 해주니 도토리 기분이 좋아 보인다");
+                interview.setImageResource(R.drawable.dotorihand);
 
                 //도토리 이미지 변경
 
                 storyFrame.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        interview.setImageResource(R.drawable.dotorinormal);
                         storyFrame.setVisibility(View.GONE);
                         dotoriSelectFrame.setVisibility(View.VISIBLE);
                     }
@@ -1175,25 +809,26 @@ public class Counsil extends AppCompatActivity {
                 dotoriSelectFrame.setVisibility(View.GONE);
                 storyFrame.setVisibility(View.VISIBLE);
                 eating.start();
+                interview.setImageResource(R.drawable.dotorieating);
                 setStory("도토리가 간식을 아주 맛나게 먹는다 ");
 
                 storyFrame.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         setStory("배가 부르니 도토리 기분이 아주 좋아 보인다");
+                        interview.setImageResource(R.drawable.dotorinormal);
                         eating.stop();
                         eating.release();
                         word1.setVisibility(View.GONE);
                         word2.setVisibility(View.GONE);
                         word3.setVisibility(View.GONE);
 
-                        //이미지 변경 들어갈 자리
-
                         storyFrame.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 //이미지 변경(으르렁)
                                 setStory("갑자기 도토리가 내 뒤를 보며 으르렁 거린다..");
+                                interview.setImageResource(R.drawable.dotoribark);
                                 growl.start();
                                 storyFrame.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -1217,9 +852,9 @@ public class Counsil extends AppCompatActivity {
             }
         });
 
-        //돌아본다 클릭 후 귀신 사진 나오고 화면 전환환
+        //돌아본다 클릭 후 귀신 사진 나오고 화면 전환
 
-       lookBack.setOnClickListener(new View.OnClickListener() {
+        lookBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 oneLookBackFrame.setVisibility(View.GONE);
@@ -1231,7 +866,7 @@ public class Counsil extends AppCompatActivity {
 
                         imageviewHandler.postDelayed(new Runnable(){
                             public void run(){
-                                interview.setImageResource(R.drawable.mother_ghost);
+                                interview.setImageResource(R.drawable.suddenghost);
                                 scream.start();
                             }
                         }, 500);
@@ -1248,7 +883,7 @@ public class Counsil extends AppCompatActivity {
                                 interview.startAnimation(fadeout);
 
                                 interview.setVisibility(View.GONE);
-                                interview.setImageResource(R.drawable.room);
+                                interview.setImageResource(R.drawable.noone);
                                 screen.setBackgroundColor(Color.BLACK);
 
                                 storyFrame.setVisibility(View.VISIBLE);
@@ -1299,9 +934,7 @@ public class Counsil extends AppCompatActivity {
         });
         enter.add("교수님이 안 계시는것 같다..돌아가도록 하자");
         enter.add("멍! 멍멍! 왈왈!! 멍멍멍!!");
-        enter.add("M,W교수 : 들어오세요~~~~");
         enter.add("M교수 : 들어오십시오~~~");
-        enter.add("W교수 : 들어와요~~~");
 
         paralysisStory.add("흠...가위라...가위에 눌리는 것 만큼 무서운 꿈은 없죠"); paralysisStory.add("근데 사실 가위라는건 현실이라기 보다는 우리가 만든 허상에 가깝습니다");
         paralysisStory.add("과학적으로는 의식의 각성이 불완전하여 뇌는 깨어있지만, 사지는 깨어있지 않은 상태라고 정의하고 있죠");
@@ -1397,46 +1030,6 @@ public class Counsil extends AppCompatActivity {
         noTalk.add("저희 교수진이 당신의 마음을 정화시킬 선물을 준비했습니다!");
         noTalk.add("작년 2016년도부터 저희 공포학과에 머물고있는 도토리의 응원 메세지입니다");
 
-        watchGhost.add("이 세상에는 정말 많은 귀신들이 존재합니다");
-        watchGhost.add("결론부터 말씀드리자면 최대한 귀신을 보지 않고 사는 것이 좋습니다");
-        watchGhost.add("대부분의 귀신들은 원한 혹은 원념이라고 하는 이승에 대한 미련을 갖고 존재하는 경우가 많기 때문입니다");
-        watchGhost.add("그런 그들을 마주하고 산다는 것은 정신적으로 온전할 수 없는 생활이 되겠죠");
-        watchGhost.add("귀신들은 생김새, 등장 배경이 각양각색입니다");
-        watchGhost.add("그래서인지 그들과 마주하는 방법도 다양합니다");
-        watchGhost.add("그 중 가장 유명한 강령술을 알려드리겠습니다. 다시 한 번 말씀드리지만 절대 실행에 옮기시지는 마시고 이러한 방법이 있다는 것만 알고 계십시오");
-        watchGhost.add("저 M교수가 직접 해보았던 나홀로숨바꼭질이라는 강령술입니다. 실제 제가 찍었던 사진과 함께 설명해드리겠습니다");
-        watchGhost.add("나홀로숨바꼭질은 체계적으로 만들어진 주술이며, 자신을 강력하게 저주하는 행위입니다");
-        watchGhost.add("먼저 준비물이 있습니다. 인형, 쌀, 머리카락 혹은 손톱, 실, 바늘, 소금물, 대야를 준비합니다"); // 준비물 사진 보여주기
-        watchGhost.add("먼저 인형에 이름을 정해야 하며( ex) 공실이 ) 인형 안의 솜을 모두 빼고 쌀을 채웁니다");
-        watchGhost.add("쌀과 함께 자신의 손톱이나 머리카락도 함께 넣어주고 붉은 실로 꿰매줍니다"); // 꿰맨 사진 보여주기
-        watchGhost.add("자신이 숨을 장소를 정하고 그 장소에 소금물을 놓습니다");
-        watchGhost.add("모든 창문을 닫고 모든 불을 꺼줍니다. 그리고 오컬트 심령현상을 보기 위해 tv를 켜놓습니다"); // tv사진 보여주기
-        watchGhost.add("그 다음 화장실에 대야에 인형을 넣고 바늘을 손에 쥐어 줍니다"); // 바늘 손에 쥔 사진 보여주기
-        watchGhost.add("그리고 화장실에서 \"첫 번째 술래는 M교수!\" 라고 말한뒤, 거실에서 열을 세고 다시 화장실로 갑니다");
-        watchGhost.add("\"공실이 찾았다!, 다음 술래는 공실이!\"라고 외친 후, 바늘로 인형을 찌른 다음 숨는 장소로 가서 숨습니다"); //장롱 사진 보여주기
-        watchGhost.add("도착하자마자 소금물을 입에 머금으면 그 때부터 강령술이 시작됩니다");
-        watchGhost.add("이때 소금울을 삼키거나 내뱉으면 상황이 악화되거나 주술이 풀릴 수 있으므로 꼭 머금고만 있어야 합니다");
-        watchGhost.add("저는 음기가 가장 세다고 하는 새벽 3시에 강령술을 진행했습니다");
-        watchGhost.add("이 강령술을 끝내는 방법은 인형을 찾아서 인형에 대고 소금물을 뱉은 뒤 \"끝났다!\"라고 외치시면 됩니다");
-        watchGhost.add("저는 음기가 가장 세다고 하는 새벽 3시에 강령술을 진행하였지만 별다른 현상을 목격하지는 못하였습니다");
-        watchGhost.add("다만 제 방 장롱에 숨어있으면서 내방이 이렇게 싸늘하고 무서웠구나 하는 생각을 했습니다");
-        watchGhost.add("다시 한 번 말씀드리지만 M교수가 직접 한 것으로 대리만족하시고 직접 해보지는 마십시오");
-
-        ghostSpot.add("기본적으로 흉가/폐가로 나뉩니다. 폐가는 그저 아무도 살지 않는 건물, 흉가는 사람에게 해로운 집을 의미하지요");
-        ghostSpot.add("우리나라에는 곤지암 정신병원, 안경공장, 늘봄가든 등 유명한 흉가 말고도 숨어있는 흉가와 폐가가 많습니다");
-        ghostSpot.add("하지만 가장 중요한 사실! 이 좁은 땅덩어리에 주인 없이 버려진 집은 없다는 것!");
-        ghostSpot.add("즉, 대부분의 흉가, 폐가는 사유지임으로 무단출입 자체가 죄가 될 수 있습니다. 사전에 허락받는 것을 권장합니다");
-        ghostSpot.add("그리고 수많은 사람들이 오고가는 곳이기 때문에 깨진 유리병 같은 위험한 물건들이 많죠");
-        ghostSpot.add("또, 오래된 건물이 많다보니 추락과 낙하 위험이 높기도 합니다. 귀신보다 더 무섭죠");
-        ghostSpot.add("따라서 흉가 탐방 전에 철저한 조사와 준비 과정을 거쳐야 합니다");
-        ghostSpot.add("다치지 않기 위해 긴 바지와 옷을 입고, 시야를 확보할 수 있는 강한 불빛의 랜턴 그리고 조심성이 필요합니다");
-        ghostSpot.add("마지막으로 가장 중요한 것! 흉가는 괜히 흉가가 된 곳이 아닙니다");
-        ghostSpot.add("정말로 악귀가 그곳에 살고 있을 가능성이 높고 저희도 여러 곳을 방문한 결과, 정말 귀신이 많다는 것을 알았습니다");
-        ghostSpot.add("흉가탐방을 하실 때는 절대 귀신의 심기를 건드리시면 안 됩니다");
-        ghostSpot.add("물건들을 함부로 만진다거나 시끄러운 소음을 내서 혼령을 건드리면 정말로 당신에게 들러붙을 수도 있지요");
-        ghostSpot.add("이렇듯 여러모로 신경을 써야 하는 것들이 많기 때문에 사전에 유의하셔야 합니다");
-        ghostSpot.add("공포학과 유튜브에 저희가 직접 다녀온 흉가 탐방 영상들이 있으니 간접적으로 체험해보시는 것도 좋은 방법이겠네요");
-
         mostHorrible.add("그 어느 누구라도 두렵고 무서운 것이 없는 사람은 없을 겁니다");
         mostHorrible.add("하다못해 대통령이라도 무서운 것이 하나쯤은 있겠죠?");
         mostHorrible.add("뭐, 일반적으로 이 세상에서 가장 무서운 것은 귀신을 생각하기 쉽겠지만 가장 공포스러운 것은 다름 아닌 사람입니다");
@@ -1471,12 +1064,6 @@ public class Counsil extends AppCompatActivity {
         storyText.setText("");
         storyText.setCharacterDelay(50);
         storyText.animateText(text);
-    }
-
-    public void setStory(String text, int delay){
-        effectText.setText("");
-        effectText.setCharacterDelay(delay);
-        effectText.animateText(text);
     }
 
 

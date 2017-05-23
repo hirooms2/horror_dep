@@ -2,8 +2,8 @@ package com.horrornumber1.horrormagazine.CounsilClass;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -14,6 +14,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.horrornumber1.horrormagazine.R;
 
@@ -41,16 +42,16 @@ public class HorrorListActivity extends AppCompatActivity {
 
         items = new ArrayList<>();
 
-        items.add(new ListItem(R.drawable.testimage, "할머니의 일기"));
-        items.add(new ListItem(R.drawable.testimage, "남자의 사인"));
-        items.add(new ListItem(R.drawable.testimage, "A군과 형"));
-        items.add(new ListItem(R.drawable.testimage, "화장실의 남자"));
-        items.add(new ListItem(R.drawable.testimage, "간식"));
-        items.add(new ListItem(R.drawable.testimage, "저 손님 무서워"));
-        items.add(new ListItem(R.drawable.testimage, "이상한 할머니"));
-        items.add(new ListItem(R.drawable.testimage, "틈새 귀신"));
-        items.add(new ListItem(R.drawable.testimage, "간현 관광지"));
-        items.add(new ListItem(R.drawable.testimage, "사이코 패스"));
+        items.add(new ListItem(R.drawable.radio, "할머니의 일기"));
+        items.add(new ListItem(R.drawable.radio, "그 여자를 따라갔다"));
+        items.add(new ListItem(R.drawable.radio, "발자국 소리"));
+        items.add(new ListItem(R.drawable.radio, "귀신과 대화하는 방법"));
+        items.add(new ListItem(R.drawable.radio, "아는 누나"));
+        items.add(new ListItem(R.drawable.radio, "임상병리사"));
+        items.add(new ListItem(R.drawable.radio, "생명의 은인"));
+        items.add(new ListItem(R.drawable.radio, "소개팅"));
+        items.add(new ListItem(R.drawable.radio, "사랑의 결실"));
+        items.add(new ListItem(R.drawable.radio, "성인사이트"));
 
         layoutManager = new StaggeredGridLayoutManager(2, GridLayoutManager.VERTICAL);
 

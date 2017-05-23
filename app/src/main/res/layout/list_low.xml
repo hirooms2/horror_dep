@@ -2,17 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="#fff"
     android:orientation="horizontal">
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="11dp"
         android:layout_marginBottom="11dp"
-        android:layout_gravity="center_vertical"
         android:textSize="18dp"
-        android:textColor="@color/colorAccent"
+        android:layout_gravity="center"
+        android:textColor="@color/colorBackWhite"
         android:id="@+id/listlow_title">
     </TextView>
 </LinearLayout>

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.horrornumber1.horrormagazine.DataModel.Model;
+import com.horrornumber1.horrormagazine.DataModel.MyData;
 import com.horrornumber1.horrormagazine.R;
 
 import java.util.List;
@@ -17,13 +18,13 @@ import java.util.List;
  * Created by 김태호 on 2017-01-21.
  */
 
-public class TabListViewAdapter extends ArrayAdapter<Model> {
+public class TabListViewAdapter extends ArrayAdapter<MyData> {
 
     Context context;
-    List<Model> contents;
+    List<MyData> contents;
     int rowResourceId;
 
-    public TabListViewAdapter(Context context, int rowResourceId, List<Model> contents)
+    public TabListViewAdapter(Context context, int rowResourceId, List<MyData> contents)
     {
         super(context, rowResourceId, contents);
         this.context = context;
@@ -37,7 +38,7 @@ public class TabListViewAdapter extends ArrayAdapter<Model> {
             LayoutInflater vi = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = vi.inflate(this.rowResourceId, null);
         }
-        Model model = contents.get(position);
+        MyData model = contents.get(position);
         TextView title = (TextView) v.findViewById(R.id.listlow_title);
         title.setText(model.getTitle());
         return v;

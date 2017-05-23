@@ -14,11 +14,11 @@ import android.widget.Toast;
 
 import com.horrornumber1.horrormagazine.DBManager;
 import com.horrornumber1.horrormagazine.R;
-import com.horrornumber1.horrormagazine.Service.Download;
+//import com.horrornumber1.horrormagazine.Service.Download;
 import com.horrornumber1.horrormagazine.StaticData.DataHouse;
 
 public class FirstLogo extends AppCompatActivity {
-    RequestReceiver requestReceiver;
+   //RequestReceiver requestReceiver;
     Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,20 +26,30 @@ public class FirstLogo extends AppCompatActivity {
         setContentView(R.layout.activity_first_logo);
 
         handler = new Handler();
+
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+        /*
                 IntentFilter filter = new IntentFilter(RequestReceiver.PROCESS_RESPONSE);
                 requestReceiver = new RequestReceiver();
                 registerReceiver(requestReceiver, filter);
 
                 Intent conn = new Intent(getApplicationContext(), Download.class);
                 startService(conn);
+
+        */
+                DataHouse.dbManager = new DBManager(getApplicationContext(), "myDB", null, 1);
+
+                Intent intent = new Intent(FirstLogo.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
             }
         }, 1000L);
 
     }
-
+/*
     public class RequestReceiver extends BroadcastReceiver {
 
         public static final String PROCESS_RESPONSE = "response";
@@ -83,5 +93,5 @@ public class FirstLogo extends AppCompatActivity {
         AlertDialog alert = alt_bld.create();
         alert.show();
     }
-
+*/
 }

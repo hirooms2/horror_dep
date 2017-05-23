@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,11 +15,13 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.horrornumber1.horrormagazine.DataModel.Model;
+import com.horrornumber1.horrormagazine.DataModel.MyData;
 import com.horrornumber1.horrormagazine.R;
 import com.horrornumber1.horrormagazine.ScrollViewListener;
 import com.horrornumber1.horrormagazine.StaticData.DataHouse;
@@ -29,6 +32,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.List;
+
+import static java.lang.Thread.sleep;
 
 /**
  * Created by 김태호 on 2017-01-17.
@@ -45,7 +50,7 @@ public class ContentPage extends LinearLayout{
 
     Activity activity;
     Context context;
-    List<Model> contents;
+    List<MyData> contents;
     int position;
     ScrollViewExt scrollView;
     TextView content_scroll_Title, content_scroll_Text, content_scroll_AnswerText;
@@ -54,8 +59,10 @@ public class ContentPage extends LinearLayout{
     LinearLayout content_bottom;
     StringBuffer buffer;
     boolean t=true;
-
-    public ContentPage(Activity activity, Context context, List<Model> contents, int position, ViewPager pager)
+    float alp;
+    FrameLayout rug;
+    Handler h;
+    public ContentPage(Activity activity, Context context, List<MyData> contents, int position, ViewPager pager)
     {
         super(context);
         this.activity = activity;
@@ -70,6 +77,31 @@ public class ContentPage extends LinearLayout{
         this.context = context;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.fragment_text_scroll, this, true);
+
+        alp = (float)1.0;
+        rug = (FrameLayout) findViewById(R.id.content_rug);
+        rug.setAlpha(alp);
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    for(int i=0;i<200;i++) {
+                        alp *= (float)0.9;
+                        Log.i("alpha", "run: " + alp);
+                        sleep(5*1000);
+                        rug.setAlpha(alp);
+                    }
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+
         view.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -84,19 +116,19 @@ public class ContentPage extends LinearLayout{
         });
 
         ImageView content_logo = (ImageView) findViewById(R.id.content_logo);
-        if(contents.equals(DataHouse.region2)) {
+        if(contents.equals(DataHouse.region)) {
             content_logo.setImageResource(R.drawable.region_logo);
-        } else if(contents.equals(DataHouse.millitary2)) {
+        } else if(contents.equals(DataHouse.millitary)) {
             content_logo.setImageResource(R.drawable.millitary_logo);
-        } else if(contents.equals(DataHouse.real2)) {
+        } else if(contents.equals(DataHouse.real)) {
             content_logo.setImageResource(R.drawable.real_logo);
-        } else if(contents.equals(DataHouse.college2)) {
+        } else if(contents.equals(DataHouse.college)) {
             content_logo.setImageResource(R.drawable.college_logo);
-        } else if(contents.equals(DataHouse.lore2)) {
+        } else if(contents.equals(DataHouse.lore)) {
             content_logo.setImageResource(R.drawable.lore_logo);
-        } else if(contents.equals(DataHouse.understand2)) {
+        } else if(contents.equals(DataHouse.understand)) {
             content_logo.setImageResource(R.drawable.understand_logo);
-        } else if(contents.equals(DataHouse.city2)) {
+        } else if(contents.equals(DataHouse.city)) {
             content_logo.setImageResource(R.drawable.city_logo);
         }
 
@@ -167,7 +199,7 @@ public class ContentPage extends LinearLayout{
         content_scroll_AnswerBtn = (Button) findViewById(R.id.content_scroll_answerBtn);
 
         //이무이 경우에만 Answer Text 설정
-        if(contents == DataHouse.understand2) {
+        if(contents == DataHouse.understand) {
             content_scroll_AnswerText.setText(DataHouse.understandAnswer.get(position)); //답변도 같은 위치의 내용으로 셋팅
             content_scroll_AnswerText.setVisibility(View.INVISIBLE); // 기본적으로는 자리는 차지하고있는데 안보이도록
             content_scroll_AnswerBtn.setText("해설");
@@ -183,9 +215,27 @@ public class ContentPage extends LinearLayout{
             });
         }
     }
+    private StringBuffer readText(int num) {
 
+        String str = null;
+        StringBuffer buffer = new StringBuffer();
 
-    private StringBuffer readText(String path) {
+        try {
+
+            InputStream inputStream = context.getResources().openRawResource(num);
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream,"EUC-KR");
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            while((str = bufferedReader.readLine())!=null)
+            {
+                buffer.append(str+"\n");
+            }
+        } catch (IOException e) {
+
+        }
+        return buffer;
+    }
+/*
+    private StringBuffer readText2(String path) {
 
         String str = null;
         StringBuffer buffer = new StringBuffer();
@@ -204,5 +254,5 @@ public class ContentPage extends LinearLayout{
         }
         return buffer;
     }
-
+*/
 }

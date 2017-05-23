@@ -1,7 +1,12 @@
 package com.horrornumber1.horrormagazine.CounsilClass;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -17,6 +22,7 @@ public class YoutubeActivity extends YouTubeBaseActivity implements
 
     private static final int RECOVERY_DIALOG_REQUEST = 1;
     private boolean fullScreen;
+    private ImageView youtubeBtn;
     private YouTubePlayer videoPlayer;
     private ArrayList<String> titles;
     private int radio;
@@ -25,18 +31,28 @@ public class YoutubeActivity extends YouTubeBaseActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.counsil_youtube);
 
+        youtubeBtn = (ImageView)findViewById(R.id.youtubeBtn);
+
         Intent intent = new Intent(this.getIntent());
         radio = intent.getIntExtra("position", 1);
 
         titles = new ArrayList<>();
 
-        titles.add("k5PWb4dRv84"); titles.add("k5PWb4dRv84");
-        titles.add("k5PWb4dRv84"); titles.add("k5PWb4dRv84");
-        titles.add("k5PWb4dRv84"); titles.add("k5PWb4dRv84");
-        titles.add("k5PWb4dRv84"); titles.add("k5PWb4dRv84");
-        titles.add("k5PWb4dRv84"); titles.add("k5PWb4dRv84");
-        titles.add("drLQN_SKN6g"); titles.add("drLQN_SKN6g");
-        titles.add("drLQN_SKN6g"); titles.add("drLQN_SKN6g");
+        titles.add("mkE3w5tQnyQ"); titles.add("9uEyvphCEeA");
+        titles.add("QmmgKvFtXfc"); titles.add("fT5sQLRq4wM");
+        titles.add("pXoSC6JpE2Q"); titles.add("e-SV0VS5uL4");
+        titles.add("SrXPytGTDBA"); titles.add("b2CbD0d7l2A");
+        titles.add("ow1DPSMzqmA"); titles.add("EeO8zWO0cHw");
+        titles.add("xcGppQgM4gM"); titles.add("bUtGN4_4-7k");
+        titles.add("cMSAilkeXNI"); titles.add("XN5aFx0gZNg");
+
+        youtubeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCQbKk4fa3B23YDmVXjv-j4w"));
+                startActivity(intent);
+            }
+        });
 
 
         getYouTubePlayerProvider().initialize(DeveloperKey.DEVELOPER_KEY,this);

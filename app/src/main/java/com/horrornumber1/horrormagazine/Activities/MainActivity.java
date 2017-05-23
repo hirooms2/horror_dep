@@ -2,6 +2,7 @@ package com.horrornumber1.horrormagazine.Activities;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,8 +17,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
@@ -28,8 +33,6 @@ import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.horrornumber1.horrormagazine.Adapters.DrawerAdapter;
 import com.horrornumber1.horrormagazine.CounsilClass.Counsil;
 import com.horrornumber1.horrormagazine.R;
-import com.horrornumber1.horrormagazine.SetView.SetCard;
-import com.horrornumber1.horrormagazine.SetView.SetRecycler;
 import com.horrornumber1.horrormagazine.SetView.SetTextView;
 import com.horrornumber1.horrormagazine.StaticData.DataHouse;
 
@@ -42,11 +45,18 @@ public class MainActivity extends ActionBarActivity implements  BaseSliderView.O
     private ActionBarDrawerToggle toggle;
     private Toolbar toolbar;
     private Menu absmenu;
+    TextView text, council;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FrameLayout rug = (FrameLayout) findViewById(R.id.rug);
+        rug.setAlpha((float)0.7);
+
+        ImageView banner = (ImageView) findViewById(R.id.mainbanner);
+        banner.setAlpha((float)0.85);
 
         //***********************TextFont***********************************************************
         SetTextView homeFont = new SetTextView(getApplicationContext(), this);
@@ -58,9 +68,7 @@ public class MainActivity extends ActionBarActivity implements  BaseSliderView.O
         if(DataHouse.musicCheck)
             DataHouse.mp.start();
 
-
         //************************ NavigationDrawer************************************************
-
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -75,23 +83,7 @@ public class MainActivity extends ActionBarActivity implements  BaseSliderView.O
         toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.open_drawer, R.string.close_drawer);
         toggle.syncState();
 
-        ListView listView = (ListView) findViewById(R.id.nav_listView1);
-        final DrawerAdapter drawerAdapter = new DrawerAdapter(this, DataHouse.drawerData);
-        listView.setAdapter(drawerAdapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(MainActivity.this, Board.class);
-                intent.putExtra(Board.PARAM_INPUT_NAME, DataHouse.title.get(i));
-                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
-
-                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.main_drawer);
-                drawer.closeDrawer(GravityCompat.START);
-            }
-        });
         ListView listView2 = (ListView) findViewById(R.id.nav_listView2);
         final DrawerAdapter drawerAdapter2 = new DrawerAdapter(this, DataHouse.drawerData2);
         listView2.setAdapter(drawerAdapter2);
@@ -120,70 +112,37 @@ public class MainActivity extends ActionBarActivity implements  BaseSliderView.O
             }
         });
 
+        text = (TextView)findViewById(R.id.HOMESTORY);
+        text.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Board.class);
+                startActivity(intent);
+            }
+        });
 
+        council = (TextView) findViewById(R.id.HOMECOUNCIL);
+        council.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Counsil.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
+
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.main_drawer);
+                drawer.closeDrawer(GravityCompat.START);
+            }
+        });
         // drawer.setDrawerListener(toggle);
         // *****************************************************************************************
 
-
-
-        scrollView = (ScrollView) findViewById(R.id.scrollView);
-        scrollView.smoothScrollTo(0, 0);
-
-        mDemoSlider = (SliderLayout) findViewById(R.id.slider);
-
-        HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-
-        file_maps.put("magazine", R.drawable.horrormagazine);
-        file_maps.put("facebook", R.drawable.horrorfacebook);
-        file_maps.put("youtube", R.drawable.horrorradio);
-
-        for (String name : file_maps.keySet()) {
-            final TextSliderView textSliderView = new TextSliderView(this);
-            // initialize a SliderLayout
-            textSliderView
-                    .description(name)
-                    .image(file_maps.get(name))
-                    .setScaleType(BaseSliderView.ScaleType.Fit)
-                    .setOnSliderClickListener(this);
-
-            //add your extra information
-            textSliderView.bundle(new Bundle());
-            textSliderView.getBundle()
-                    .putString("extra", name);
-
-            textSliderView.setOnSliderClickListener(new TextSliderView.OnSliderClickListener(){
-                @Override
-                public void onSliderClick(BaseSliderView slider) {
-                    if(mDemoSlider.getCurrentPosition()==0)
-                       startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCQbKk4fa3B23YDmVXjv-j4w")));
-                    else if (mDemoSlider.getCurrentPosition()==1)
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/horrorNo.1/?fref=ts")));
-
-                }
-            });
-
-            mDemoSlider.addSlider(textSliderView);
-        }
-        mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
-        mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-        mDemoSlider.setCustomAnimation(new DescriptionAnimation());
-        mDemoSlider.setDuration(4000);
-        mDemoSlider.addOnPageChangeListener(this);
-
-        //Set Home RecyclerView(군대, 대학, 로어, 도시)
-        SetRecycler homeRecycler = new SetRecycler(getApplicationContext(), this);
-        homeRecycler.HomeRecycler();
-
-        //Set CardView (이무이, 실제)
-        SetCard cardRecycler = new SetCard(getApplicationContext(), this);
-        cardRecycler.HomeCard();
 
     }
 
     @Override
     protected void onStop() {
         // To prevent a memory leak on rotation, make sure to call stopAutoCycle() on the slider before activity or fragment is destroyed
-        mDemoSlider.stopAutoCycle();
+//        mDemoSlider.stopAutoCycle();
         super.onStop();
     }
     @Override

@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back03"
     >
+    <FrameLayout
+        android:id="@+id/content_rug"
+        android:background="#000"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
     <com.horrornumber1.horrormagazine.Widget.ScrollViewExt
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/content_scroll"
-        android:background="#000">
+        android:id="@+id/content_scroll">
 
         <LinearLayout
             android:id="@+id/content_scroll2"
@@ -68,4 +75,4 @@
                 android:layout_height="150dp"></LinearLayout>
         </LinearLayout>
     </com.horrornumber1.horrormagazine.Widget.ScrollViewExt>
-</RelativeLayout>
+</FrameLayout>

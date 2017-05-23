@@ -4,8 +4,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
->
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
@@ -16,7 +15,7 @@
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/youtube_view"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="350dp"
         android:layout_weight="0"/>
 
     <TextView
@@ -27,9 +26,11 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="150dp"
         android:layout_weight="0"
-        android:src="@drawable/ad_youtube"
+        android:id="@+id/youtubeBtn"
+        android:src="@drawable/youtube"
         android:scaleType="fitXY"/>
+
 
 </LinearLayout>

@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.horrornumber1.horrormagazine.Adapters.FavoriteListViewAdapter;
 import com.horrornumber1.horrormagazine.DataModel.FavoriteModel;
 import com.horrornumber1.horrormagazine.DataModel.Model;
+import com.horrornumber1.horrormagazine.DataModel.MyData;
 import com.horrornumber1.horrormagazine.R;
 import com.horrornumber1.horrormagazine.StaticData.DataHouse;
 
@@ -65,7 +66,7 @@ public class Favorite extends AppCompatActivity implements FavoriteListViewAdapt
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 intent.putExtra(Content.PARAM_INPUT_NAME, whichBoard(list.get(i).getBoard()));
                 intent.putExtra(Content.PARAM_INPUT_FROM, "A");
-                List<Model> contents = whichContents(whichBoard(list.get(i).getBoard()));
+                List<MyData> contents = whichContents(whichBoard(list.get(i).getBoard()));
                 for(int j = 0; j< contents.size() ; j++) {
                     Log.i("test", contents.get(j).getTitle());
                     if(contents.get(j).getTitle().equals(list.get(i).getTitle())) {
@@ -183,32 +184,32 @@ public class Favorite extends AppCompatActivity implements FavoriteListViewAdapt
         return null;
     }
 
-    private List<Model> whichContents(String name) {
-        List<Model> contents = new ArrayList<>();
+    private List<MyData> whichContents(String name) {
+        List<MyData> contents = new ArrayList<>();
         switch (name) {
             case "지역괴담":
-                contents = DataHouse.region2;
+                contents = DataHouse.region;
                 return contents;
             case "군대괴담":
-                contents = DataHouse.millitary2;
+                contents = DataHouse.millitary;
                 return contents;
             case "실제이야기":
-                contents = DataHouse.real2;
+                contents = DataHouse.real;
                 return contents;
             case "대학괴담":
-                contents = DataHouse.college2;
+                contents = DataHouse.college;
                 return contents;
             case "4컷 만화":
-                contents = DataHouse.understand2;
+                contents = DataHouse.understand;
                 return contents;
             case "로어":
-                contents = DataHouse.lore2;
+                contents = DataHouse.lore;
                 return contents;
             case "이해하면 무서운 이야기":
-                contents = DataHouse.understand2;
+                contents = DataHouse.understand;
                 return contents;
             case "도시괴담":
-                contents = DataHouse.city2;
+                contents = DataHouse.city;
                 return contents;
         }
         return contents;

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.horrornumber1.horrormagazine.DataModel.Model;
+import com.horrornumber1.horrormagazine.DataModel.MyData;
 import com.horrornumber1.horrormagazine.Widget.ContentPage;
 
 import java.util.List;
@@ -25,9 +26,9 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     private Activity activity;
     private Context context;
-    List<Model> contents;
+    List<MyData> contents;
     ViewPager pager;
-    public ViewPagerAdapter(Activity activity, Context context, List<Model> contents, ViewPager pager) {
+    public ViewPagerAdapter(Activity activity, Context context, List<MyData> contents, ViewPager pager) {
         this.activity = activity;
         this.context = context;
         this.contents = contents;

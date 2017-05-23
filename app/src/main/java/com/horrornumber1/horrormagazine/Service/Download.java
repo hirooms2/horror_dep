@@ -19,7 +19,7 @@ import com.horrornumber1.horrormagazine.StaticData.DataHouse;
 /**
  * Created by 김태호 on 2017-02-15.
  */
-
+/*
 public class Download extends IntentService {
 
     public static final String RESPONSE_MESSAGE = "ResponseMessage";
@@ -74,3 +74,4 @@ public class Download extends IntentService {
 
     }
 }
+*/

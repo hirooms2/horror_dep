@@ -2,8 +2,8 @@ package com.horrornumber1.horrormagazine.CounsilClass;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -38,10 +38,10 @@ public class GhostSpotYoutube extends AppCompatActivity {
 
         items = new ArrayList<>();
 
-        items.add(new ListItem(R.drawable.testimage, "할머니의 일기"));
-        items.add(new ListItem(R.drawable.testimage, "남자의 사인"));
-        items.add(new ListItem(R.drawable.testimage, "A군과 형"));
-        items.add(new ListItem(R.drawable.testimage, "화장실의 남자"));
+        items.add(new ListItem(R.drawable.ghostspot, "아오키가하라"));
+        items.add(new ListItem(R.drawable.ghostspot, "의정부 폐가"));
+        items.add(new ListItem(R.drawable.ghostspot, "홍은동 폐가"));
+        items.add(new ListItem(R.drawable.ghostspot, "충일여고"));
 
         layoutManager = new StaggeredGridLayoutManager(2, GridLayoutManager.VERTICAL);
 

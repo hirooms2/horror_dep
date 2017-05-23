@@ -11,12 +11,14 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.horrornumber1.horrormagazine.Adapters.ViewPagerAdapter;
 import com.horrornumber1.horrormagazine.DataModel.Model;
+import com.horrornumber1.horrormagazine.DataModel.MyData;
 import com.horrornumber1.horrormagazine.R;
 import com.horrornumber1.horrormagazine.StaticData.DataHouse;
 
@@ -34,7 +36,7 @@ public class Content extends AppCompatActivity {
 
     String name, from; // content 메뉴
     int position;
-    List<Model> contents;  // Model 있는 content text 파일을 받아올 리스트
+    List<MyData> contents;  // Model 있는 content text 파일을 받아올 리스트
     ViewPager pager;
     ViewPagerAdapter adapter;
 
@@ -45,6 +47,8 @@ public class Content extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content);
+
+
 
         //*************************************Toolbar**********************************************
         if(absmenu!=null) {
@@ -185,31 +189,31 @@ public class Content extends AppCompatActivity {
     }
 
     // 이전 Activity 에서 받아온 name을 기반으로 컨텐츠에 띄울 카테고리를 선택
-    private List<Model> whichContents(String name) {
+    private List<MyData> whichContents(String name) {
         switch (name) {
             case "지역괴담":
-                contents = DataHouse.region2;
+                contents = DataHouse.region;
                 return contents;
             case "군대괴담":
-                contents = DataHouse.millitary2;
+                contents = DataHouse.millitary;
                 return contents;
             case "실제이야기":
-                contents = DataHouse.real2;
+                contents = DataHouse.real;
                 return contents;
             case "대학괴담":
-                contents = DataHouse.college2;
+                contents = DataHouse.college;
                 return contents;
             case "4컷 만화":
-                contents = DataHouse.understand2;
+                contents = DataHouse.understand;
                 return contents;
             case "로어":
-                contents = DataHouse.lore2;
+                contents = DataHouse.lore;
                 return contents;
             case "이해하면 무서운 이야기":
-                contents = DataHouse.understand2;
+                contents = DataHouse.understand;
                 return contents;
             case "도시괴담":
-                contents = DataHouse.city2;
+                contents = DataHouse.city;
                 return contents;
         }
         return contents;

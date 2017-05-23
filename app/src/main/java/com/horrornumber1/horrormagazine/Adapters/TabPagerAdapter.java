@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.horrornumber1.horrormagazine.Fragments.BoardTextFragment;
-import com.horrornumber1.horrormagazine.Fragments.ExpandableFragment;
 
 /**
  * Created by 김태호 on 2017-01-18.
@@ -18,7 +17,6 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
     private int tabCount;
     Bundle bundle;
     BoardTextFragment textFragment;
-    ExpandableFragment expandableFragment;
     public TabPagerAdapter(FragmentManager fm, int tabCount) {
         super(fm);
         this.tabCount = tabCount;
@@ -32,12 +30,10 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
             case 0:
                 bundle = new Bundle(1);
                 bundle.putString("name", "지역괴담");
-                expandableFragment = new ExpandableFragment();
-                expandableFragment.setArguments(bundle);
-                return expandableFragment;
-                //textFragment = new BoardTextFragment();
-                //textFragment.setArguments(bundle);
-                //return textFragment;
+
+                textFragment = new BoardTextFragment();
+                textFragment.setArguments(bundle);
+                return textFragment;
             case 1:
                 bundle = new Bundle(1);
                 bundle.putString("name", "군대괴담");
@@ -51,19 +47,12 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
                 textFragment.setArguments(bundle);
                 return textFragment;
             case 3:
-                //bundle = new Bundle(1);
-                //bundle.putString("name", "대학괴담");
-                //textFragment = new BoardTextFragment();
-                //textFragment.setArguments(bundle);
-                //return textFragment;
                 bundle = new Bundle(1);
                 bundle.putString("name", "대학괴담");
-                expandableFragment = new ExpandableFragment();
-                expandableFragment.setArguments(bundle);
-                return expandableFragment;
-            //case 4:
-            //    BoardCartoonFragment tabFragment4 = new BoardCartoonFragment();
-            //    return tabFragment4;
+                textFragment = new BoardTextFragment();
+                textFragment.setArguments(bundle);
+                return textFragment;
+
             case 4:
                 bundle = new Bundle(1);
                 bundle.putString("name", "로어");
