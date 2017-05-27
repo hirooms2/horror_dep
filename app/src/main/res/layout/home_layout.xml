@@ -22,7 +22,7 @@
             android:layout_gravity="center_horizontal"
             android:src="@drawable/banner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:scaleType="fitXY"

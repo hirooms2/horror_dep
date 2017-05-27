@@ -9,9 +9,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
       >
-        <service
-            android:name=".Service.Download"
-            android:exported="false" />
 
         <activity
             android:name=".Activities.MainActivity"
@@ -36,8 +33,10 @@
         <activity android:name=".Activities.Content" />
         <activity android:name=".Activities.Favorite"></activity>
         <activity android:name=".CounsilClass.YoutubeActivity"/>
-        <activity android:name=".CounsilClass.Counsil"/>
+        <activity android:name=".CounsilClass.Counsil"
+            android:screenOrientation="portrait"/>
         <activity android:name=".CounsilClass.HorrorListActivity"/>
+        <activity android:name=".CounsilClass.GhostSpotYoutube"/>
     </application>
 
 </manifest>
