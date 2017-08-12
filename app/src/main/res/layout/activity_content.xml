@@ -30,7 +30,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
         <android.support.v4.view.ViewPager
             android:id="@+id/pager"
             android:layout_width="match_parent"
@@ -38,41 +39,5 @@
             android:layout_weight="1">
         </android.support.v4.view.ViewPager>
 
-        <LinearLayout
-            android:id="@+id/content_bottom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="#dd000000"
-            android:orientation="horizontal">
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:layout_width="65dp"
-                    android:layout_height="55dp"
-                    android:src="@drawable/left_arrow"
-                    android:background="#00000000"
-                    android:id="@+id/prevBtn"
-                    />
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/favorite"
-                    android:layout_centerVertical="true"
-                    android:id="@+id/favorite"
-                    android:layout_centerInParent="true"
-                    android:layout_marginRight="30dp"
-                    />
-                <ImageView
-                    android:layout_width="65dp"
-                    android:layout_height="55dp"
-                    android:id="@+id/nextBtn"
-                    android:src="@drawable/right_arrow"
-                    android:background="#00000000"
-                    android:layout_alignParentRight="true"
-                    />
-            </RelativeLayout>
-        </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

@@ -1,42 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.horrornumber1.horrormagazine">
+    package="com.horrornumber1.horrordepartment"
+    android:versionCode="7"
+    android:versionName="1.6">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:supportsRtl="true"
+        android:largeHeap="true"
         android:theme="@style/AppTheme"
-      >
+        android:name=".ApplicationController">
+
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
 
         <activity
-            android:name=".Activities.MainActivity"
-            android:finishOnTaskLaunch="true"
+            android:name="com.horrornumber1.horrordepartment.Activities.MainActivity"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.FirstLogo"
-        android:clearTaskOnLaunch="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            android:name="com.horrornumber1.horrordepartment.Activities.FirstLogo"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
-            android:name=".Activities.LastLogo"
+            android:name="com.horrornumber1.horrordepartment.Activities.LastLogo"
+            android:launchMode="singleTop"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".Activities.Board"
+            android:name="com.horrornumber1.horrordepartment.Activities.Board"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait" />
-        <activity android:name=".Activities.Content" />
-        <activity android:name=".Activities.Favorite"></activity>
-        <activity android:name=".CounsilClass.YoutubeActivity"/>
-        <activity android:name=".CounsilClass.Counsil"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".CounsilClass.HorrorListActivity"/>
-        <activity android:name=".CounsilClass.GhostSpotYoutube"/>
+        <activity
+            android:name="com.horrornumber1.horrordepartment.Activities.Content"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.horrornumber1.horrordepartment.Activities.Favorite"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.horrornumber1.horrordepartment.CounsilClass.YoutubeActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.horrornumber1.horrordepartment.CounsilClass.Counsil"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.horrornumber1.horrordepartment.CounsilClass.HorrorListActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.horrornumber1.horrordepartment.CounsilClass.GhostSpotYoutube"
+            android:launchMode="singleTop" />
+        <activity android:name="com.horrornumber1.horrordepartment.Activities.MagazineActivity"></activity>
     </application>
 
 </manifest>

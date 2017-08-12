@@ -5,51 +5,63 @@
     android:layout_height="match_parent"
     android:id="@+id/home"
     android:background="@drawable/back02">
-    <FrameLayout
-        android:background="#000"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/rug">
-    </FrameLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/mainbanner"
-            android:paddingTop="60dp"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/banner"
+            android:id="@+id/sound"
+            android:layout_gravity="right"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="5dp" />
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:scaleType="fitXY"
-            />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
 
-        <TextView
-            android:paddingTop="80dp"
-            android:textSize="30dp"
-            android:layout_gravity="center_horizontal"
-            android:id="@+id/HOMESTORY"
-            android:text="전공수업"
-            android:textColor="@color/colorBackWhite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:id="@+id/majorImg"
+                android:src="@drawable/majorword2"
+                android:layout_marginTop="133dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignLeft="@+id/keepImg"
+                android:layout_alignStart="@+id/keepImg" />
 
-        <TextView
-            android:paddingTop="60dp"
-            android:id="@+id/HOMECOUNCIL"
-            android:layout_gravity="center_horizontal"
-            android:text="면담하기"
-            android:textSize="30dp"
-            android:textColor="@color/colorBackWhite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:id="@+id/magazineImg"
+                android:src="@drawable/magazineword2"
+                android:layout_below="@+id/majorImg"
+                android:layout_centerHorizontal="true" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:id="@+id/councilImg"
+                android:src="@drawable/councilword2"
+                android:layout_alignTop="@+id/magazineImg"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:id="@+id/keepImg"
+                android:src="@drawable/keepword2"
+                android:layout_below="@+id/councilImg"
+                android:layout_alignRight="@+id/councilImg"
+                android:layout_alignEnd="@+id/councilImg"
+                android:layout_marginRight="56dp"
+                android:layout_marginEnd="56dp" />
+        </RelativeLayout>
 
     </LinearLayout>
-
-
-
 </FrameLayout>

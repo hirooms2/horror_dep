@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="TypographyDashes">
+
+    <string name="ga_logLevel">verbose</string>
+
+    <bool name ="ga_autoActivityTracking">true</bool>
+
+    <screenName name="com.horrornumber1.horrordepartment.Activities.Board">Board Activity</screenName>
+    <screenName name="com.horrornumber1.horrordepartment.Activities.Content">Content Activity</screenName>
+    <screenName name="com.horrornumber1.horrordepartment.Activities.Favorite">Favorite Activity</screenName>
+    <screenName name="com.horrornumber1.horrordepartment.Activities.MagazineActivity">Magazine Activity</screenName>
+    <screenName name="com.horrornumber1.horrordepartment.CounsilClass.Counsil">Council Activity</screenName>
+    <screenName name="com.horrornumber1.horrordepartment.CounsilClass.GhostSpotYoutube">GhostSpot Activity</screenName>
+    <screenName name="com.horrornumber1.horrordepartment.CounsilClass.HorrorListActivity">HorrorRadio Activity</screenName>
+    <screenName name="com.horrornumber1.horrordepartment.CounsilClass.YoutubeActivity">Youtube Activity</screenName>
+    <screenName name="com.horrornumber1.horrordepartment.Activities.LastLogo">LastLogo Activity</screenName>
+    <screenName name="com.horrornumber1.horrordepartment.Fragments.BoardTextFragment">BoardTextFragment</screenName>
+    <string name="ga_trackingId">UA-102394902-1</string>
+
+</resources>
