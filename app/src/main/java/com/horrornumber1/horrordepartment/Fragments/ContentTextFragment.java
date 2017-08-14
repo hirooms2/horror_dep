@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.horrornumber1.horrordepartment.DataModel.MyData;
+import com.horrornumber1.horrordepartment.DataModel.Model;
 import com.horrornumber1.horrordepartment.R;
 import com.horrornumber1.horrordepartment.ScrollViewListener;
 import com.horrornumber1.horrordepartment.StaticData.DataHouse;
@@ -29,7 +29,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -39,7 +39,7 @@ import java.util.List;
 public class ContentTextFragment extends Fragment {
     int position=1;
     String name;
-    List<MyData> contents;
+    List<Model> contents;
     ScrollViewExt scrollView;
     TextView content_scroll_Title, content_scroll_Text, content_scroll_AnswerText;
     Button content_scroll_AnswerBtn;
@@ -82,7 +82,8 @@ public class ContentTextFragment extends Fragment {
         rootView = (ViewGroup) inflater.inflate(R.layout.fragment_text_scroll, container, false);
 
         contents = whichContents(name);
-
+        if(contents==null)
+            Log.i("error msg", "onCreateView: ");
         content_bottom = (LinearLayout) rootView.findViewById(R.id.content_bottom);
 
         rootView.setOnClickListener(new View.OnClickListener(){
@@ -99,19 +100,19 @@ public class ContentTextFragment extends Fragment {
         });
 
         ImageView content_logo = (ImageView) rootView.findViewById(R.id.content_logo);
-        if(contents.equals(DataHouse.region)) {
+        if(contents.equals(DataHouse.region2)) {
             content_logo.setImageResource(R.drawable.region_logo);
-        } else if(contents.equals(DataHouse.millitary)) {
+        } else if(contents.equals(DataHouse.millitary2)) {
             content_logo.setImageResource(R.drawable.millitary_logo);
-        } else if(contents.equals(DataHouse.real)) {
+        } else if(contents.equals(DataHouse.real2)) {
             content_logo.setImageResource(R.drawable.real_logo);
-        } else if(contents.equals(DataHouse.college)) {
+        } else if(contents.equals(DataHouse.college2)) {
             content_logo.setImageResource(R.drawable.college_logo);
-        } else if(contents.equals(DataHouse.lore)) {
+        } else if(contents.equals(DataHouse.lore2)) {
             content_logo.setImageResource(R.drawable.lore_logo);
-        } else if(contents.equals(DataHouse.understand)) {
+        } else if(contents.equals(DataHouse.understand2)) {
             content_logo.setImageResource(R.drawable.understand_logo);
-        } else if(contents.equals(DataHouse.city)) {
+        } else if(contents.equals(DataHouse.city2)) {
             content_logo.setImageResource(R.drawable.city_logo);
         }
 
@@ -175,14 +176,13 @@ public class ContentTextFragment extends Fragment {
         content_scroll_AnswerBtn = (Button) rootView.findViewById(R.id.content_scroll_answerBtn);
 
         //이무이 경우에만 Answer Text 설정
-        if(contents == DataHouse.understand) {
+        if(contents == DataHouse.understand2) {
             content_scroll_AnswerText.setText(DataHouse.understandAnswer.get(position)); //답변도 같은 위치의 내용으로 셋팅
             content_scroll_AnswerText.setVisibility(View.INVISIBLE); // 기본적으로는 자리는 차지하고있는데 안보이도록
             content_scroll_AnswerBtn.setText("해설");
             content_scroll_AnswerBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     Animation openAnimation = new AlphaAnimation(0, 1);
                     openAnimation.setDuration(1000);
                     content_scroll_AnswerText.setVisibility(View.VISIBLE);                              //답변보기 버튼 눌리면 생기는 애니메이션
@@ -204,19 +204,16 @@ public class ContentTextFragment extends Fragment {
             prev.setVisibility(View.VISIBLE);
         }
 
-
-
         return rootView;
     }
-
-    private StringBuffer readText(int num) {
+    private StringBuffer readText(String path) {
 
         String str = null;
         StringBuffer buffer = new StringBuffer();
 
         try {
 
-            InputStream inputStream = getContext().getResources().openRawResource(num);
+            InputStream inputStream = new URL(path).openStream();
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream,"EUC-KR");
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             while((str = bufferedReader.readLine())!=null)
@@ -228,6 +225,26 @@ public class ContentTextFragment extends Fragment {
         }
         return buffer;
     }
+
+//    private StringBuffer readText(int num) {
+//
+//        String str = null;
+//        StringBuffer buffer = new StringBuffer();
+//
+//        try {
+//
+//            InputStream inputStream = getContext().getResources().openRawResource(num);
+//            InputStreamReader inputStreamReader = new InputStreamReader(inputStream,"EUC-KR");
+//            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+//            while((str = bufferedReader.readLine())!=null)
+//            {
+//                buffer.append(str+"\n");
+//            }
+//        } catch (IOException e) {
+//
+//        }
+//        return buffer;
+//    }
         // *****************************Content Activity의 ViewPager를 설정함***********************
 
 
@@ -264,34 +281,23 @@ public class ContentTextFragment extends Fragment {
         }
         return null;
     }
-    private List<MyData> whichContents(String name) {
-        List<MyData> contents = new ArrayList<>();
+    private List<Model> whichContents(String name) {
         switch (name) {
             case "지역괴담":
-                contents = DataHouse.region;
-                return contents;
+                return DataHouse.region2;
             case "군대괴담":
-                contents = DataHouse.millitary;
-                return contents;
+                return DataHouse.millitary2;
             case "실제이야기":
-                contents = DataHouse.real;
-                return contents;
+                return DataHouse.real2;
             case "대학괴담":
-                contents = DataHouse.college;
-                return contents;
-            case "4컷 만화":
-                contents = DataHouse.understand;
-                return contents;
+                return DataHouse.college2;
             case "로어":
-                contents = DataHouse.lore;
-                return contents;
+                return DataHouse.lore2;
             case "이해하면 무서운 이야기":
-                contents = DataHouse.understand;
-                return contents;
+                return DataHouse.understand2;
             case "도시괴담":
-                contents = DataHouse.city;
-                return contents;
+                return DataHouse.city2;
         }
-        return contents;
+        return null;
     }
 }

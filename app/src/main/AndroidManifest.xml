@@ -17,6 +17,10 @@
         <meta-data android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version"/>
 
+        <service
+            android:name=".Service.Download"
+            android:exported="false" />
+
         <activity
             android:name="com.horrornumber1.horrordepartment.Activities.MainActivity"
             android:launchMode="singleTop"

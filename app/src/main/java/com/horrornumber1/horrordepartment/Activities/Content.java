@@ -17,7 +17,7 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.horrornumber1.horrordepartment.Adapters.ViewPagerAdapter;
 import com.horrornumber1.horrordepartment.ApplicationController;
-import com.horrornumber1.horrordepartment.DataModel.MyData;
+import com.horrornumber1.horrordepartment.DataModel.Model;
 import com.horrornumber1.horrordepartment.R;
 import com.horrornumber1.horrordepartment.StaticData.DataHouse;
 
@@ -30,7 +30,7 @@ public class Content extends AppCompatActivity {
     public static String PARAM_INPUT_FROM = "input from";
 
     Menu absmenu; // 볼륨 아이콘을 설정하기 위함
-    List<MyData> contents;
+    List<Model> contents;
     String name, from; // content 메뉴
     int position;
     ViewPagerAdapter adapter;
@@ -81,31 +81,29 @@ public class Content extends AppCompatActivity {
         pager.setAdapter(adapter);
         pager.setOffscreenPageLimit(0); // 최대 로딩 개수 1 ( 메모리 부담을 줄이기 위함 )
         pager.setCurrentItem(position); // 해당 index의 page로 이동
-
-
     }
 
 
 
     // 이전 Activity 에서 받아온 name을 기반으로 컨텐츠에 띄울 카테고리를 선택
-    private List<MyData> whichContents(String name) {
+    private List<Model> whichContents(String name) {
         switch (name) {
             case "지역괴담":
-                return DataHouse.region;
+                return DataHouse.region2;
             case "군대괴담":
-                return  DataHouse.millitary;
+                return  DataHouse.millitary2;
             case "실제이야기":
-                return DataHouse.real;
+                return DataHouse.real2;
             case "대학괴담":
-                return DataHouse.college;
+                return DataHouse.college2;
             case "4컷 만화":
-                return DataHouse.understand;
+                return DataHouse.understand2;
             case "로어":
-                return DataHouse.lore;
+                return DataHouse.lore2;
             case "이해하면 무서운 이야기":
-                return DataHouse.understand;
+                return DataHouse.understand2;
             case "도시괴담":
-                return DataHouse.city;
+                return DataHouse.city2;
         }
         return null;
     }

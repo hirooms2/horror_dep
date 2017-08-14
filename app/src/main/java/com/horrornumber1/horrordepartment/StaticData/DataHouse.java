@@ -67,31 +67,6 @@ public class DataHouse {
     public static ArrayList<MyData> region = new ArrayList<MyData>()
     {
         {
-            add(new MyData("경기도 고양시 괴담",0,R.raw.region01));
-            add(new MyData("서울 용산구 괴담",0,R.raw.region02));
-            add(new MyData("서울 송파구 괴담",0,R.raw.region03));
-            add(new MyData("서울 동대문구 괴담",0,R.raw.region04));
-            add(new MyData("경기도 화성시 괴담",0,R.raw.region05));
-            add(new MyData("경기도 평택시 괴담",0,R.raw.region06));
-            add(new MyData("대전광역시 괴담",0,R.raw.region08));
-            add(new MyData("충청남도 아산 괴담",0,R.raw.region07));
-            add(new MyData("충청남도 아산 괴담2",0,R.raw.region09));
-            add(new MyData("충청남도 천안 괴담",0,R.raw.region10));
-            add(new MyData("충청남도 당진 괴담",0,R.raw.region11));
-            add(new MyData("강원도 속초 괴담",0,R.raw.region12));
-            add(new MyData("강원도 원주 괴담",0,R.raw.region13));
-            add(new MyData("강원도 원주 괴담2",0,R.raw.region14));
-            add(new MyData("경상북도 영주 괴담",0,R.raw.region15));
-            add(new MyData("부산광역시 괴담",0,R.raw.region16));
-            add(new MyData("대구광역시 괴담",0,R.raw.region17));
-            add(new MyData("울산광역시 괴담",0,R.raw.region18));
-            add(new MyData("대구광역시 괴담2",0,R.raw.region19));
-            add(new MyData("부산광역시 괴담2",0,R.raw.region20));
-            add(new MyData("전라남도 여수 괴담",0,R.raw.region21));
-            add(new MyData("전라북도 전주 괴담",0,R.raw.region22));
-            add(new MyData("전라남도 순천 괴담",0,R.raw.region23));
-            add(new MyData("광주광역시 괴담",0,R.raw.region24));
-            add(new MyData("제주 서귀포 괴담",0,R.raw.region25));
 
 
         }
@@ -103,94 +78,14 @@ public class DataHouse {
     public static ArrayList<MyData> millitary = new ArrayList<MyData>()
     {
         {
-            add(new MyData("육군 2사단-관심병사",0,R.raw.millitary01));
-            add(new MyData("육군 3사단-비밀봉지",0,R.raw.millitary02));
-            add(new MyData("육군 3사단-우리 부대는..",0,R.raw.millitary03));
-            add(new MyData("육군 6사단-선임병과 후임",0,R.raw.millitary04));
-            add(new MyData("육군 6사단-'초소 투입로'",0,R.raw.millitary05));
-            add(new MyData("육군 7사단-이상한 경험들",0,R.raw.millitary06));
-            add(new MyData("육군 7사단-순찰자",0,R.raw.millitary07));
-            add(new MyData("육군 7사단-야외계단",0,R.raw.millitary08));
-            add(new MyData("육군 15사단-밖을 배회하는 그 무엇",0,R.raw.millitary09));
-            add(new MyData("육군 17사단-44초소",0,R.raw.millitary10));
-            add(new MyData("육군 21사단-노랫소리",0,R.raw.millitary11));
-            add(new MyData("육군 23사단-낫을 든 손",0,R.raw.millitary12));
-            add(new MyData("육군 23사단-무전소리",0,R.raw.millitary13));
-            add(new MyData("육군 25사단-바나나",0,R.raw.millitary14));
-            add(new MyData("육군 28사단-난간",0,R.raw.millitary15));
-            add(new MyData("육군 32사단-폭우",0,R.raw.millitary16));
-            add(new MyData("육군 35사단-폐생활실",0,R.raw.millitary17));
-            add(new MyData("육군 35사단-죽여줄까",0,R.raw.millitary18));
-            add(new MyData("의무경찰-벽제 38생활실",0,R.raw.millitary19));
-            add(new MyData("제 1야전 수송교육단",0,R.raw.millitary20));
-            add(new MyData("공군-기초 군사 훈련단",0,R.raw.millitary21));
-            add(new MyData("공군-완전군장귀신",0,R.raw.millitary22));
-            add(new MyData("공군-훈련소 귀신",0,R.raw.millitary23));
-            add(new MyData("공군-수원비행장",0,R.raw.millitary25));
-            add(new MyData("공군-17 전투비행단",0,R.raw.millitary26));
-            add(new MyData("해병대-나와 걷던 그 사람",0,R.raw.millitary27));
-            add(new MyData("해병대-루시드 드림",0,R.raw.millitary28));
-            add(new MyData("해병대-잡음",0,R.raw.millitary29));
-            add(new MyData("해병대-고양이",0,R.raw.millitary30));
-            add(new MyData("해병대-라이차 귀신",0,R.raw.millitary31));
-            add(new MyData("해병대-해안포",0,R.raw.millitary32));
-            add(new MyData("해병대-여자들",0,R.raw.millitary33));
+
         }
     };
 
     //*******************************************실화***********************************************
     public static ArrayList<MyData> real = new ArrayList<MyData>(){
         {
-            add(new MyData("머리카락",0,R.raw.real01));
-            add(new MyData("악몽",0,R.raw.real02));
-            add(new MyData("자살명당",0,R.raw.real03));
-            add(new MyData("인형",0,R.raw.real04));
-            add(new MyData("오토바이",0,R.raw.real05));
-            add(new MyData("관심병사",0,R.raw.real06));
-            add(new MyData("나만의 방",0,R.raw.real07));
-            add(new MyData("꿈",0,R.raw.real08));
-            add(new MyData("사촌언니",0,R.raw.real09));
-            add(new MyData("할아버지의 비밀",0,R.raw.real10));
-            add(new MyData("암사동 양x마을 1편",0,R.raw.real11));
-            add(new MyData("암사동 양x마을 2편",0,R.raw.real12));
-            add(new MyData("위험한 초대",0,R.raw.real13));
-            add(new MyData("누나 하룻밤만 재워주세요",0,R.raw.real14));
-            add(new MyData("으드득",0,R.raw.real15));
-            add(new MyData("싱글벙글 아줌마",0,R.raw.real16));
-            add(new MyData("무당",0,R.raw.real17));
-            add(new MyData("초인종 누르는 여자",0,R.raw.real18));
-            add(new MyData("추리 문제",0,R.raw.real19));
-            add(new MyData("기숙사",0,R.raw.real20));
-            add(new MyData("현관 앞의 꽃",0,R.raw.real21));
-            add(new MyData("크리스마스 선물",0,R.raw.real22));
-            add(new MyData("화가",0,R.raw.real23));
-            add(new MyData("고기",0,R.raw.real24));
-            add(new MyData("따듯한 내 남자",0,R.raw.real25));
-            add(new MyData("화장터",0,R.raw.real26));
-            add(new MyData("계단 위의 소녀",0,R.raw.real27));
-            add(new MyData("엘리베이터 장난",0,R.raw.real28));
-            add(new MyData("다음 생애",0,R.raw.real29));
-            add(new MyData("문 단속",0,R.raw.real30));
-            add(new MyData("지금 돌아왔니?",0,R.raw.real31));
-            add(new MyData("상처의 유래",0,R.raw.real32));
-            add(new MyData("옆집 아저씨",0,R.raw.real33));
-            add(new MyData("마을의 거지",0,R.raw.real34));
-            add(new MyData("보이나요?",0,R.raw.real35));
-            add(new MyData("자살의 순서",0,R.raw.real36));
-            add(new MyData("침착한 남자",0,R.raw.real37));
-            add(new MyData("완벽한 알리바이",0,R.raw.real38));
-            add(new MyData("흉가의 글귀",0,R.raw.real39));
-            add(new MyData("웃는 소녀",0,R.raw.real40));
-            add(new MyData("엄마",0,R.raw.real41));
-            add(new MyData("귀신과의 대화",0,R.raw.real42));
-            add(new MyData("위인",0,R.raw.real43));
-            add(new MyData("종이박스",0,R.raw.real44));
-            add(new MyData("새벽의 이상한 소리",0,R.raw.real45));
-            add(new MyData("아파트",0,R.raw.real46));
-            add(new MyData("의사 경험담",0,R.raw.real47));
-            add(new MyData("우리 아들 고쳐주세요",0,R.raw.real48));
-            add(new MyData("자살하는 여자",0,R.raw.real49));
-            add(new MyData("어렸을 때",0,R.raw.real50));
+
 
         }
     };
@@ -200,31 +95,7 @@ public class DataHouse {
 
     public static ArrayList<MyData> college = new ArrayList<MyData>(){
         {
-            add(new MyData("부천시 K대학교 괴담", 0, R.raw.college01 ));
-            add(new MyData("노원구 K대학교 괴담", 0, R.raw.college02 ));
-            add(new MyData("포천시 D대학교 괴담", 0, R.raw.college03 ));
-            add(new MyData("중구 D대학교 괴담", 0, R.raw.college04 ));
-            add(new MyData("서대문구 M대학교 괴담", 0, R.raw.college05 ));
-            add(new MyData("관악구 S대학교 괴담", 0, R.raw.college06));
-            add(new MyData("서대문구 Y대학교 괴담", 0, R.raw.college07 ));
-            add(new MyData("서대문구 E대학교 괴담", 0, R.raw.college08 ));
-            add(new MyData("성동구 H대학교 괴담", 0, R.raw.college09 ));
-            add(new MyData("마포구 H대학교 괴담", 0, R.raw.college10 ));
-            add(new MyData("안성시 J대학교 괴담", 0, R.raw.college11 ));
-            add(new MyData("천안시 D대학교 괴담", 0, R.raw.college13 ));
-            add(new MyData("충청도 H대학교 괴담", 0, R.raw.college26 ));
-            add(new MyData("청주시 C대학교 괴담", 0, R.raw.college15 ));
-            add(new MyData("세종시 K대학교 괴담", 0, R.raw.college12 ));
-            add(new MyData("춘천시 K대학교 괴담", 0, R.raw.college17 ));
-            add(new MyData("춘천시 H대학교 괴담", 0, R.raw.college16 ));
-            add(new MyData("사하구 D대학교 괴담", 0, R.raw.college19 ));
-            add(new MyData("금정구 B대학교 괴담", 0, R.raw.college20 ));
-            add(new MyData("영도구 H대학교 괴담", 0, R.raw.college21 ));
-            add(new MyData("진주시 K대학교 괴담", 0, R.raw.college27 ));
-            add(new MyData("광산시 K대학교 괴담", 0, R.raw.college22 ));
-            add(new MyData("북구 J대학교 괴담", 0, R.raw.college23 ));
-            add(new MyData("동구 C대학교 괴담", 0, R.raw.college24 ));
-            add(new MyData("제주시 J대학교 괴담", 0, R.raw.college25 ));
+
 
         }
     };
@@ -235,56 +106,7 @@ public class DataHouse {
     public static List<MyData> lore = new ArrayList<MyData>()
     {
         {
-            add(new MyData("로어모음 하나",0, R.raw.lore01));
-            add(new MyData("로어모음 둘", 0, R.raw.lore02));
-            add(new MyData("로어모음 셋", 0, R.raw.lore03));
-            add(new MyData("로어모음 넷", 0, R.raw.lore04));
-            add(new MyData("로어모음 다섯", 0, R.raw.lore05));
-            add(new MyData("로어모음 여섯", 0, R.raw.lore06));
-            add(new MyData("로어모음 일곱", 0, R.raw.lore07));
-            add(new MyData("로어모음 여덟", 0, R.raw.lore08));
-            add(new MyData("로어모음 아홉", 0, R.raw.lore09));
-            add(new MyData("로어모음 열", 0, R.raw.lore10));
-            add(new MyData("로어모음 열하나", 0, R.raw.lore11));
-            add(new MyData("로어모음 열둘", 0, R.raw.lore12));
-            add(new MyData("로어모음 열셋", 0, R.raw.lore13));
-            add(new MyData("로어모음 열넷", 0, R.raw.lore14));
-            add(new MyData("로어모음 열다섯", 0, R.raw.lore15));
-            add(new MyData("로어모음 열여섯", 0, R.raw.lore16));
-            add(new MyData("로어모음 열일곱", 0, R.raw.lore17));
-            add(new MyData("로어모음 열여덟", 0, R.raw.lore18));
-            add(new MyData("로어모음 열아홉", 0, R.raw.lore19));
-            add(new MyData("로어모음 스물", 0, R.raw.lore20));
-            add(new MyData("로어모음 스물하나", 0, R.raw.lore21));
-            add(new MyData("로어모음 스물둘", 0, R.raw.lore22));
-            add(new MyData("로어모음 스물셋", 0, R.raw.lore23));
-            add(new MyData("로어모음 스물넷", 0, R.raw.lore24));
-            add(new MyData("로어모음 스물다섯", 0, R.raw.lore25));
-            add(new MyData("로어모음 스물여섯",0, R.raw.lore26));
-            add(new MyData("로어모음 스물일곱", 0, R.raw.lore27));
-            add(new MyData("로어모음 스물여덟", 0, R.raw.lore28));
-            add(new MyData("로어모음 스물아홉", 0, R.raw.lore29));
-            add(new MyData("로어모음 서른", 0, R.raw.lore30));
-            add(new MyData("로어모음 서른하나", 0, R.raw.lore31));
-            add(new MyData("로어모음 서른둘", 0, R.raw.lore32));
-            add(new MyData("로어모음 서른셋", 0, R.raw.lore33));
-            add(new MyData("로어모음 서른넷", 0, R.raw.lore34));
-            add(new MyData("로어모음 서른다섯", 0, R.raw.lore35));
-            add(new MyData("로어모음 서른여섯", 0, R.raw.lore36));
-            add(new MyData("로어모음 서른일곱", 0, R.raw.lore37));
-            add(new MyData("로어모음 서른여덟", 0, R.raw.lore38));
-            add(new MyData("로어모음 서른아홉", 0, R.raw.lore39));
-            add(new MyData("로어모음 마흔", 0, R.raw.lore40));
-            add(new MyData("로어모음 마흔하나", 0, R.raw.lore41));
-            add(new MyData("로어모음 마흔둘", 0, R.raw.lore42));
-            add(new MyData("로어모음 마흔셋", 0, R.raw.lore43));
-            add(new MyData("로어모음 마흔넷", 0, R.raw.lore44));
-            add(new MyData("로어모음 마흔다섯", 0, R.raw.lore45));
-            add(new MyData("로어모음 마흔여섯", 0, R.raw.lore46));
-            add(new MyData("로어모음 마흔일곱", 0, R.raw.lore47));
-            add(new MyData("로어모음 마흔여덟", 0, R.raw.lore48));
-            add(new MyData("로어모음 마흔아홉", 0, R.raw.lore49));
-            add(new MyData("로어모음 쉰", 0, R.raw.lore50));
+
         }
     };
 
@@ -295,56 +117,7 @@ public class DataHouse {
     public static List<MyData> understand = new ArrayList<MyData>()
     {
         {
-            add(new MyData("나폴리탄",0, R.raw.imui01));
-            add(new MyData("엄마의 시체",0, R.raw.imui02));
-            add(new MyData("소원",0, R.raw.imui03));
-            add(new MyData("게임",0, R.raw.imui04));
-            add(new MyData("누군가 보고 있다",0, R.raw.imui05));
-            add(new MyData("스토킹",0, R.raw.imui06));
-            add(new MyData("상자",0, R.raw.imui07));
-            add(new MyData("할머니",0, R.raw.imui08));
-            add(new MyData("손금",0, R.raw.imui09));
-            add(new MyData("초상화",0, R.raw.imui10));
-            add(new MyData("우물",0, R.raw.imui11));
-            add(new MyData("비상계단",0, R.raw.imui12));
-            add(new MyData("일란성 쌍둥이",0, R.raw.imui13));
-            add(new MyData("별님",0, R.raw.imui14));
-            add(new MyData("연상녀",0, R.raw.imui15));
-            add(new MyData("아들",0, R.raw.imui16));
-            add(new MyData("캠프",0, R.raw.imui17));
-            add(new MyData("뺑소니",0, R.raw.imui18));
-            add(new MyData("흑인",0 , R.raw.imui19));
-            add(new MyData("새엄마",0, R.raw.imui20));
-            add(new MyData("우물",0, R.raw.imui21));
-            add(new MyData("동영상",0, R.raw.imui22));
-            add(new MyData("오빠",0, R.raw.imui23));
-            add(new MyData("남자친구",0, R.raw.imui24));
-            add(new MyData("수박",0, R.raw.imui25));
-            add(new MyData("시간능력자",0, R.raw.imui26));
-            add(new MyData("알바생",0, R.raw.imui27));
-            add(new MyData("꿈",0, R.raw.imui28));
-            add(new MyData("이상한 할머니",0, R.raw.imui29));
-            add(new MyData("흙장난",0, R.raw.imui30));
-            add(new MyData("노인",0, R.raw.imui31));
-            add(new MyData("남편의 부탁",0, R.raw.imui32));
-            add(new MyData("버스사고",0, R.raw.imui33));
-            add(new MyData("베트남 전쟁",0, R.raw.imui34));
-            add(new MyData("내 아이가 아니야",0, R.raw.imui35));
-            add(new MyData("초콜릿",0, R.raw.imui36));
-            add(new MyData("종이 비행기",0, R.raw.imui37));
-            add(new MyData("22층",0, R.raw.imui38));
-            add(new MyData("전화",0, R.raw.imui39));
-            add(new MyData("복면의 남자",0, R.raw.imui40));
-            add(new MyData("어머니",0, R.raw.imui41));
-            add(new MyData("CCTV",0, R.raw.imui42));
-            add(new MyData("양치질",0, R.raw.imui43));
-            add(new MyData("제가 볼 수 있는 것은",0, R.raw.imui44));
-            add(new MyData("입원실의 동료",0, R.raw.imui45));
-            add(new MyData("시멘트",0, R.raw.imui46));
-            add(new MyData("생리",0, R.raw.imui47));
-            add(new MyData("가족의 비밀",0, R.raw.imui48));
-            add(new MyData("포치",0, R.raw.imui49));
-            add(new MyData("다시 그 자리로",0, R.raw.imui50));
+
 
         }
     };
@@ -417,38 +190,7 @@ public class DataHouse {
     public static ArrayList<MyData> city = new ArrayList<MyData>()
     {
         {
-            add(new MyData("신혼여행",0,R.raw.city01));
-            add(new MyData("음료공장",0,R.raw.city02));
-            add(new MyData("움직이지 않는 아기",0,R.raw.city03));
-            add(new MyData("비디오의 여자",0,R.raw.city04));
-            add(new MyData("한밤중의 노크",0,R.raw.city05));
-            add(new MyData("강아지가 본 것",0,R.raw.city06));
-            add(new MyData("전도",0,R.raw.city07));
-            add(new MyData("손님",0,R.raw.city08));
-            add(new MyData("공중화장실의 낙서",0,R.raw.city09));
-            add(new MyData("우리 딸 보셨나요?",0,R.raw.city10));
-            add(new MyData("왕따",0,R.raw.city11));
-            add(new MyData("아들의 휴대폰",0,R.raw.city12));
-            add(new MyData("도로의 여인",0,R.raw.city13));
-            add(new MyData("장난전화",0,R.raw.city14));
-            add(new MyData("정류장",0,R.raw.city15));
-            add(new MyData("내가 떠난 여행",0,R.raw.city16));
-            add(new MyData("승진",0,R.raw.city17));
-            add(new MyData("이상한 전화",0,R.raw.city18));
-            add(new MyData("흉가체험",0,R.raw.city19));
-            add(new MyData("공원의 정자",0,R.raw.city20));
-            add(new MyData("SOS 조난사건",0,R.raw.city21));
-            add(new MyData("다른 세계로 가는 법",0,R.raw.city22));
-            add(new MyData("몽유병",0,R.raw.city23));
-            add(new MyData("초인종 괴담",0,R.raw.city24));
-            add(new MyData("일본 도시전설-시라즈모리 신사",0,R.raw.city25));
-            add(new MyData("아파트",0,R.raw.city26));
-            add(new MyData("엄마의 눈물",0,R.raw.city27));
-            add(new MyData("손님",0,R.raw.city28));
-            add(new MyData("엘리베이터의 남자",0,R.raw.city29));
-            add(new MyData("귀신을 보는 친구의 이야기",0,R.raw.city30));
-            add(new MyData("주머니 속의 쪽지",0,R.raw.city31));
-            add(new MyData("타임캡슐",0,R.raw.city32));
+
         }
     };
     public static ArrayList<Model> city2 = new ArrayList<Model>();

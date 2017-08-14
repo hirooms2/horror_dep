@@ -20,7 +20,7 @@ import android.widget.TextView;
 
 import com.horrornumber1.horrordepartment.Activities.Content;
 import com.horrornumber1.horrordepartment.Adapters.TabListViewAdapter;
-import com.horrornumber1.horrordepartment.DataModel.MyData;
+import com.horrornumber1.horrordepartment.DataModel.Model;
 import com.horrornumber1.horrordepartment.R;
 import com.horrornumber1.horrordepartment.StaticData.DataHouse;
 
@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Random;
 public class BoardTextFragment extends Fragment {
 
-    List<MyData> contents;
+    List<Model> contents;
     ListView listView;
     ImageView imageView;
     private View stickyViewSpacer;
@@ -81,7 +81,6 @@ public class BoardTextFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/horrorNo.1/")));
-
                 }
             });
         }else if(idx == 1){
@@ -102,8 +101,6 @@ public class BoardTextFragment extends Fragment {
         }
 
 
-
-
         listView = (ListView) rootView.findViewById(R.id.board_tab_listView);
         listView.addHeaderView(listHeader, null, false);
         listView.setAdapter(adapter);
@@ -117,12 +114,11 @@ public class BoardTextFragment extends Fragment {
                 intent.putExtra(Content.PARAM_INPUT_NAME, name);
                 intent.putExtra(Content.PARAM_INPUT_FROM, "B");
                 intent.putExtra(Content.PARAM_INPUT_INDEX, position-1);
-
                 String board = whichTable(name);
-                DataHouse.dbManager.insert("insert into " + board + " values(null, '" + board + "', '" + Integer.toString(position-1) + "'); ");
-
+                if (!DataHouse.dbManager.FindData(board, position-1)) {
+                    DataHouse.dbManager.insert("insert into " + board + " values(null, '" + board + "', '" + Integer.toString(position-1) + "'); ");
+                }
                 startActivity(intent);
-
             }
         });
 
@@ -150,24 +146,24 @@ public class BoardTextFragment extends Fragment {
         return rootView;
     }
 
-    private List<MyData> whichContents(String name)
+    private List<Model> whichContents(String name)
     {
         switch (name)
         {
             case "지역괴담":
-                contents = DataHouse.region;
+                contents = DataHouse.region2;
                 sub=DataHouse.sub.get(0);
                 return contents;
             case "군대괴담":
-                contents = DataHouse.millitary;
+                contents = DataHouse.millitary2;
                 sub=DataHouse.sub.get(1);
                 return contents;
             case "실제이야기":
-                contents = DataHouse.real;
+                contents = DataHouse.real2;
                 sub=DataHouse.sub.get(2);
                 return contents;
             case "대학괴담":
-                contents = DataHouse.college;
+                contents = DataHouse.college2;
                 sub=DataHouse.sub.get(3);
                 return contents;
             //case "4컷 만화":
@@ -175,15 +171,15 @@ public class BoardTextFragment extends Fragment {
             // sub=DataHouse.sub.get(4);
             //  return contents;
             case "로어":
-                contents = DataHouse.lore;
+                contents = DataHouse.lore2;
                 sub=DataHouse.sub.get(4);
                 return contents;
             case "이해하면 무서운 이야기":
-                contents = DataHouse.understand;
+                contents = DataHouse.understand2;
                 sub=DataHouse.sub.get(5);
                 return contents;
             case "도시괴담":
-                contents = DataHouse.city;
+                contents = DataHouse.city2;
                 sub=DataHouse.sub.get(6);
                 return contents;
         }
