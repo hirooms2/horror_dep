@@ -1,6 +1,8 @@
 package com.horrornumber1.horrordepartment.Network;
 
 import android.content.Context;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -26,7 +28,12 @@ public class HttpConnect {
         StringRequest postStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
+                Log.i("RESPONSE ", response);
+                if(response.equals("1")){
+                    Toast.makeText(ctx,"추천하였습니다",Toast.LENGTH_SHORT).show();
+                } else if(response.equals("0")) {
+                    Toast.makeText(ctx, "이미 추천하였습니다", Toast.LENGTH_SHORT).show();
+                }
             }
         }, new Response.ErrorListener() {
             @Override

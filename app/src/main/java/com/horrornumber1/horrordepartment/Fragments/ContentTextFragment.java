@@ -18,7 +18,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.horrornumber1.horrordepartment.DataModel.Model;
 import com.horrornumber1.horrordepartment.Network.HttpConnect;
@@ -94,7 +93,6 @@ public class ContentTextFragment extends Fragment {
             public void onClick(View v) {
                 HttpConnect httpConnect = new HttpConnect(getContext());
                 httpConnect.connect(DataHouse.uid, whichBoard(name),contents.get(position).getNo());
-                Toast.makeText(getContext(),"추천하였습니다",Toast.LENGTH_SHORT).show();
             }
         });
         rootView.setOnClickListener(new View.OnClickListener(){
