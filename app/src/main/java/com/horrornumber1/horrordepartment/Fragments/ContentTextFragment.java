@@ -18,8 +18,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.horrornumber1.horrordepartment.DataModel.Model;
+import com.horrornumber1.horrordepartment.Network.HttpConnect;
 import com.horrornumber1.horrordepartment.R;
 import com.horrornumber1.horrordepartment.ScrollViewListener;
 import com.horrornumber1.horrordepartment.StaticData.DataHouse;
@@ -46,6 +48,7 @@ public class ContentTextFragment extends Fragment {
     LinearLayout content_bottom;
     StringBuffer buffer;
     ImageView prev, next;
+    ImageView favorite;
     boolean t=true;
     ViewGroup rootView;
     public static ContentTextFragment newInstance(String name,int position){
@@ -85,7 +88,15 @@ public class ContentTextFragment extends Fragment {
         if(contents==null)
             Log.i("error msg", "onCreateView: ");
         content_bottom = (LinearLayout) rootView.findViewById(R.id.content_bottom);
-
+        favorite = (ImageView) rootView.findViewById(R.id.favorite);
+        favorite.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                HttpConnect httpConnect = new HttpConnect(getContext());
+                httpConnect.connect(DataHouse.uid, whichBoard(name),contents.get(position).getNo());
+                Toast.makeText(getContext(),"추천하였습니다",Toast.LENGTH_SHORT).show();
+            }
+        });
         rootView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -278,6 +289,27 @@ public class ContentTextFragment extends Fragment {
                 return "UNDERSTAND2";
             case "도시괴담":
                 return "CITY2";
+        }
+        return null;
+    }
+    private String whichBoard(String name)
+    {
+        switch (name)
+        {
+            case "지역괴담":
+                return "region";
+            case "군대괴담":
+                return "millitary";
+            case "실제이야기":
+                return "realstory";
+            case "대학괴담":
+                return "college";
+            case "로어":
+                return "lore";
+            case "이해하면 무서운 이야기":
+                return "understand";
+            case "도시괴담":
+                return "city";
         }
         return null;
     }

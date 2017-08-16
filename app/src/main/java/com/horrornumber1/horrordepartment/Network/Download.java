@@ -1,4 +1,4 @@
-package com.horrornumber1.horrordepartment.Service;
+package com.horrornumber1.horrordepartment.Network;
 
 /**
  * Created by KIMTAEHO on 2017-08-13.
@@ -19,7 +19,11 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.horrornumber1.horrordepartment.Activities.FirstLogo;
 import com.horrornumber1.horrordepartment.DataModel.Box;
+import com.horrornumber1.horrordepartment.DataModel.Model;
 import com.horrornumber1.horrordepartment.StaticData.DataHouse;
+
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Created by 김태호 on 2017-02-15.
@@ -49,13 +53,27 @@ public class Download extends IntentService {
                         DataHouse.box =  gson.fromJson(response, Box.class);
 
                         DataHouse.region2 = DataHouse.box.getBox().get(0).getContent();
+                        Collections.sort(DataHouse.region2, new Comp());
+
                         DataHouse.millitary2 = DataHouse.box.getBox().get(1).getContent();
+                        Collections.sort(DataHouse.millitary2, new Comp());
+
                         DataHouse.real2 = DataHouse.box.getBox().get(2).getContent();
+                        Collections.sort(DataHouse.real2, new Comp());
+
                         DataHouse.college2 = DataHouse.box.getBox().get(3).getContent();
+                        Collections.sort(DataHouse.college2, new Comp());
+
                         //DataHouse.cartoon2 = DataHouse.box.getBox().get(4).getContent();
+
                         DataHouse.lore2 = DataHouse.box.getBox().get(4).getContent();
+                        Collections.sort(DataHouse.lore2, new Comp());
+
                         DataHouse.understand2 = DataHouse.box.getBox().get(5).getContent();
+                        Collections.sort(DataHouse.understand2, new Comp());
+
                         DataHouse.city2 = DataHouse.box.getBox().get(6).getContent();
+                        Collections.sort(DataHouse.city2, new Comp());
 
                         Intent broadcastIntent = new Intent();
                         broadcastIntent.setAction(FirstLogo.RequestReceiver.PROCESS_RESPONSE);
@@ -77,4 +95,21 @@ public class Download extends IntentService {
         );
         requestQueue.add(stringRequest);
     }
+
+    class Comp implements Comparator<Model> {
+        @Override
+        public int compare(Model o1, Model o2) {
+            int a = Integer.parseInt(o1.getDate());
+            int b = Integer.parseInt(o2.getDate());
+            if(a < b)
+                return 1;
+            else if (a==b)
+                return 0;
+            else
+                return -1;
+        }
+
+    }
+
+
 }

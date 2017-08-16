@@ -4,33 +4,18 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Menu;
+import android.provider.Settings;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ScrollView;
-import android.widget.Toast;
 
-import com.daimajia.slider.library.SliderLayout;
-import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.horrornumber1.horrordepartment.CounsilClass.Counsil;
 import com.horrornumber1.horrordepartment.R;
-import com.horrornumber1.horrordepartment.SetView.SetTextView;
 import com.horrornumber1.horrordepartment.StaticData.DataHouse;
 
-public class MainActivity extends ActionBarActivity implements  BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
+public class MainActivity extends AppCompatActivity {
 
-    private SliderLayout mDemoSlider;
-    private ScrollView scrollView;
-    private ActionBarDrawerToggle toggle;
-    private Toolbar toolbar;
-    private Menu absmenu;
+
     ImageView majorImg, councilImg, keepImg, magazineImg;
     ImageView sound;
 
@@ -40,8 +25,8 @@ public class MainActivity extends ActionBarActivity implements  BaseSliderView.O
         setContentView(R.layout.activity_main);
 
 
-        //***********************TextFont***********************************************************
-        SetTextView homeFont = new SetTextView(getApplicationContext(), this);
+
+         DataHouse.uid = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
 
         //************************BackGround Music*************************************************
         DataHouse.mp = MediaPlayer.create(this, R.raw.bgm);
@@ -113,39 +98,18 @@ public class MainActivity extends ActionBarActivity implements  BaseSliderView.O
 //        mDemoSlider.stopAutoCycle();
         super.onStop();
     }
-    @Override
-    public void onSliderClick(BaseSliderView slider) {
-        Toast.makeText(this,slider.getBundle().get("extra") + "",Toast.LENGTH_SHORT).show();
-    }
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
-
-    @Override
-    public void onPageSelected(int position) {
-        Log.d("Slider Demo", "Page Changed: " + position);
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {}
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
 
         super.onConfigurationChanged(newConfig);
 
-        toggle.onConfigurationChanged(newConfig);
-
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.main_drawer);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            Intent intent = new Intent(MainActivity.this, LastLogo.class);
-            startActivity(intent);
-        }
+        Intent intent = new Intent(MainActivity.this, LastLogo.class);
+        startActivity(intent);
     }
 
     @Override
@@ -163,11 +127,6 @@ public class MainActivity extends ActionBarActivity implements  BaseSliderView.O
             sound.setImageResource(R.drawable.sound_on);
         } else {
             sound.setImageResource(R.drawable.sound_off);
-        }
-        if(absmenu!=null) {
-            absmenu.clear();
-            onCreateOptionsMenu(absmenu);
-            onPrepareOptionsMenu(absmenu);
         }
         if(DataHouse.musicCheck)
             DataHouse.mp.start();

@@ -38,7 +38,7 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
             {
                 Toast.makeText(imageView.getContext(), "e", Toast.LENGTH_LONG).show();            }
         });
-        builder.build().load(myObject.getIcon()).centerCrop().fit().into(imageView);
+        //builder.build().load(myObject.getIcon()).centerCrop().fit().into(imageView);
         //Picasso.with(imageView.getContext()).load(myObject.getIcon()).centerCrop().fit().into(imageView);
     }
 }

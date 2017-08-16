@@ -13,6 +13,7 @@ import java.util.List;
 
 public class DataHouse {
 
+    public static String uid;
     //*************************************ServerData**********************************************
     public static Box box = new Box();
     public static DBManager dbManager;

@@ -2,6 +2,7 @@ package com.horrornumber1.horrordepartment.Activities;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -129,10 +130,9 @@ public class Content extends AppCompatActivity {
             try {
                 DataHouse.mp.start();
             } catch (NullPointerException e) {
-                Intent intent = getIntent();
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                finish();
-                startActivity(intent);
+                DataHouse.mp = MediaPlayer.create(this, R.raw.bgm);
+                DataHouse.mp.setLooping(true);
+                DataHouse.mp.start();
             }
         }
         super.onResume();

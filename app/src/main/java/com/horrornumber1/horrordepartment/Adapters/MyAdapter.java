@@ -46,7 +46,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 Toast.makeText(context, "e", Toast.LENGTH_LONG).show();
             }
         });
-        builder.build().load(itemData.get(position).getIcon()).into(viewHolder.imgViewIcon);
+        //builder.build().load(itemData.get(position).getIcon()).into(viewHolder.imgViewIcon);
 
     }
 

@@ -14,17 +14,22 @@
         android:theme="@style/AppTheme"
         android:name=".ApplicationController">
 
-        <meta-data android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version"/>
-
         <service
-            android:name=".Service.Download"
+            android:name=".Network.Download"
             android:exported="false" />
+
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
 
         <activity
             android:name="com.horrornumber1.horrordepartment.Activities.MainActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:theme="@android:style/Theme.Translucent" />
+
         <activity
             android:name="com.horrornumber1.horrordepartment.Activities.FirstLogo"
             android:launchMode="singleTop"

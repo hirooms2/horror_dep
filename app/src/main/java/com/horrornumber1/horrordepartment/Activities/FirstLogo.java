@@ -12,7 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.horrornumber1.horrordepartment.DBManager;
 import com.horrornumber1.horrordepartment.R;
-import com.horrornumber1.horrordepartment.Service.Download;
+import com.horrornumber1.horrordepartment.Network.Download;
 import com.horrornumber1.horrordepartment.StaticData.DataHouse;
 
 //import com.horrornumber1.horrordepartment.Service.Download;
@@ -38,7 +38,6 @@ public class FirstLogo extends AppCompatActivity {
                 startService(conn);
             }
         }, 1000L);
-
     }
 
     public class RequestReceiver extends BroadcastReceiver {
