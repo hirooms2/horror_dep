@@ -8,7 +8,6 @@ package com.horrornumber1.horrordepartment.Network;
 import android.app.IntentService;
 import android.content.Intent;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -19,11 +18,10 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.horrornumber1.horrordepartment.Activities.FirstLogo;
 import com.horrornumber1.horrordepartment.DataModel.Box;
-import com.horrornumber1.horrordepartment.DataModel.Model;
+import com.horrornumber1.horrordepartment.Module.Comp;
 import com.horrornumber1.horrordepartment.StaticData.DataHouse;
 
 import java.util.Collections;
-import java.util.Comparator;
 
 /**
  * Created by 김태호 on 2017-02-15.
@@ -37,7 +35,7 @@ public class Download extends IntentService {
     public Download() {
         super("download");
     }
-
+    Comp comp = new Comp();
     @Override
     protected void onHandleIntent(Intent intent) {
         Log.i("Download", "onHandleIntent: start");
@@ -53,27 +51,27 @@ public class Download extends IntentService {
                         DataHouse.box =  gson.fromJson(response, Box.class);
 
                         DataHouse.region2 = DataHouse.box.getBox().get(0).getContent();
-                        Collections.sort(DataHouse.region2, new Comp());
+                        Collections.sort(DataHouse.region2, comp);
 
                         DataHouse.millitary2 = DataHouse.box.getBox().get(1).getContent();
-                        Collections.sort(DataHouse.millitary2, new Comp());
+                        Collections.sort(DataHouse.millitary2, comp);
 
                         DataHouse.real2 = DataHouse.box.getBox().get(2).getContent();
-                        Collections.sort(DataHouse.real2, new Comp());
+                        Collections.sort(DataHouse.real2, comp);
 
                         DataHouse.college2 = DataHouse.box.getBox().get(3).getContent();
-                        Collections.sort(DataHouse.college2, new Comp());
+                        Collections.sort(DataHouse.college2, comp);
 
                         //DataHouse.cartoon2 = DataHouse.box.getBox().get(4).getContent();
 
                         DataHouse.lore2 = DataHouse.box.getBox().get(4).getContent();
-                        Collections.sort(DataHouse.lore2, new Comp());
+                        Collections.sort(DataHouse.lore2, comp);
 
                         DataHouse.understand2 = DataHouse.box.getBox().get(5).getContent();
-                        Collections.sort(DataHouse.understand2, new Comp());
+                        Collections.sort(DataHouse.understand2, comp);
 
                         DataHouse.city2 = DataHouse.box.getBox().get(6).getContent();
-                        Collections.sort(DataHouse.city2, new Comp());
+                        Collections.sort(DataHouse.city2, comp);
 
                         Intent broadcastIntent = new Intent();
                         broadcastIntent.setAction(FirstLogo.RequestReceiver.PROCESS_RESPONSE);
@@ -85,7 +83,6 @@ public class Download extends IntentService {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Log.i("error", "onErrorResponse: " + error.getMessage());
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                         Intent broadcastIntent = new Intent();
                         broadcastIntent.setAction(FirstLogo.RequestReceiver.PROCESS_RESPONSE);
                         broadcastIntent.putExtra(RESPONSE_MESSAGE, FirstLogo.RequestReceiver.FAIL);
@@ -96,20 +93,7 @@ public class Download extends IntentService {
         requestQueue.add(stringRequest);
     }
 
-    class Comp implements Comparator<Model> {
-        @Override
-        public int compare(Model o1, Model o2) {
-            int a = Integer.parseInt(o1.getDate());
-            int b = Integer.parseInt(o2.getDate());
-            if(a < b)
-                return 1;
-            else if (a==b)
-                return 0;
-            else
-                return -1;
-        }
 
-    }
 
 
 }

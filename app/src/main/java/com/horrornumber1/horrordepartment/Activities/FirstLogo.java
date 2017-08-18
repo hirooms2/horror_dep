@@ -10,16 +10,19 @@ import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
-import com.horrornumber1.horrordepartment.DBManager;
-import com.horrornumber1.horrordepartment.R;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.horrornumber1.horrordepartment.Network.Download;
-import com.horrornumber1.horrordepartment.StaticData.DataHouse;
+import com.horrornumber1.horrordepartment.R;
 
 //import com.horrornumber1.horrordepartment.Service.Download;
 
 public class FirstLogo extends AppCompatActivity {
     RequestReceiver requestReceiver;
     Handler handler;
+    InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,7 @@ public class FirstLogo extends AppCompatActivity {
                 registerReceiver(requestReceiver, filter);
                 Intent conn = new Intent(getApplicationContext(), Download.class);
                 startService(conn);
+
             }
         }, 1000L);
     }
@@ -52,12 +56,30 @@ public class FirstLogo extends AppCompatActivity {
             String responseMessage = intent.getStringExtra(Download.RESPONSE_MESSAGE);
             if(responseMessage.equals(SUCEESS)) {
                 //************************SQLite************************************************************
-                DataHouse.dbManager = new DBManager(getApplicationContext(), "myDB", null, 1);
+                MobileAds.initialize(getApplicationContext(), getString(R.string.app_id));
 
-                Intent main = new Intent(FirstLogo.this, MainActivity.class);
-                main.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(main);
-                finish();
+                mInterstitialAd = new InterstitialAd(getApplicationContext());
+                mInterstitialAd.setAdUnitId(getString(R.string.ad_id));
+                AdRequest adRequest = new AdRequest.Builder().build();
+                mInterstitialAd.loadAd(adRequest);
+                mInterstitialAd.setAdListener(new AdListener() {
+                    @Override
+                    public void onAdLoaded() {
+                        mInterstitialAd.show();
+                    }
+
+                    @Override
+                    public void onAdClosed() {
+
+                        Intent main = new Intent(FirstLogo.this, MainActivity.class);
+                        main.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(main);
+                        finish();
+                    }
+
+                });
+
+
             } else if(responseMessage.equals(FAIL)) {
                 DialogSimple();
             }

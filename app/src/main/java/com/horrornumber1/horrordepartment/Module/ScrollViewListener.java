@@ -1,4 +1,4 @@
-package com.horrornumber1.horrordepartment;
+package com.horrornumber1.horrordepartment.Module;
 
 import com.horrornumber1.horrordepartment.Widget.ScrollViewExt;
 

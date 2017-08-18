@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.horrornumber1.horrordepartment.Activities.Content;
 import com.horrornumber1.horrordepartment.Adapters.TabListViewAdapter;
 import com.horrornumber1.horrordepartment.DataModel.Model;
+import com.horrornumber1.horrordepartment.Module.Which;
 import com.horrornumber1.horrordepartment.R;
 import com.horrornumber1.horrordepartment.StaticData.DataHouse;
 
@@ -36,13 +37,15 @@ public class BoardTextFragment extends Fragment {
     TextView listview_title, listview_sub;
     String sub, name;
     int[] ad = {R.drawable.ad_facebook, R.drawable.ad_youtube, R.drawable.magazine};
+    Which w = new Which();
     @Nullable
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         final ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.board_fragment_text, container, false);
         name = getArguments().getString("name");
-        contents=whichContents(name);
+        contents=w.whichContents(name);
+        sub=w.whichSub(name);
 
         FrameLayout rug = (FrameLayout) rootView.findViewById(R.id.board_rug);
         rug.setAlpha((float)0.85);
@@ -110,11 +113,10 @@ public class BoardTextFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Intent intent = new Intent(getContext(), Content.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 intent.putExtra(Content.PARAM_INPUT_NAME, name);
                 intent.putExtra(Content.PARAM_INPUT_FROM, "B");
                 intent.putExtra(Content.PARAM_INPUT_INDEX, position-1);
-                String board = whichTable(name);
+                String board = w.whichTable(name);
                 if (!DataHouse.dbManager.FindData(board, position-1)) {
                     DataHouse.dbManager.insert("insert into " + board + " values(null, '" + board + "', '" + Integer.toString(position-1) + "'); ");
                 }
@@ -146,66 +148,7 @@ public class BoardTextFragment extends Fragment {
         return rootView;
     }
 
-    private List<Model> whichContents(String name)
-    {
-        switch (name)
-        {
-            case "지역괴담":
-                contents = DataHouse.region2;
-                sub=DataHouse.sub.get(0);
-                return contents;
-            case "군대괴담":
-                contents = DataHouse.millitary2;
-                sub=DataHouse.sub.get(1);
-                return contents;
-            case "실제이야기":
-                contents = DataHouse.real2;
-                sub=DataHouse.sub.get(2);
-                return contents;
-            case "대학괴담":
-                contents = DataHouse.college2;
-                sub=DataHouse.sub.get(3);
-                return contents;
-            //case "4컷 만화":
-            //  contents = DataHouse.understand2;
-            // sub=DataHouse.sub.get(4);
-            //  return contents;
-            case "로어":
-                contents = DataHouse.lore2;
-                sub=DataHouse.sub.get(4);
-                return contents;
-            case "이해하면 무서운 이야기":
-                contents = DataHouse.understand2;
-                sub=DataHouse.sub.get(5);
-                return contents;
-            case "도시괴담":
-                contents = DataHouse.city2;
-                sub=DataHouse.sub.get(6);
-                return contents;
-        }
-        return contents;
-    }
-    private String whichTable(String name)
-    {
-        switch (name)
-        {
-            case "지역괴담":
-                return "REGION2";
-            case "군대괴담":
-                return "MILLITARY2";
-            case "실제이야기":
-                return "REAL2";
-            case "대학괴담":
-                return "COLLEGE2";
-            case "로어":
-                return "LORE2";
-            case "이해하면 무서운 이야기":
-                return "UNDERSTAND2";
-            case "도시괴담":
-                return "CITY2";
-        }
-        return null;
-    }
+
 
     @Override
     public void onResume() {

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ScrollView;
 
-import com.horrornumber1.horrordepartment.ScrollViewListener;
+import com.horrornumber1.horrordepartment.Module.ScrollViewListener;
 
 
 public class ScrollViewExt extends ScrollView{

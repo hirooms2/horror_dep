@@ -14,7 +14,7 @@ import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
-import com.horrornumber1.horrordepartment.ApplicationController;
+import com.horrornumber1.horrordepartment.Module.ApplicationController;
 import com.horrornumber1.horrordepartment.R;
 
 import java.util.ArrayList;

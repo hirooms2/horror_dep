@@ -1,5 +1,6 @@
 package com.horrornumber1.horrordepartment.Activities;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -14,7 +15,7 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.horrornumber1.horrordepartment.Adapters.TabPagerAdapter;
-import com.horrornumber1.horrordepartment.ApplicationController;
+import com.horrornumber1.horrordepartment.Module.ApplicationController;
 import com.horrornumber1.horrordepartment.R;
 import com.horrornumber1.horrordepartment.SetView.SetTextView;
 import com.horrornumber1.horrordepartment.StaticData.DataHouse;
@@ -36,6 +37,8 @@ public class Board extends AppCompatActivity {
         t.send(new HitBuilders.AppViewBuilder().build());
 
         name ="군대괴담";
+
+
         //*************************************Toolbar**********************************************
         if(absmenu!=null) {
             absmenu.clear();
@@ -91,27 +94,7 @@ public class Board extends AppCompatActivity {
         setTextView.BoardFont();
     }
 
-    private int whichContents(String name) {
-        switch (name) {
-            case "지역괴담":
-                return 0;
-            case "군대괴담":
-                return 1;
-            case "실제이야기":
-                return 2;
-            case "대학괴담":
-                return 3;
-            //case "4컷 만화":
-            //    return 4;
-            case "로어":
-                return 4;
-            case "이해하면 무서운 이야기":
-                return 5;
-            case "도시괴담":
-                return 6;
-        }
-        return 0;
-    }
+
 
     //옵션메뉴 생성
     @Override
@@ -130,6 +113,7 @@ public class Board extends AppCompatActivity {
             menuItem.setIcon(R.drawable.sound_off);
         return true;
     }
+
 
 
     //menu item이 클릭됐을때 실행되는 동작
@@ -174,11 +158,14 @@ public class Board extends AppCompatActivity {
             onCreateOptionsMenu(absmenu);
             onPrepareOptionsMenu(absmenu);
         }
-        try{
-            if(DataHouse.musicCheck)
+        if(DataHouse.musicCheck) {
+            try {
                 DataHouse.mp.start();
-        } catch(Exception e) {
-
+            } catch (NullPointerException e) {
+                DataHouse.mp = MediaPlayer.create(this, R.raw.bgm);
+                DataHouse.mp.setLooping(true);
+                DataHouse.mp.start();
+            }
         }
         super.onResume();
     }

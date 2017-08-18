@@ -1,4 +1,4 @@
-package com.horrornumber1.horrordepartment;
+package com.horrornumber1.horrordepartment.Module;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

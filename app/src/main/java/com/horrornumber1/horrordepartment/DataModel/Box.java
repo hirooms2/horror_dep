@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Box {
 
-	ArrayList<Content> box;
+	ArrayList<Content> box = null;
 
 	public ArrayList<Content> getBox() {
 		return box;

@@ -38,19 +38,9 @@ public class HttpConnect {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Toast.makeText(ctx, "네트워크 연결이 불안정합니다", Toast.LENGTH_SHORT).show();
             }
-        }) {
-//            @Override
-//            protected Map<String, String> getParams() {
-//                Map<String, String> params = new HashMap<String, String>();
-//                params.put("uid",uid);
-//                params.put("board", board);
-//                params.put("no", String.valueOf(no));
-//
-//                return params;
-//            }
-        };
+        });
         postReqeustQueue.add(postStringRequest);
     }
 

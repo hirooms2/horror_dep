@@ -5,9 +5,10 @@ public class Model {
     int no;
     String title;
     String file;
+    String file2;
     int like;
     String date;
-
+    String writer;
     public int getNo() {
         return no;
     }
@@ -46,4 +47,14 @@ public class Model {
     public void setFile(String file) {
         this.file = file;
     }
+
+    public String getFile2() { return file2; }
+
+    public void setFile2(String file2) {
+        this.file2 = file2;
+    }
+
+    public String getWriter() { return writer; }
+
+    public void setWriter(String writer) { this.writer = writer; }
 }

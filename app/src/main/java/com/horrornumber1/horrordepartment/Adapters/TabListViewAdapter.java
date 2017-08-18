@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.horrornumber1.horrordepartment.DataModel.Model;
+import com.horrornumber1.horrordepartment.Module.Which;
 import com.horrornumber1.horrordepartment.R;
 import com.horrornumber1.horrordepartment.StaticData.DataHouse;
 
@@ -21,13 +22,13 @@ public class TabListViewAdapter extends ArrayAdapter<Model> {
     List<Model> contents;
     int rowResourceId;
     String board;
-
+    Which w = new Which();
     public TabListViewAdapter(Context context, int rowResourceId, List<Model> contents, String name) {
         super(context, rowResourceId, contents);
         this.context = context;
         this.contents = contents;
         this.rowResourceId = rowResourceId;
-        this.board = whichTable(name);
+        this.board = w.whichTable(name);
     }
 
     @Override
@@ -40,13 +41,16 @@ public class TabListViewAdapter extends ArrayAdapter<Model> {
         Model model = contents.get(position);
         TextView title = (TextView) v.findViewById(R.id.listlow_title);
         TextView date = (TextView) v.findViewById(R.id.listlow_new);
-        TextView like = (TextView) v.findViewById(R.id.like);
-        TextView likenum = (TextView) v.findViewById(R.id.likenum);
+        TextView like = (TextView) v.findViewById(R.id.listlow_like);
+        TextView likenum = (TextView) v.findViewById(R.id.listlow_likenum);
+
         title.setText(model.getTitle());
         likenum.setText(String.valueOf(model.getLike()));
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         if(sdf.format(new Date()).equals(model.getDate())){
             date.setText("new");
+        } else {
+            date.setText("");
         }
 
         if (DataHouse.dbManager.FindData(board, position)) {
@@ -61,23 +65,5 @@ public class TabListViewAdapter extends ArrayAdapter<Model> {
         return v;
     }
 
-    private String whichTable(String name) {
-        switch (name) {
-            case "지역괴담":
-                return "REGION2";
-            case "군대괴담":
-                return "MILLITARY2";
-            case "실제이야기":
-                return "REAL2";
-            case "대학괴담":
-                return "COLLEGE2";
-            case "로어":
-                return "LORE2";
-            case "이해하면 무서운 이야기":
-                return "UNDERSTAND2";
-            case "도시괴담":
-                return "CITY2";
-        }
-        return null;
-    }
+
 }

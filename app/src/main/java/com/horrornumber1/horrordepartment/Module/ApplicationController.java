@@ -1,9 +1,10 @@
-package com.horrornumber1.horrordepartment;
+package com.horrornumber1.horrordepartment.Module;
 
 import android.app.Application;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
+import com.horrornumber1.horrordepartment.R;
 
 import java.util.HashMap;
 

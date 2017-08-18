@@ -8,7 +8,6 @@
 
     <screenName name="com.horrornumber1.horrordepartment.Activities.Board">Board Activity</screenName>
     <screenName name="com.horrornumber1.horrordepartment.Activities.Content">Content Activity</screenName>
-    <screenName name="com.horrornumber1.horrordepartment.Activities.Favorite">Favorite Activity</screenName>
     <screenName name="com.horrornumber1.horrordepartment.Activities.MagazineActivity">Magazine Activity</screenName>
     <screenName name="com.horrornumber1.horrordepartment.CounsilClass.Counsil">Council Activity</screenName>
     <screenName name="com.horrornumber1.horrordepartment.CounsilClass.GhostSpotYoutube">GhostSpot Activity</screenName>

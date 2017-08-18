@@ -14,5 +14,7 @@
     <string name="close_drawer">close</string>
     <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
     <string name="banner_ad_unit_id">ca-app-pub-7372880105101639/7816096609</string>
-
+    <string name="app_id">ca-app-pub-7372880105101639~3170270709</string>
+    <string name="ad_id">ca-app-pub-7372880105101639/5156082163</string>
 </resources>
+

@@ -13,7 +13,7 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.horrornumber1.horrordepartment.Adapters.CustomPagerAdapter;
-import com.horrornumber1.horrordepartment.ApplicationController;
+import com.horrornumber1.horrordepartment.Module.ApplicationController;
 import com.horrornumber1.horrordepartment.R;
 import com.horrornumber1.horrordepartment.StaticData.DataHouse;
 

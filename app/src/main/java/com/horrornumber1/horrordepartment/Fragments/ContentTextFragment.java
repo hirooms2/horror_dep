@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +17,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.horrornumber1.horrordepartment.DataModel.Model;
+import com.horrornumber1.horrordepartment.Module.ScrollViewListener;
+import com.horrornumber1.horrordepartment.Module.Which;
 import com.horrornumber1.horrordepartment.Network.HttpConnect;
 import com.horrornumber1.horrordepartment.R;
-import com.horrornumber1.horrordepartment.ScrollViewListener;
 import com.horrornumber1.horrordepartment.StaticData.DataHouse;
 import com.horrornumber1.horrordepartment.Widget.ScrollViewExt;
 
@@ -42,14 +43,17 @@ public class ContentTextFragment extends Fragment {
     String name;
     List<Model> contents;
     ScrollViewExt scrollView;
-    TextView content_scroll_Title, content_scroll_Text, content_scroll_AnswerText;
+    TextView content_scroll_Title, content_scroll_Text, content_scroll_AnswerText, content_scroll_writer, content_scroll_like;
     Button content_scroll_AnswerBtn;
     LinearLayout content_bottom;
     StringBuffer buffer;
     ImageView prev, next;
     ImageView favorite;
+    Handler handler;
     boolean t=true;
     ViewGroup rootView;
+    Which w = new Which();
+
     public static ContentTextFragment newInstance(String name,int position){
         ContentTextFragment fragment = new ContentTextFragment();
         Bundle args = new Bundle();
@@ -62,7 +66,7 @@ public class ContentTextFragment extends Fragment {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         if(isVisibleToUser && rootView != null){
-            String board = whichTable(name);
+            String board = w.whichTable(name);
             if (!DataHouse.dbManager.FindData(board, position)) {
                 DataHouse.dbManager.insert("insert into " + board + " values(null, '" + board + "', '" + Integer.toString(position) + "'); ");
             }
@@ -83,16 +87,15 @@ public class ContentTextFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         rootView = (ViewGroup) inflater.inflate(R.layout.fragment_text_scroll, container, false);
 
-        contents = whichContents(name);
-        if(contents==null)
-            Log.i("error msg", "onCreateView: ");
+        contents = w.whichContents(name);
+
         content_bottom = (LinearLayout) rootView.findViewById(R.id.content_bottom);
         favorite = (ImageView) rootView.findViewById(R.id.favorite);
         favorite.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 HttpConnect httpConnect = new HttpConnect(getContext());
-                httpConnect.connect(DataHouse.uid, whichBoard(name),contents.get(position).getNo());
+                httpConnect.connect(DataHouse.uid, w.whichBoard(name),contents.get(position).getNo());
             }
         });
         rootView.setOnClickListener(new View.OnClickListener(){
@@ -138,10 +141,7 @@ public class ContentTextFragment extends Fragment {
 
                 View view = (View) scrollView.getChildAt(0);
                 int diff = (view.getBottom() - (scrollView.getHeight() + scrollView.getScrollY()));
-                Log.i("scroll", "getbottom: " + Integer.toString(view.getBottom()));
-                Log.i("scroll", "getHeight: " + Integer.toString(scrollView.getHeight()));
-                Log.i("scroll", "getScrollY: " + Integer.toString(scrollView.getScrollY()));
-                Log.i("scroll", "diff: " + Integer.toString(diff));
+
                 if (diff < 260) {
                     content_bottom.animate().translationY(0).setInterpolator(new DecelerateInterpolator(2)).start();
 
@@ -165,28 +165,52 @@ public class ContentTextFragment extends Fragment {
 
         content_scroll_Text = (TextView) rootView.findViewById(R.id.content_scroll_text);
 
-        final Handler handler = new Handler() {
+        handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
-                content_scroll_Text.setText(buffer);
+                if(msg.what==1)
+                    content_scroll_Text.setText(buffer);
+                else
+                    Toast.makeText(getContext(),"네트워크 연결이 불안정합니다",Toast.LENGTH_SHORT).show();
             }
         };
         new Thread(new Runnable() {
             @Override
             public void run() {
                 buffer=readText(contents.get(position).getFile());
-                handler.sendEmptyMessage(0);
             }
         }).start();
 
         content_scroll_Text.setTypeface(nanumgothic);
+
+        content_scroll_writer = (TextView) rootView.findViewById(R.id.content_writer);
+        content_scroll_like = (TextView) rootView.findViewById(R.id.content_like);
+
+        content_scroll_writer.setText("writer " + contents.get(position).getWriter());
+        content_scroll_like.setText("like +" + contents.get(position).getLike());
 
         content_scroll_AnswerText = (TextView) rootView.findViewById(R.id.content_scroll_answerText);
         content_scroll_AnswerBtn = (Button) rootView.findViewById(R.id.content_scroll_answerBtn);
 
         //이무이 경우에만 Answer Text 설정
         if(contents == DataHouse.understand2) {
-            content_scroll_AnswerText.setText(DataHouse.understandAnswer.get(position)); //답변도 같은 위치의 내용으로 셋팅
+            //content_scroll_AnswerText.setText(DataHouse.understandAnswer.get(position)); //답변도 같은 위치의 내용으로 셋팅
+
+           handler= new Handler() {
+                @Override
+                public void handleMessage(Message msg) {
+                    if(msg.what==1)
+                        content_scroll_AnswerText.setText(buffer);
+                }
+            };
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    buffer=readText(contents.get(position).getFile2());
+                }
+            }).start();
+
+
             content_scroll_AnswerText.setVisibility(View.INVISIBLE); // 기본적으로는 자리는 차지하고있는데 안보이도록
             content_scroll_AnswerBtn.setText("해설");
             content_scroll_AnswerBtn.setOnClickListener(new View.OnClickListener() {
@@ -229,8 +253,10 @@ public class ContentTextFragment extends Fragment {
             {
                 buffer.append(str+"\n");
             }
-        } catch (IOException e) {
+            handler.sendEmptyMessage(1);
 
+        } catch (IOException e) {
+            handler.sendEmptyMessage(0);
         }
         return buffer;
     }
@@ -269,65 +295,6 @@ public class ContentTextFragment extends Fragment {
     }
 
 
-    private String whichTable(String name)
-    {
-        switch (name)
-        {
-            case "지역괴담":
-                return "REGION2";
-            case "군대괴담":
-                return "MILLITARY2";
-            case "실제이야기":
-                return "REAL2";
-            case "대학괴담":
-                return "COLLEGE2";
-            case "로어":
-                return "LORE2";
-            case "이해하면 무서운 이야기":
-                return "UNDERSTAND2";
-            case "도시괴담":
-                return "CITY2";
-        }
-        return null;
-    }
-    private String whichBoard(String name)
-    {
-        switch (name)
-        {
-            case "지역괴담":
-                return "region";
-            case "군대괴담":
-                return "millitary";
-            case "실제이야기":
-                return "realstory";
-            case "대학괴담":
-                return "college";
-            case "로어":
-                return "lore";
-            case "이해하면 무서운 이야기":
-                return "understand";
-            case "도시괴담":
-                return "city";
-        }
-        return null;
-    }
-    private List<Model> whichContents(String name) {
-        switch (name) {
-            case "지역괴담":
-                return DataHouse.region2;
-            case "군대괴담":
-                return DataHouse.millitary2;
-            case "실제이야기":
-                return DataHouse.real2;
-            case "대학괴담":
-                return DataHouse.college2;
-            case "로어":
-                return DataHouse.lore2;
-            case "이해하면 무서운 이야기":
-                return DataHouse.understand2;
-            case "도시괴담":
-                return DataHouse.city2;
-        }
-        return null;
-    }
+
+
 }

@@ -10,14 +10,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.horrornumber1.horrordepartment.Adapters.ViewPagerAdapter;
-import com.horrornumber1.horrordepartment.ApplicationController;
+import com.horrornumber1.horrordepartment.Module.ApplicationController;
 import com.horrornumber1.horrordepartment.DataModel.Model;
 import com.horrornumber1.horrordepartment.R;
 import com.horrornumber1.horrordepartment.StaticData.DataHouse;
@@ -36,7 +35,6 @@ public class Content extends AppCompatActivity {
     int position;
     ViewPagerAdapter adapter;
     ViewPager pager;
-    ImageView prev,next,favorite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

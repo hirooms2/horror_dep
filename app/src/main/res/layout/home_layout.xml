@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/home"
@@ -10,7 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
+        <ImageView
+            android:id="@+id/adbtt"
+            android:background="@drawable/favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
         <ImageView
             android:id="@+id/sound"
             android:layout_gravity="right"
@@ -20,7 +25,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_weight="1">
 
@@ -31,8 +36,8 @@
                 android:src="@drawable/majorword2"
                 android:layout_marginTop="133dp"
                 android:layout_alignParentTop="true"
-                android:layout_alignLeft="@+id/keepImg"
-                android:layout_alignStart="@+id/keepImg" />
+                android:layout_alignLeft="@+id/email"
+                android:layout_alignStart="@+id/email" />
 
             <ImageView
                 android:layout_width="100dp"
@@ -54,14 +59,13 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="70dp"
-                android:id="@+id/keepImg"
-                android:src="@drawable/keepword2"
+                android:id="@+id/email"
+                android:src="@drawable/email"
                 android:layout_below="@+id/councilImg"
                 android:layout_alignRight="@+id/councilImg"
                 android:layout_alignEnd="@+id/councilImg"
                 android:layout_marginRight="56dp"
                 android:layout_marginEnd="56dp" />
         </RelativeLayout>
-
     </LinearLayout>
 </FrameLayout>
