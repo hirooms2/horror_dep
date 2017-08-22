@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -117,8 +118,9 @@ public class BoardTextFragment extends Fragment {
                 intent.putExtra(Content.PARAM_INPUT_FROM, "B");
                 intent.putExtra(Content.PARAM_INPUT_INDEX, position-1);
                 String board = w.whichTable(name);
-                if (!DataHouse.dbManager.FindData(board, position-1)) {
-                    DataHouse.dbManager.insert("insert into " + board + " values(null, '" + board + "', '" + Integer.toString(position-1) + "'); ");
+                if (!DataHouse.dbManager.FindData(board, contents.get(position-1).getNo())) {
+                    Log.d("TRANSPARENT", "onItemClick: ");
+                    DataHouse.dbManager.insert("insert into " + board + " values(null, '" + board + "', '" + Integer.toString(contents.get(position-1).getNo()) + "'); ");
                 }
                 startActivity(intent);
             }

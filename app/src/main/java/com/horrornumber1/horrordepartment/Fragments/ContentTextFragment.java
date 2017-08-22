@@ -54,7 +54,8 @@ public class ContentTextFragment extends Fragment {
     boolean t=true;
     ViewGroup rootView;
     Which w = new Which();
-
+    String TAG = "TRANSPARENT";
+    int no;
     public static ContentTextFragment newInstance(String name,int position){
         ContentTextFragment fragment = new ContentTextFragment();
         Bundle args = new Bundle();
@@ -66,10 +67,13 @@ public class ContentTextFragment extends Fragment {
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
+
         if(isVisibleToUser && rootView != null){
+
             String board = w.whichTable(name);
-            if (!DataHouse.dbManager.FindData(board, position)) {
-                DataHouse.dbManager.insert("insert into " + board + " values(null, '" + board + "', '" + Integer.toString(position) + "'); ");
+            if (!DataHouse.dbManager.FindData(board, no)) {
+                Log.d(TAG, "setUserVisibleHint: " + no);
+                DataHouse.dbManager.insert("insert into " + board + " values(null, '" + board + "', '" + no + "'); ");
             }
         }
     }
@@ -80,6 +84,8 @@ public class ContentTextFragment extends Fragment {
         if (getArguments() != null) {
             position = getArguments().getInt("position");
             name = getArguments().getString("name");
+            contents = w.whichContents(name);
+            no=contents.get(position).getNo();
         }
     }
 
@@ -88,7 +94,6 @@ public class ContentTextFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         rootView = (ViewGroup) inflater.inflate(R.layout.fragment_text_scroll, container, false);
 
-        contents = w.whichContents(name);
 
         content_bottom = (LinearLayout) rootView.findViewById(R.id.content_bottom);
         favorite = (ImageView) rootView.findViewById(R.id.favorite);

@@ -2,6 +2,7 @@ package com.horrornumber1.horrordepartment.Adapters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ public class TabListViewAdapter extends ArrayAdapter<Model> {
     int rowResourceId;
     String board;
     Which w = new Which();
+    String TAG = "TRANSPARENT";
     public TabListViewAdapter(Context context, int rowResourceId, List<Model> contents, String name) {
         super(context, rowResourceId, contents);
         this.context = context;
@@ -52,12 +54,14 @@ public class TabListViewAdapter extends ArrayAdapter<Model> {
         } else {
             date.setText("");
         }
-
-        if (DataHouse.dbManager.FindData(board, position)) {
+        Log.d(TAG, "getView: " + model.getNo());
+        if (DataHouse.dbManager.FindData(board, model.getNo())) {
+            Log.d(TAG, "getView: gray " + model.getNo());
             title.setTextColor(Color.GRAY);
             like.setTextColor(Color.GRAY);
             likenum.setTextColor(Color.GRAY);
         } else {
+            Log.d(TAG, "getView: white " + model.getNo());
             title.setTextColor(Color.WHITE);
             like.setTextColor(Color.WHITE);
             likenum.setTextColor(Color.WHITE);
