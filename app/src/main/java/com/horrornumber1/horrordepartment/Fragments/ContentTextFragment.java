@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,10 +47,10 @@ public class ContentTextFragment extends Fragment {
     TextView content_scroll_Title, content_scroll_Text, content_scroll_AnswerText, content_scroll_writer, content_scroll_like;
     Button content_scroll_AnswerBtn;
     LinearLayout content_bottom;
-    StringBuffer buffer;
+    StringBuffer buffer, buffer2;
     ImageView prev, next;
     ImageView favorite;
-    Handler handler;
+    Handler handler, handler2;
     boolean t=true;
     ViewGroup rootView;
     Which w = new Which();
@@ -196,17 +197,17 @@ public class ContentTextFragment extends Fragment {
         if(contents == DataHouse.understand2) {
             //content_scroll_AnswerText.setText(DataHouse.understandAnswer.get(position)); //답변도 같은 위치의 내용으로 셋팅
 
-           handler= new Handler() {
+           handler2= new Handler() {
                 @Override
                 public void handleMessage(Message msg) {
-                    if(msg.what==1)
-                        content_scroll_AnswerText.setText(buffer);
+                    content_scroll_AnswerText.setText(buffer2);
                 }
             };
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    buffer=readText(contents.get(position).getFile2());
+                    buffer2=readText(contents.get(position).getFile2());
+                    handler2.sendEmptyMessage(0);
                 }
             }).start();
 
@@ -254,8 +255,8 @@ public class ContentTextFragment extends Fragment {
                 buffer.append(str+"\n");
             }
             handler.sendEmptyMessage(1);
-
         } catch (IOException e) {
+            Log.d("READTEXT", "error: " + contents.get(position).getTitle());
             handler.sendEmptyMessage(0);
         }
         return buffer;

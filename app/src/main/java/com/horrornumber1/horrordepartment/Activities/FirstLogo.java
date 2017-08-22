@@ -55,7 +55,9 @@ public class FirstLogo extends AppCompatActivity {
 
             String responseMessage = intent.getStringExtra(Download.RESPONSE_MESSAGE);
             if(responseMessage.equals(SUCEESS)) {
-                //************************SQLite************************************************************
+
+
+                // Admobs
                 MobileAds.initialize(getApplicationContext(), getString(R.string.app_id));
 
                 mInterstitialAd = new InterstitialAd(getApplicationContext());
@@ -76,6 +78,8 @@ public class FirstLogo extends AppCompatActivity {
                         startActivity(main);
                         finish();
                     }
+
+
 
                 });
 

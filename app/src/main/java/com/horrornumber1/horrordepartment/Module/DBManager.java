@@ -13,20 +13,17 @@ import java.util.ArrayList;
 
 public class DBManager extends SQLiteOpenHelper {
 
+    String TAG = "DBManager";
+
     public DBManager(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
+
+        InitNotification();
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("CREATE TABLE REGION ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title TEXT, date TEXT);");
-        sqLiteDatabase.execSQL("CREATE TABLE MILLITARY ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title TEXT, date TEXT);");
-        sqLiteDatabase.execSQL("CREATE TABLE REAL ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title TEXT, date TEXT);");
-        sqLiteDatabase.execSQL("CREATE TABLE COLLEGE ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title TEXT, date TEXT);");
-        sqLiteDatabase.execSQL("CREATE TABLE LORE ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title TEXT, date TEXT);");
-        sqLiteDatabase.execSQL("CREATE TABLE UNDERSTAND ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title TEXT, date TEXT);");
-        sqLiteDatabase.execSQL("CREATE TABLE CITY ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title TEXT, date TEXT);");
-
+        Log.d(TAG, "onCreate: ");
         sqLiteDatabase.execSQL("CREATE TABLE REGION2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
         sqLiteDatabase.execSQL("CREATE TABLE MILLITARY2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
         sqLiteDatabase.execSQL("CREATE TABLE REAL2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
@@ -35,11 +32,14 @@ public class DBManager extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("CREATE TABLE UNDERSTAND2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
         sqLiteDatabase.execSQL("CREATE TABLE CITY2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
 
+        sqLiteDatabase.execSQL("CREATE TABLE NOTIFICATION ( _id INTEGER PRIMARY KEY AUTOINCREMENT, ck INTEGER);");
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
     }
+
     public void insert(String _query) {
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL(_query);
@@ -74,6 +74,28 @@ public class DBManager extends SQLiteOpenHelper {
         }
 
         return str;
+    }
+
+    public boolean Notification(){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from NOTIFICATION", null);
+
+        if(cursor.moveToNext()) {
+            if(cursor.getInt(1)==1)
+                return true;
+            else
+                return false;
+        }
+        return false;
+    }
+
+    public void InitNotification(){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from NOTIFICATION", null);
+
+        if(cursor.getCount()==0) {
+            insert("INSERT INTO NOTIFICATION values(null, 1)");
+        }
     }
 
     public boolean FindData(String board, int position) {

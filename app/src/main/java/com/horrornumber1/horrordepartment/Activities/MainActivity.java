@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import com.horrornumber1.horrordepartment.CounsilClass.Counsil;
 import com.horrornumber1.horrordepartment.DataModel.Box;
@@ -33,16 +36,44 @@ public class MainActivity extends AppCompatActivity {
 
 
     ImageView majorImg, councilImg, email, magazineImg;
-    ImageView sound;
-
+    ImageView sound, notification;
+    Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DataHouse.dbManager = new DBManager(getApplicationContext(), "myDB", null, 1);
         DataHouse.uid = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+
+        notification = (ImageView)findViewById(R.id.notification);
+
+        //************************SQLite************************************************************
+        DataHouse.dbManager = new DBManager(getApplicationContext(), "myDB", null, 1);
+
+        if(DataHouse.dbManager.Notification()){
+            FirebaseMessaging.getInstance().subscribeToTopic("news");
+            notification.setImageResource(R.drawable.notification);
+        } else {
+            FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
+            notification.setImageResource(R.drawable.notification_off);
+        }
+        notification.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if(DataHouse.dbManager.Notification()){
+                    Toast.makeText(getApplicationContext(),"푸시알림을 받지 않습니다", Toast.LENGTH_SHORT).show();
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic("news");
+                    DataHouse.dbManager.update("UPDATE NOTIFICATION SET ck = 0");
+                    notification.setImageResource(R.drawable.notification_off);
+                } else {
+                    Toast.makeText(getApplicationContext(),"푸시알림을 받습니다", Toast.LENGTH_SHORT).show();
+                    FirebaseMessaging.getInstance().subscribeToTopic("news");
+                    DataHouse.dbManager.update("UPDATE NOTIFICATION SET ck = 1");
+                    notification.setImageResource(R.drawable.notification);
+                }
+            }
+        });
 
         //************************BackGround Music*************************************************
         DataHouse.mp = MediaPlayer.create(this, R.raw.bgm);
@@ -83,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, Email.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
             }
         });
