@@ -43,14 +43,14 @@ public class DBManager extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("CREATE TABLE UNDERSTAND2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
         sqLiteDatabase.execSQL("CREATE TABLE CITY2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
 
-
-
+        sqLiteDatabase.execSQL("CREATE TABLE NOTIFICATION ( _id INTEGER PRIMARY KEY AUTOINCREMENT, ck INTEGER);");
+        
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         Log.d(TAG, "onUpgrade: ");
-        sqLiteDatabase.execSQL("CREATE TABLE NOTIFICATION ( _id INTEGER PRIMARY KEY AUTOINCREMENT, ck INTEGER);");
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS NOTIFICATION ( _id INTEGER PRIMARY KEY AUTOINCREMENT, ck INTEGER);");
     }
 
     public void insert(String _query) {
