@@ -78,9 +78,6 @@ public class FirstLogo extends AppCompatActivity {
                         startActivity(main);
                         finish();
                     }
-
-
-
                 });
 
 

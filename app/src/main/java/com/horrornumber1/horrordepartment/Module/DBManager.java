@@ -18,6 +18,17 @@ public class DBManager extends SQLiteOpenHelper {
     public DBManager(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
 
+        SQLiteDatabase db = getWritableDatabase();
+
+        Cursor c = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
+
+        if (c.moveToFirst()) {
+            while ( !c.isAfterLast() ) {
+                Log.d(TAG, "DBManager: " + c.getString(0));
+                c.moveToNext();
+            }
+        }
+
         InitNotification();
     }
 
@@ -32,12 +43,14 @@ public class DBManager extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("CREATE TABLE UNDERSTAND2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
         sqLiteDatabase.execSQL("CREATE TABLE CITY2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
 
-        sqLiteDatabase.execSQL("CREATE TABLE NOTIFICATION ( _id INTEGER PRIMARY KEY AUTOINCREMENT, ck INTEGER);");
+
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        Log.d(TAG, "onUpgrade: ");
+        sqLiteDatabase.execSQL("CREATE TABLE NOTIFICATION ( _id INTEGER PRIMARY KEY AUTOINCREMENT, ck INTEGER);");
     }
 
     public void insert(String _query) {
