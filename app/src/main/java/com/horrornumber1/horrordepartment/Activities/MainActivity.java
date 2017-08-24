@@ -35,7 +35,7 @@ import java.util.Comparator;
 public class MainActivity extends AppCompatActivity {
 
 
-    ImageView majorImg, councilImg, email, magazineImg;
+    ImageView majorImg, councilImg, email, horrorChannel;
     ImageView sound, notification;
     Handler handler;
 
@@ -100,12 +100,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        magazineImg = (ImageView)findViewById(R.id.magazineImg);
-        magazineImg.setOnClickListener(new View.OnClickListener() {
+        horrorChannel = (ImageView) findViewById(R.id.horrorChannel);
+        horrorChannel.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MagazineActivity.class);
+                Intent intent = new Intent(MainActivity.this, HorrorChannel.class);
                 startActivity(intent);
+
             }
         });
 
