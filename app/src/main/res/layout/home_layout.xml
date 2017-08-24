@@ -50,9 +50,9 @@
 
             <ImageView
                 android:layout_width="100dp"
-                android:layout_height="70dp"
-                android:id="@+id/magazineImg"
-                android:src="@drawable/magazineword2"
+                android:layout_height="80dp"
+                android:id="@+id/horrorChannel"
+                android:src="@drawable/horrorchannel"
                 android:layout_below="@+id/majorImg"
                 android:layout_centerHorizontal="true" />
 
@@ -61,13 +61,13 @@
                 android:layout_height="70dp"
                 android:id="@+id/councilImg"
                 android:src="@drawable/councilword2"
-                android:layout_alignTop="@+id/magazineImg"
+                android:layout_alignTop="@+id/horrorChannel"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
 
             <ImageView
                 android:layout_width="100dp"
-                android:layout_height="70dp"
+                android:layout_height="80dp"
                 android:id="@+id/email"
                 android:src="@drawable/email"
                 android:layout_below="@+id/councilImg"

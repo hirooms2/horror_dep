@@ -17,27 +17,27 @@
         <service
             android:name=".Network.Download"
             android:exported="false" />
-        <service
-            android:name=".Network.mFirebaseMessagingService">
+        <service android:name=".Network.mFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".Network.mFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
         <service
-            android:name=".Network.mFirebaseInstanceIDService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
-            </intent-filter>
-        </service>
-        <service android:name=".Network.MyJobService"
+            android:name=".Network.MyJobService"
             android:exported="false">
             <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
             </intent-filter>
         </service>
+
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/icon"/>
+            android:resource="@drawable/icon" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
@@ -48,7 +48,7 @@
         <activity
             android:name=".Activities.MainActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
@@ -91,7 +91,7 @@
         <activity
             android:name=".CounsilClass.GhostSpotYoutube"
             android:launchMode="singleTop" />
-        <activity android:name=".Activities.MagazineActivity" />
+        <activity android:name=".Activities.HorrorChannel"></activity>
     </application>
 
 </manifest>
