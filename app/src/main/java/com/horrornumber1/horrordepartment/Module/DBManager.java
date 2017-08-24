@@ -34,7 +34,6 @@ public class DBManager extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        Log.d(TAG, "onCreate: ");
         sqLiteDatabase.execSQL("CREATE TABLE REGION2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
         sqLiteDatabase.execSQL("CREATE TABLE MILLITARY2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
         sqLiteDatabase.execSQL("CREATE TABLE REAL2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
