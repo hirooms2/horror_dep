@@ -15,7 +15,7 @@ import com.horrornumber1.horrordepartment.R;
 
 public class HorrorChannel extends AppCompatActivity {
     private FrameLayout notifyFrame; // 공지사항 프레임 레이아웃
-    private Animation topShow, topHide; // 위에서 떨어지고 올라가는 공지사항 애니메이션
+    private Animation bottomShow, bottomHide; // 위에서 떨어지고 올라가는 공지사항 애니메이션
     private ImageView announce, horrorGame, horrorRadio, horrorSpot; // 공지사항 버튼
     private TextView closeNotify; // 창닫기 버튼
     private ImageView kakaoFriend, facebook; //카카오 플러스친구, 페이스북
@@ -27,8 +27,8 @@ public class HorrorChannel extends AppCompatActivity {
         notifyFrame = (FrameLayout)findViewById(R.id.notifyFrame);
         notifyFrame.setVisibility(View.GONE); // 기본적으로는 안보이는 상태로
 
-        topShow = AnimationUtils.loadAnimation(this, R.anim.top_in); //애니메이션 세팅
-        topHide = AnimationUtils.loadAnimation(this, R.anim.top_out);
+        bottomShow = AnimationUtils.loadAnimation(this, R.anim.bottom_in); //애니메이션 세팅
+        bottomHide = AnimationUtils.loadAnimation(this, R.anim.bottom_out);
 
         announce = (ImageView)findViewById(R.id.announceBtn); //공지사항, 호러게임, 공포라디오, 흉가탐방 이미지
         horrorGame = (ImageView)findViewById(R.id.horrorGameBtn);
@@ -42,7 +42,7 @@ public class HorrorChannel extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 notifyFrame.setVisibility(View.VISIBLE);
-                notifyFrame.startAnimation(topShow); //애니메이션 동작하면서 안보이던 공지사항 프레임 등장
+                notifyFrame.startAnimation(bottomShow); //애니메이션 동작하면서 안보이던 공지사항 프레임 등장
 
                 announce.setVisibility(View.GONE); // 프레임 레이아웃이다 보니까 버튼을 안없애면 온클릭이 계속먹는다 날리자
                 horrorGame.setVisibility(View.GONE);
@@ -56,7 +56,7 @@ public class HorrorChannel extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 notifyFrame.setVisibility(View.GONE);
-                notifyFrame.startAnimation(topHide); //애니메이션 동작하면서 안보이던 공지사항 프레임 안보이게
+                notifyFrame.startAnimation(bottomHide); //애니메이션 동작하면서 안보이던 공지사항 프레임 안보이게
 
                 announce.setVisibility(View.VISIBLE); // 컴백
                 horrorGame.setVisibility(View.VISIBLE);
