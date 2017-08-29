@@ -91,7 +91,8 @@
         <activity
             android:name=".CounsilClass.GhostSpotYoutube"
             android:launchMode="singleTop" />
-        <activity android:name=".Activities.HorrorChannel"></activity>
+        <activity android:name=".Activities.HorrorChannel" />
+        <activity android:name=".Activities.HorrorGameActivity"></activity>
     </application>
 
 </manifest>
