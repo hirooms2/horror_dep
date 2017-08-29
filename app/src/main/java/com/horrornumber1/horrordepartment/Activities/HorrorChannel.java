@@ -81,5 +81,13 @@ public class HorrorChannel extends AppCompatActivity {
             }
         });
 
+        horrorGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HorrorChannel.this, HorrorGameActivity.class );
+                startActivity(i);
+            }
+        });
+
 
     }}
