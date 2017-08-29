@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -73,6 +74,15 @@ public class FirstLogo extends AppCompatActivity {
                     @Override
                     public void onAdClosed() {
 
+                        Intent main = new Intent(FirstLogo.this, MainActivity.class);
+                        main.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(main);
+                        finish();
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(int i) {
+                        Toast.makeText(getApplicationContext(), "광고 생성에 실패하였습니다", Toast.LENGTH_SHORT).show();
                         Intent main = new Intent(FirstLogo.this, MainActivity.class);
                         main.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(main);

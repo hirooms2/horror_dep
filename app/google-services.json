@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "701010169311",
-    "firebase_url": "https://horror-b60b0.firebaseio.com",
-    "project_id": "horror-b60b0",
-    "storage_bucket": "horror-b60b0.appspot.com"
+    "project_number": "9666499660",
+    "firebase_url": "https://horror-76fac.firebaseio.com",
+    "project_id": "horror-76fac",
+    "storage_bucket": "horror-76fac.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:701010169311:android:f8b3e28ab863f4f3",
+        "mobilesdk_app_id": "1:9666499660:android:f8b3e28ab863f4f3",
         "android_client_info": {
           "package_name": "com.horrornumber1.horrordepartment"
         }
       },
       "oauth_client": [
         {
-          "client_id": "701010169311-j4r281oikqqj5tpb15fp60npigk8kk3c.apps.googleusercontent.com",
+          "client_id": "9666499660-q7oob0cfjddsmjok9dq2628s3toqnltb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.horrornumber1.horrordepartment",
+            "certificate_hash": "51872ebeb5a42dfa65ecab7a883d759e7ef77ab9"
+          }
+        },
+        {
+          "client_id": "9666499660-qpgvc4ea8ejsh1ho9g79s8vkiul8quer.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA6qW9AlMnDdLEsDz2xwFDqKY-OjB8YVn0"
+          "current_key": "AIzaSyA2XUb-Da-jsMxe35l_Iu9UFM_sQSZuv08"
         }
       ],
       "services": {
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "9666499660-qpgvc4ea8ejsh1ho9g79s8vkiul8quer.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
