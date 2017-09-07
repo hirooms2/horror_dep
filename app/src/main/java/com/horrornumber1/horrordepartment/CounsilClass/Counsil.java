@@ -23,6 +23,7 @@ import android.widget.TextView;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.horrornumber1.horrordepartment.Activities.HorrorListActivity;
 import com.horrornumber1.horrordepartment.Module.ApplicationController;
 import com.horrornumber1.horrordepartment.R;
 
@@ -33,17 +34,18 @@ public class Counsil extends AppCompatActivity {
 
     private Button knock, knockBack, oneQuit, stroke, feed, dotoriBack, lookBack, introduce,
             dream, paralysis, reaper, follow, noBtn,
-            mHorrorStory, mostHorror, radio, ghostspot; //선택 버튼
+            mHorrorPlace, mostHorror; //선택 버튼
     private ImageView interview; // 이미지
     private LinearLayout screen;//전체화면
     private Handler layoutHandler, imageviewHandler, answerHandler;
     private Animation fadeout;
     private Typeface nanumBold;
     private TypeWriter storyText;
-    private TextView word1, word2, word3, word4, introduceText, closeText; // 효과음
-    private int i, random, count; //for문, 경우의수, 면담하기 이야기 카운트
+    private TextView word1, word2, word3, word4, introduceText, closeText, placePrev, placeNext; // 효과음
+    private int i, random, count, currentPlace; //for문, 경우의수, 면담하기 이야기 카운트
     private List<String> enter, paralysisStory, followStory, reaperStory, noTalk,  mostHorrible; //첫화면 케이스들 담아두는곳, 무서운이야기 테스트
-    private FrameLayout storyFrame, oneLookBackFrame, oneQuitFrame, radio_and_ghostspot,
+    private ArrayList<Integer> place; // 무서운장소 이미지들
+    private FrameLayout storyFrame, oneLookBackFrame, oneQuitFrame, pagerFrame,
             twoOptionKnockFrame, dotoriSelectFrame,  dreamOption, mOptionFrame;
     private View introduceFrame;
     private Animation topShow, topHide;
@@ -64,6 +66,8 @@ public class Counsil extends AppCompatActivity {
         reaperStory = new ArrayList<>();//저승사자를 본 것 같아요 스토리
         noTalk = new ArrayList<>();//이야기하기 싫어요
         mostHorrible = new ArrayList<>(); // 가장 무서운것은 뭔가요?
+        place = new ArrayList<>(); // 무서운 장소
+
 
         nanumBold = Typeface.createFromAsset(getAssets(), "fonts/nanumbold.ttf");
 
@@ -114,7 +118,7 @@ public class Counsil extends AppCompatActivity {
         introduceFrame = (FrameLayout)findViewById(R.id.introduceFrame);
         dreamOption = (FrameLayout)findViewById(R.id.dreamOption);
         mOptionFrame = (FrameLayout)findViewById(R.id.fourMoption);
-        radio_and_ghostspot = (FrameLayout)findViewById(R.id.radio_and_ghostspot);
+        pagerFrame = (FrameLayout)findViewById(R.id.pagerFrame);
 
         interview = (ImageView)findViewById(R.id.interview);
 
@@ -132,7 +136,7 @@ public class Counsil extends AppCompatActivity {
         introduceFrame.setVisibility(View.GONE); //공포학과 소개 창 Gone 처리
         dreamOption.setVisibility(View.GONE); //꿈 프레임 Gone 처리
         mOptionFrame.setVisibility(View.GONE);//M교수 선택창 사라지도록
-        radio_and_ghostspot.setVisibility(View.GONE); // 공포라디오, 흉가탐방영상 창 GONE
+        pagerFrame.setVisibility(View.GONE); // 무서운 장소 Gone 처리
 
         knock = (Button) findViewById(R.id.knockBtn); //노크 한다 버튼
         knockBack = (Button)findViewById(R.id.knockQuitBtn);  //돌아간다 버튼
@@ -147,10 +151,10 @@ public class Counsil extends AppCompatActivity {
         follow = (Button)findViewById(R.id.followBtn); //누가 따라와요 버튼
         reaper = (Button)findViewById(R.id.reaperBtn);//저승사자 버튼
         noBtn = (Button)findViewById(R.id.noBtn); //말하기 싫어요 버튼
-        mHorrorStory = (Button)findViewById(R.id.mHorrorStoryBtn); //m교수 무서운이야기 버튼
+        mHorrorPlace = (Button)findViewById(R.id.mHorrorPlaceBtn); //m교수 무서운이야기 버튼
         mostHorror = (Button)findViewById(R.id.mostHorrorBtn); // 가장 무서운것은 무엇인가요 버튼
-        radio = (Button)findViewById(R.id.radioBtn); // 공포라디오
-        ghostspot = (Button)findViewById(R.id.ghostSpotBtn); //흉가탐방영상
+        placePrev = (TextView)findViewById(R.id.prev); // 다음으로
+        placeNext = (TextView)findViewById(R.id.next); // 이전으로
 
         layoutHandler = new Handler();
         imageviewHandler = new Handler();
@@ -671,26 +675,32 @@ public class Counsil extends AppCompatActivity {
 
         //------m교수 무서운이야기 들려주세요 버튼------
 
-        mHorrorStory.setOnClickListener(new View.OnClickListener() {
+        mHorrorPlace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mOptionFrame.setVisibility(View.GONE);
                 storyFrame.setVisibility(View.VISIBLE);
-                setStory("좋습니다....직접 들려드리고 보여드리겠습니다");
+                setStory("무서운 곳이야 많습니다");
                 storyFrame.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        setStory("공포라디오와 흉가 탐방 영상이 준비되어있습니다");
+                        setStory("다만, 그중에 많은 사람들 사이에서 오르내리는 곳들이 있죠");
                         storyFrame.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                setStory(" 마음의 준비 단단히 하고 듣기를 권장합니다.");
+                                setStory("유명한 무서운 장소들은 전 세계적으로 있습니다");
                                 storyFrame.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
+                                        setStory("그중 가장 유명한 곳들을 열 군데 정도만 소개해드릴게요");
+                                        storyFrame.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                storyFrame.setVisibility(View.GONE);
+                                                pagerFrame.setVisibility(View.VISIBLE);
 
-                                        storyFrame.setVisibility(View.GONE);
-                                        radio_and_ghostspot.setVisibility(View.VISIBLE);
+                                            }
+                                        });
 
                                     }
                                 });
@@ -700,53 +710,6 @@ public class Counsil extends AppCompatActivity {
                 });
             }
         });
-        //------공포 라디오 버튼-----
-        radio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i("teg", "radioClick");
-                Intent intent = new Intent(getApplicationContext(), HorrorListActivity.class);
-                startActivity(intent);
-                (new Thread(){
-                    @Override
-                    public void run(){
-
-                        imageviewHandler.postDelayed(new Runnable(){
-                            public void run(){
-                                storyFrame.setVisibility(View.GONE);
-                                radio_and_ghostspot.setVisibility(View.GONE);
-                                mOptionFrame.setVisibility(View.VISIBLE);
-                            }
-                        }, 500);
-                    }
-                }).start();
-            }
-        });
-
-        //------흉가 탐방 버튼-----
-        ghostspot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), GhostSpotYoutube.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
-                (new Thread(){
-                    @Override
-                    public void run(){
-
-                        imageviewHandler.postDelayed(new Runnable(){
-                            public void run(){
-                                storyFrame.setVisibility(View.GONE);
-                                radio_and_ghostspot.setVisibility(View.GONE);
-                                mOptionFrame.setVisibility(View.VISIBLE);
-                            }
-                        }, 500);
-                    }
-                }).start();
-
-            }
-        });
-
 
         //-------뒤로가기 버튼은 무조건 finish------
 
@@ -945,6 +908,19 @@ public class Counsil extends AppCompatActivity {
 
             }
         });
+
+        place.add(R.drawable.place1);
+        place.add(R.drawable.place2);
+        place.add(R.drawable.place3);
+        place.add(R.drawable.place4);
+        place.add(R.drawable.place5);
+        place.add(R.drawable.place6);
+        place.add(R.drawable.place7);
+        place.add(R.drawable.place8);
+        place.add(R.drawable.place9);
+        place.add(R.drawable.place10);
+        place.add(R.drawable.place11);
+
         enter.add("교수님이 안 계시는것 같다..돌아가도록 하자");
         enter.add("멍! 멍멍! 왈왈!! 멍멍멍!!");
         enter.add("M교수 : 들어오십시오~~~");
