@@ -202,30 +202,15 @@
                 android:background="#00000000"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/prev"
-                    android:layout_weight="0"
-                    android:textSize="20sp"
-                    android:background="@android:color/black"
-                    android:text="이전으로"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/black"
-                    android:layout_weight="1"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
                     android:id="@+id/next"
-                    android:layout_weight="0"
-                    android:textSize="20sp"
-                    android:background="@android:color/black"
-                    android:text="다음으로"/>
-
+                    android:background="#00000000"
+                    android:textSize="22sp"
+                    android:textColor="@android:color/white"
+                    android:text="Next Page"/>
 
             </LinearLayout>
         </FrameLayout>

@@ -34,14 +34,14 @@ public class Counsil extends AppCompatActivity {
 
     private Button knock, knockBack, oneQuit, stroke, feed, dotoriBack, lookBack, introduce,
             dream, paralysis, reaper, follow, noBtn,
-            mHorrorPlace, mostHorror; //선택 버튼
+            mHorrorPlace, mostHorror, placeNext; //선택 버튼
     private ImageView interview; // 이미지
     private LinearLayout screen;//전체화면
     private Handler layoutHandler, imageviewHandler, answerHandler;
     private Animation fadeout;
     private Typeface nanumBold;
     private TypeWriter storyText;
-    private TextView word1, word2, word3, word4, introduceText, closeText, placePrev, placeNext; // 효과음
+    private TextView word1, word2, word3, word4, introduceText, closeText; // 효과음
     private int i, random, count, currentPlace; //for문, 경우의수, 면담하기 이야기 카운트
     private List<String> enter, paralysisStory, followStory, reaperStory, noTalk,  mostHorrible; //첫화면 케이스들 담아두는곳, 무서운이야기 테스트
     private ArrayList<Integer> place; // 무서운장소 이미지들
@@ -153,8 +153,7 @@ public class Counsil extends AppCompatActivity {
         noBtn = (Button)findViewById(R.id.noBtn); //말하기 싫어요 버튼
         mHorrorPlace = (Button)findViewById(R.id.mHorrorPlaceBtn); //m교수 무서운이야기 버튼
         mostHorror = (Button)findViewById(R.id.mostHorrorBtn); // 가장 무서운것은 무엇인가요 버튼
-        placePrev = (TextView)findViewById(R.id.prev); // 다음으로
-        placeNext = (TextView)findViewById(R.id.next); // 이전으로
+       placeNext = (Button)findViewById(R.id.next); // 다음으로
 
         layoutHandler = new Handler();
         imageviewHandler = new Handler();
@@ -698,10 +697,85 @@ public class Counsil extends AppCompatActivity {
                                             public void onClick(View v) {
                                                 storyFrame.setVisibility(View.GONE);
                                                 pagerFrame.setVisibility(View.VISIBLE);
+                                                currentPlace=0;
+                                                interview.setImageResource(place.get(currentPlace++));
+
+                                                placeNext.setOnClickListener(new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View v) {
+                                                        interview.setImageResource(place.get(currentPlace++));
+                                                        placeNext.setOnClickListener(new View.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(View v) {
+                                                                interview.setImageResource(place.get(currentPlace++));
+                                                                placeNext.setOnClickListener(new View.OnClickListener() {
+                                                                    @Override
+                                                                    public void onClick(View v) {
+                                                                        interview.setImageResource(place.get(currentPlace++));
+                                                                        placeNext.setOnClickListener(new View.OnClickListener() {
+                                                                            @Override
+                                                                            public void onClick(View v) {
+                                                                                interview.setImageResource(place.get(currentPlace++));
+                                                                                placeNext.setOnClickListener(new View.OnClickListener() {
+                                                                                    @Override
+                                                                                    public void onClick(View v) {
+                                                                                        interview.setImageResource(place.get(currentPlace++));
+                                                                                        placeNext.setOnClickListener(new View.OnClickListener() {
+                                                                                            @Override
+                                                                                            public void onClick(View v) {
+                                                                                                interview.setImageResource(place.get(currentPlace++));
+                                                                                                placeNext.setOnClickListener(new View.OnClickListener() {
+                                                                                                    @Override
+                                                                                                    public void onClick(View v) {
+                                                                                                        interview.setImageResource(place.get(currentPlace++));
+                                                                                                        placeNext.setOnClickListener(new View.OnClickListener() {
+                                                                                                            @Override
+                                                                                                            public void onClick(View v) {
+                                                                                                                interview.setImageResource(place.get(currentPlace++));
+                                                                                                                placeNext.setOnClickListener(new View.OnClickListener() {
+                                                                                                                    @Override
+                                                                                                                    public void onClick(View v) {
+                                                                                                                        interview.setImageResource(place.get(currentPlace++));
+                                                                                                                        placeNext.setOnClickListener(new View.OnClickListener() {
+                                                                                                                            @Override
+                                                                                                                            public void onClick(View v) {
+                                                                                                                                interview.setImageResource(place.get(currentPlace++));
+                                                                                                                                pagerFrame.setVisibility(View.GONE);
+                                                                                                                                storyFrame.setVisibility(View.VISIBLE);
+                                                                                                                                setStory("잘보셨는지요.. 그럼 면담을 마저 진행하도록 하겠습니다");
+                                                                                                                                storyFrame.setOnClickListener(new View.OnClickListener() {
+                                                                                                                                    @Override
+                                                                                                                                    public void onClick(View v) {
+                                                                                                                                        storyFrame.setVisibility(View.GONE);
+                                                                                                                                        interview.setImageResource(R.drawable.mprofessor);
+                                                                                                                                        mOptionFrame.setVisibility(View.VISIBLE);
+                                                                                                                                    }
+                                                                                                                                });
+                                                                                                                            }
+                                                                                                                        });
+                                                                                                                    }
+                                                                                                                });
+                                                                                                            }
+                                                                                                        });
+                                                                                                    }
+                                                                                                });
+                                                                                            }
+                                                                                        });
+                                                                                    }
+                                                                                });
+                                                                            }
+                                                                        });
+                                                                    }
+                                                                });
+                                                            }
+                                                        });
+                                                    }
+                                                });
+
+
 
                                             }
                                         });
-
                                     }
                                 });
                             }
@@ -751,6 +825,7 @@ public class Counsil extends AppCompatActivity {
                             public void onClick(View v) {
                                 storyFrame.setVisibility(View.GONE);
                                 dreamOption.setVisibility(View.VISIBLE);
+
                             }
                         });
                     }
