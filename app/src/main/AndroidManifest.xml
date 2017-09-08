@@ -79,20 +79,22 @@
             android:name=".Activities.Content"
             android:launchMode="singleTop" />
         <activity
-            android:name=".CounsilClass.YoutubeActivity"
+            android:name=".Activities.YoutubeActivity"
             android:launchMode="singleTop" />
         <activity
             android:name=".CounsilClass.Counsil"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CounsilClass.HorrorListActivity"
+            android:name=".Activities.HorrorListActivity"
             android:launchMode="singleTop" />
         <activity
             android:name=".CounsilClass.GhostSpotYoutube"
             android:launchMode="singleTop" />
         <activity android:name=".Activities.HorrorChannel" />
-        <activity android:name=".Activities.HorrorGameActivity"></activity>
+        <activity android:name=".Activities.HorrorChannelSelect" />
+        <activity android:name=".Activities.HorrorGameListActivity" />
+        <activity android:name=".Activities.HorrorSpotListActivity"></activity>
     </application>
 
 </manifest>

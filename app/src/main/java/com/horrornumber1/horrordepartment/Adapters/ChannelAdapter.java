@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.horrornumber1.horrordepartment.R;
 
+import java.util.ArrayList;
+
 /**
  * Created by 이승헌 on 2017-08-29.
  */
@@ -23,15 +25,11 @@ public class ChannelAdapter extends ArrayAdapter<String> {
     TextView gameDescription;
     int lastPosition = -1;
 
-    String descriptions_arr[] = {
+    ArrayList<String> descriptions_arr = new ArrayList<>();
 
-    };
+    ArrayList<Integer> images_arr = new ArrayList<>();
 
-    int images_arr[] = {
-
-    };
-
-    public ChannelAdapter(Context context, int resource, String descriptions_arr[], int images_arr[]) {
+    public ChannelAdapter(Context context, int resource, ArrayList<String> descriptions_arr, ArrayList<Integer> images_arr) {
         super(context, resource, descriptions_arr);
         this.context = context;
         this.descriptions_arr = descriptions_arr;
@@ -45,10 +43,10 @@ public class ChannelAdapter extends ArrayAdapter<String> {
         View row = inflater.inflate(R.layout.list_item_template,parent,false);
 
         gameImage = (ImageView) row.findViewById(R.id.game_image);
-        gameImage.setImageResource(images_arr[position]);
+        gameImage.setImageResource(images_arr.get(position));
 
         gameDescription = (TextView) row.findViewById(R.id.txt_game_name);
-        gameDescription.setText(descriptions_arr[position]);
+        gameDescription.setText(descriptions_arr.get(position));
 
         Animation animation = AnimationUtils.loadAnimation(getContext(), (position > lastPosition) ? R.anim.up_from_bottom : R.anim.down_from_top);
         row.startAnimation(animation);

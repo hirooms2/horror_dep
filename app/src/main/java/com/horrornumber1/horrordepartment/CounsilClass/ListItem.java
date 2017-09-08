@@ -1,8 +1,8 @@
 package com.horrornumber1.horrordepartment.CounsilClass;
 
 public class ListItem {
-    int image;
-    String imagetitle;
+    public int image;
+    public String imagetitle;
 
     public int getImage(){
         return image;

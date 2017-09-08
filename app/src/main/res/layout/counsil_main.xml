@@ -191,6 +191,45 @@
             </LinearLayout>
         </FrameLayout>
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00000000"
+            android:id="@+id/pagerFrame">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00000000"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/prev"
+                    android:layout_weight="0"
+                    android:textSize="20sp"
+                    android:background="@android:color/black"
+                    android:text="이전으로"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/black"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/next"
+                    android:layout_weight="0"
+                    android:textSize="20sp"
+                    android:background="@android:color/black"
+                    android:text="다음으로"/>
+
+
+            </LinearLayout>
+        </FrameLayout>
+
         <!--보기 1개짜리(돌아본다)-->
 
         <FrameLayout
@@ -364,10 +403,10 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:id="@+id/mHorrorStoryBtn"
+                        android:id="@+id/mHorrorPlaceBtn"
                         android:textColor="@android:color/black"
                         android:textSize="15sp"
-                        android:text="무서운 이야기 들려주세요"/>
+                        android:text="세상에서 가장 무서운 장소는 어디인가요?"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -400,50 +439,6 @@
 
         </FrameLayout>
 
-        <!--공포라디오, 흉가탐방 -->
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#000000"
-            android:id="@+id/radio_and_ghostspot">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:background="#AA000000"
-                android:orientation="horizontal">
-
-                <Button
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/radioBtn"
-                    android:textColor="@android:color/black"
-                    android:background="@drawable/button_img"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:text="공포라디오"/>
-
-                <Button
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/ghostSpotBtn"
-                    android:textColor="@android:color/black"
-                    android:background="@drawable/button_img"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginRight="15dp"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:text="흉가 탐방 영상"/>
-            </LinearLayout>
-
-        </FrameLayout>
 
 
         <!--꿈 프레임 레이아웃 -->

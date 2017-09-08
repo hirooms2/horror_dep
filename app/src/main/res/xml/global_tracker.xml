@@ -11,8 +11,8 @@
     <screenName name="com.horrornumber1.horrordepartment.Activities.MagazineActivity">Magazine Activity</screenName>
     <screenName name="com.horrornumber1.horrordepartment.CounsilClass.Counsil">Council Activity</screenName>
     <screenName name="com.horrornumber1.horrordepartment.CounsilClass.GhostSpotYoutube">GhostSpot Activity</screenName>
-    <screenName name="com.horrornumber1.horrordepartment.CounsilClass.HorrorListActivity">HorrorRadio Activity</screenName>
-    <screenName name="com.horrornumber1.horrordepartment.CounsilClass.YoutubeActivity">Youtube Activity</screenName>
+    <screenName name="com.horrornumber1.horrordepartment.Activities.HorrorListActivity">HorrorRadio Activity</screenName>
+    <screenName name="com.horrornumber1.horrordepartment.Activities.YoutubeActivity">Youtube Activity</screenName>
     <screenName name="com.horrornumber1.horrordepartment.Activities.LastLogo">LastLogo Activity</screenName>
     <screenName name="com.horrornumber1.horrordepartment.Fragments.BoardTextFragment">BoardTextFragment</screenName>
     <string name="ga_trackingId">UA-102394902-1</string>
