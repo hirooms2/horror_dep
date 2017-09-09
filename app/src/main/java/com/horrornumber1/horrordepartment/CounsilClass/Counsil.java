@@ -742,13 +742,25 @@ public class Counsil extends AppCompatActivity {
                                                                                                                                 interview.setImageResource(place.get(currentPlace++));
                                                                                                                                 pagerFrame.setVisibility(View.GONE);
                                                                                                                                 storyFrame.setVisibility(View.VISIBLE);
-                                                                                                                                setStory("잘보셨는지요.. 그럼 면담을 마저 진행하도록 하겠습니다");
+                                                                                                                                setStory("어떠신가요? 사진만 봐도 하나같이 무서운 곳들이죠?");
                                                                                                                                 storyFrame.setOnClickListener(new View.OnClickListener() {
                                                                                                                                     @Override
                                                                                                                                     public void onClick(View v) {
-                                                                                                                                        storyFrame.setVisibility(View.GONE);
-                                                                                                                                        interview.setImageResource(R.drawable.mprofessor);
-                                                                                                                                        mOptionFrame.setVisibility(View.VISIBLE);
+                                                                                                                                        setStory("물론 이런 장소들은 더 있답니다. 페이스북 게시물을 통해 더 자세히 소개해드리겠습니다");
+                                                                                                                                        storyFrame.setOnClickListener(new View.OnClickListener() {
+                                                                                                                                            @Override
+                                                                                                                                            public void onClick(View v) {
+                                                                                                                                                setStory("그럼 면담을 계속 진행하겠습니다");
+                                                                                                                                                storyFrame.setOnClickListener(new View.OnClickListener() {
+                                                                                                                                                    @Override
+                                                                                                                                                    public void onClick(View v) {
+                                                                                                                                                        storyFrame.setVisibility(View.GONE);
+                                                                                                                                                        interview.setImageResource(R.drawable.mprofessor);
+                                                                                                                                                        mOptionFrame.setVisibility(View.VISIBLE);
+                                                                                                                                                    }
+                                                                                                                                                });
+                                                                                                                                            }
+                                                                                                                                        });
                                                                                                                                     }
                                                                                                                                 });
                                                                                                                             }
