@@ -13,7 +13,7 @@
     <string name="open_drawer">open</string>
     <string name="close_drawer">close</string>
     <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
-    <string name="banner_ad_unit_id">ca-app-pub-7372880105101639/7816096609</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3634292349185731/1023121802</string>
     <string name="app_id">ca-app-pub-3634292349185731~5582858504</string>
     <string name="ad_id">ca-app-pub-3634292349185731/6704368483</string>
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>

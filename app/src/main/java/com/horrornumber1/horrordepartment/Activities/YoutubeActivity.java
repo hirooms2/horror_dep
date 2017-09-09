@@ -1,12 +1,12 @@
 package com.horrornumber1.horrordepartment.Activities;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -31,17 +31,24 @@ public class YoutubeActivity extends YouTubeBaseActivity implements
     private int whichContent=-1;
     private int position=-1;
     private int fromWhere = -1; // 게임=0 라디오=1 흉가=2
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.counsil_youtube);
 
+        mAdView = (AdView) findViewById(R.id.ad_view);
+
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+        mAdView.loadAd(adRequest);
+
         Tracker t = ((ApplicationController)getApplication()).getTracker(ApplicationController.TrackerName.APP_TRACKER);
         t.setScreenName("Youtube Activity");
         t.send(new HitBuilders.AppViewBuilder().build());
 
-        youtubeBtn = (ImageView)findViewById(R.id.youtubeBtn);
 
         Intent intent = new Intent(this.getIntent());
 
@@ -412,15 +419,6 @@ public class YoutubeActivity extends YouTubeBaseActivity implements
                 default:return;
             }
         }
-
-        youtubeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCQbKk4fa3B23YDmVXjv-j4w"));
-                startActivity(intent);
-            }
-        });
-
 
         getYouTubePlayerProvider().initialize(DeveloperKey.DEVELOPER_KEY,this);
     }
