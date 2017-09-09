@@ -17,8 +17,7 @@ import com.horrornumber1.horrordepartment.R;
 public class LastLogo extends AppCompatActivity {
 
     ImageView logoImg;
-    TextView facebook, youtube, humor;
-    int[] images = new int[] {R.drawable.last_logo1, R.drawable.last_logo2};
+    TextView facebook, youtube;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +29,12 @@ public class LastLogo extends AppCompatActivity {
         t.send(new HitBuilders.AppViewBuilder().build());
 
         logoImg = (ImageView) findViewById(R.id.lastLogo);
-        int imageId = (int)(Math.random() * images.length);
-        logoImg.setBackgroundResource(images[imageId]);
+        logoImg.setBackgroundResource(R.drawable.last_logo1);
 
         facebook = (TextView)findViewById(R.id.facebookText);
         youtube = (TextView)findViewById(R.id.youtubeText);
-        humor = (TextView)findViewById(R.id.humorText);
 
-        if(imageId==0){
-            humor.setVisibility(View.GONE);
+
             facebook.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -64,25 +60,6 @@ public class LastLogo extends AppCompatActivity {
                     startActivity(intent2);
                 }
             });
-        }
-        else{
-            facebook.setVisibility(View.GONE);
-            youtube.setVisibility(View.GONE);
-
-            humor.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Tracker t = ((ApplicationController)getApplication()).getTracker(ApplicationController.TrackerName.APP_TRACKER);
-                    t.send(new HitBuilders.EventBuilder().setCategory("BoardTextFragment").setAction("Press Button").setLabel("LastLogo Ad Clicked").build());
-
-                    Intent intent3 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/dept.of.humor/"));
-
-                    startActivity(intent3);
-                }
-            });
-        }
-
 
 
     }
