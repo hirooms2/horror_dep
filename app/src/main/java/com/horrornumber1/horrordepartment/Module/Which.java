@@ -35,19 +35,18 @@ public class Which {
         switch (name) {
             case "지역괴담":
                 return DataHouse.sub.get(0);
-
             case "군대괴담":
-                return DataHouse.sub.get(0);
+                return DataHouse.sub.get(1);
             case "실제이야기":
-                return DataHouse.sub.get(0);
+                return DataHouse.sub.get(2);
             case "대학괴담":
-                return DataHouse.sub.get(0);
+                return DataHouse.sub.get(3);
             case "로어":
-                return DataHouse.sub.get(0);
+                return DataHouse.sub.get(4);
             case "이해하면 무서운 이야기":
-                return DataHouse.sub.get(0);
+                return DataHouse.sub.get(5);
             case "도시괴담":
-                return DataHouse.sub.get(0);
+                return DataHouse.sub.get(6);
         }
         return null;
     }

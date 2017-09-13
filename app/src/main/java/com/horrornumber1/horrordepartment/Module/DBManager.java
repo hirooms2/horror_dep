@@ -3,6 +3,7 @@ package com.horrornumber1.horrordepartment.Module;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
@@ -50,6 +51,15 @@ public class DBManager extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         Log.d(TAG, "onUpgrade: ");
         sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS NOTIFICATION ( _id INTEGER PRIMARY KEY AUTOINCREMENT, ck INTEGER);");
+
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS REGION2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS MILLITARY2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS REAL2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS COLLEGE2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS LORE2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS UNDERSTAND2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS CITY2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
+
     }
 
     public void insert(String _query) {
@@ -112,12 +122,15 @@ public class DBManager extends SQLiteOpenHelper {
 
     public boolean FindData(String board, int position) {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from "+ board + " where title=" +Integer.toString(position), null);
-
-        if(cursor.getCount()==1)
-            return true;
-        else
+        try {
+            Cursor cursor = db.rawQuery("select * from " + board + " where title=" + Integer.toString(position), null);
+            if(cursor.getCount()==1)
+                return true;
+            else
+                return false;
+        }catch(SQLiteException e) {
             return false;
+        }
     }
 
     public ArrayList<FavoriteModel> PrintAll() {
