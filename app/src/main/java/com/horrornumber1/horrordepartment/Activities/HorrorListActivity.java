@@ -85,6 +85,26 @@ HorrorListActivity extends AppCompatActivity {
                 items.add(new ListItem(R.drawable.radio_main, "제18화 덤프트럭"));
                 items.add(new ListItem(R.drawable.radio_main, "제19화 첫 직장에서 본 귀신"));
                 items.add(new ListItem(R.drawable.radio_main, "제20화 10년 전 영덕에서.."));
+                items.add(new ListItem(R.drawable.radio_main, "제21화 국민학교 선생"));
+                items.add(new ListItem(R.drawable.radio_main, "제22화 동굴 속 할머니"));
+                items.add(new ListItem(R.drawable.radio_main, "제23화 여자를 질질 끄는 남자들"));
+                items.add(new ListItem(R.drawable.radio_main, "제24화 귀신 나무"));
+                items.add(new ListItem(R.drawable.radio_main, "제25화 선생님의 스토킹"));
+                items.add(new ListItem(R.drawable.radio_main, "제26화 공원 화장실"));
+                items.add(new ListItem(R.drawable.radio_main, "제27화 굶어죽은 개"));
+                items.add(new ListItem(R.drawable.radio_main, "제28화 엘레베이터 아줌마"));
+                items.add(new ListItem(R.drawable.radio_main, "제29화 가장 무서운 생각"));
+                items.add(new ListItem(R.drawable.radio_main, "제30화 게임 중독"));
+                items.add(new ListItem(R.drawable.radio_main, "제31화 자살 지원자"));
+                items.add(new ListItem(R.drawable.radio_main, "제32화 이상한 경험"));
+                items.add(new ListItem(R.drawable.radio_main, "제33화 화장실 숨바꼭질"));
+                items.add(new ListItem(R.drawable.radio_main, "제34화 오두막 아르바이트"));
+                items.add(new ListItem(R.drawable.radio_main, "제35화 인천 국제공항"));
+                items.add(new ListItem(R.drawable.radio_main, "제36화 새벽 2시에 걸려온 전화"));
+                items.add(new ListItem(R.drawable.radio_main, "제37화 수박"));
+                items.add(new ListItem(R.drawable.radio_main, "제38화 공포택시"));
+
+
                 break;
             case 1:
                 items.add(new ListItem(R.drawable.adult_radio, "제1화 훌라후프 1부"));
@@ -102,7 +122,6 @@ HorrorListActivity extends AppCompatActivity {
                 items.add(new ListItem(R.drawable.adult_radio, "제13화 김진홍님 경험담"));
                 items.add(new ListItem(R.drawable.adult_radio, "제14화 목욕탕을 훔쳐보다"));
                 items.add(new ListItem(R.drawable.adult_radio, "제15화 결혼은 신중히..."));
-                items.add(new ListItem(R.drawable.adult_radio, "제1화 훌라후프 1부"));
                 break;
             case 2:
                 items.add(new ListItem(R.drawable.my_honey, "제1화 첫 만남"));

@@ -124,6 +124,25 @@ public class YoutubeActivity extends YouTubeBaseActivity implements
                     titles.add("UccTuv_BBvY");
                     titles.add("Hyz7vn-GJbk");
                     titles.add("_tEWiRLCkFM");
+                    titles.add("P03lgBvUD1w");
+                    titles.add("paO6VM8R1-U");
+                    titles.add("4vdTKH66QkU");
+                    titles.add("0rMl39BHh14");
+                    titles.add("DEx8IcTVV84");
+                    titles.add("6yPuVyFgJ3o");
+                    titles.add("58d5GP_-hFk");
+                    titles.add("vbG8qhXRVtU");
+                    titles.add("lLY9d3ye2TI");
+                    titles.add("zRStJ8d8iXQ");
+                    titles.add("IiAvdAwFO90");
+                    titles.add("YmJDY-4OQ8s");
+                    titles.add("XXyDbULiDpA");
+                    titles.add("WAaXQZlHvuA");
+                    titles.add("Bc1839_HzI8");
+                    titles.add("lgfyCci6WN0");
+                    titles.add("5KjA9Xu55qU");
+                    titles.add("ATSqiXJKhfc");
+
                     break;
                 case 1:
                     titles.add("vTzQeHIh6LM");
@@ -410,10 +429,10 @@ public class YoutubeActivity extends YouTubeBaseActivity implements
 
                     break;
                 case 2:
-                    titles.add("cMSAilkeXNI");
+                    titles.add("XN5aFx0gZNg");
                     break;
                 case 3:
-                    titles.add("XN5aFx0gZNg");
+                    titles.add("cMSAilkeXNI");
                     break;
 
                 default:return;
