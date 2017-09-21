@@ -15,6 +15,7 @@ import com.horrornumber1.horrordepartment.R;
 import com.horrornumber1.horrordepartment.StaticData.DataHouse;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 public class TabListViewAdapter extends ArrayAdapter<Model> {
@@ -42,17 +43,22 @@ public class TabListViewAdapter extends ArrayAdapter<Model> {
         }
         Model model = contents.get(position);
         TextView title = (TextView) v.findViewById(R.id.listlow_title);
-        TextView date = (TextView) v.findViewById(R.id.listlow_new);
+        TextView date_text = (TextView) v.findViewById(R.id.listlow_new);
         TextView like = (TextView) v.findViewById(R.id.listlow_like);
         TextView likenum = (TextView) v.findViewById(R.id.listlow_likenum);
 
         title.setText(model.getTitle());
         likenum.setText(String.valueOf(model.getLike()));
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-        if(sdf.format(new Date()).equals(model.getDate())){
-            date.setText("new");
+        Calendar cal = Calendar.getInstance();
+        Date date = new Date();
+        cal.setTime(date);
+        cal.add(Calendar.DATE, 1);
+
+        if(sdf.format(new Date()).equals(model.getDate()) || sdf.format(cal.getTime()).equals(model.getDate())){
+            date_text.setText("new");
         } else {
-            date.setText("");
+            date_text.setText("");
         }
         Log.d(TAG, "getView: " + model.getNo());
         if (DataHouse.dbManager.FindData(board, model.getNo())) {

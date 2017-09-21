@@ -177,7 +177,7 @@ public class ContentTextFragment extends Fragment {
                 if(msg.what==1)
                     content_scroll_Text.setText(buffer);
                 else
-                    Toast.makeText(getContext(),"네트워크 연결이 불안정합니다",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(),"네트워크 연결이 불안정합니다",Toast.LENGTH_SHORT).show();
             }
         };
         new Thread(new Runnable() {
