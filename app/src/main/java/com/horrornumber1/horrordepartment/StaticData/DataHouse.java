@@ -47,6 +47,7 @@ public class DataHouse {
             add("출처를 알 수 없는 비밀");
             add("이해하면 무서운 이야기");
             add("현대의 민담");
+            add("독자 제보 바탕의 이야기");
         }
     };
 
@@ -139,4 +140,6 @@ public class DataHouse {
     //*******************************************만화*******************************************
 
     public static ArrayList<Model> cartoon2 = new ArrayList<>();
+
+    public static ArrayList<Model> togo2 = new ArrayList<Model>();
 }

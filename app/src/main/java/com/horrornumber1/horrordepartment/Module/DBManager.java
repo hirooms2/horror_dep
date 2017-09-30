@@ -42,6 +42,8 @@ public class DBManager extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("CREATE TABLE LORE2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
         sqLiteDatabase.execSQL("CREATE TABLE UNDERSTAND2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
         sqLiteDatabase.execSQL("CREATE TABLE CITY2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
+        sqLiteDatabase.execSQL("CREATE TABLE TOGO2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
+
 
         sqLiteDatabase.execSQL("CREATE TABLE NOTIFICATION ( _id INTEGER PRIMARY KEY AUTOINCREMENT, ck INTEGER);");
         
@@ -59,6 +61,8 @@ public class DBManager extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS LORE2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
         sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS UNDERSTAND2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
         sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS CITY2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS TOGO2 ( _id INTEGER PRIMARY KEY AUTOINCREMENT, board TEXT, title INTEGER);");
+
 
     }
 
@@ -137,7 +141,7 @@ public class DBManager extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         String str="";
         ArrayList<FavoriteModel> list = new ArrayList<>();
-        for(int i=0; i<7 ; i++) {
+        for(int i=0; i<8 ; i++) {
             Cursor cursor = db.rawQuery("select * from " + whichTable(i), null);
             while(cursor.moveToNext()) {
                 FavoriteModel data = new FavoriteModel();
@@ -167,6 +171,8 @@ public class DBManager extends SQLiteOpenHelper {
                 return "UNDERSTAND";
             case 6:
                 return "CITY";
+            case 7:
+                return "TOGO";
         }
         return null;
     }

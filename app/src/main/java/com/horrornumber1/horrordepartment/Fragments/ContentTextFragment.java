@@ -132,6 +132,8 @@ public class ContentTextFragment extends Fragment {
             content_logo.setImageResource(R.drawable.understand_logo);
         } else if(contents.equals(DataHouse.city2)) {
             content_logo.setImageResource(R.drawable.city_logo);
+        } else if(contents.equals(DataHouse.togo2)) {
+            content_logo.setImageResource(R.drawable.togo_logo);
         }
 
 

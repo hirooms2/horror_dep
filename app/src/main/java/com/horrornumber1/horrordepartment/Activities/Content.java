@@ -16,8 +16,9 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.horrornumber1.horrordepartment.Adapters.ViewPagerAdapter;
-import com.horrornumber1.horrordepartment.Module.ApplicationController;
 import com.horrornumber1.horrordepartment.DataModel.Model;
+import com.horrornumber1.horrordepartment.Module.ApplicationController;
+import com.horrornumber1.horrordepartment.Module.Which;
 import com.horrornumber1.horrordepartment.R;
 import com.horrornumber1.horrordepartment.StaticData.DataHouse;
 
@@ -72,7 +73,7 @@ public class Content extends AppCompatActivity {
         from = intent.getStringExtra(PARAM_INPUT_FROM);
         position = intent.getIntExtra(PARAM_INPUT_INDEX, -1); //키워드에 해당되는 값을 받고 만약 없을시에는 -1로 default
 
-        contents = whichContents(name); // 이전 Activity 에서 받아온 name을 기반으로 컨텐츠에 띄울 카테고리를 선택
+        contents = new Which().whichContents(name); // 이전 Activity 에서 받아온 name을 기반으로 컨텐츠에 띄울 카테고리를 선택
 
         // *****************************Content Activity의 ViewPager를 설정함***********************
         pager = (ViewPager) findViewById(R.id.pager);
@@ -85,27 +86,7 @@ public class Content extends AppCompatActivity {
 
 
     // 이전 Activity 에서 받아온 name을 기반으로 컨텐츠에 띄울 카테고리를 선택
-    private List<Model> whichContents(String name) {
-        switch (name) {
-            case "지역괴담":
-                return DataHouse.region2;
-            case "군대괴담":
-                return  DataHouse.millitary2;
-            case "실제이야기":
-                return DataHouse.real2;
-            case "대학괴담":
-                return DataHouse.college2;
-            case "4컷 만화":
-                return DataHouse.understand2;
-            case "로어":
-                return DataHouse.lore2;
-            case "이해하면 무서운 이야기":
-                return DataHouse.understand2;
-            case "도시괴담":
-                return DataHouse.city2;
-        }
-        return null;
-    }
+
 
     //**************************Background Music****************************************************
     //home_layout key + back button

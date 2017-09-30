@@ -27,6 +27,8 @@ public class Which {
                 return DataHouse.understand2;
             case "도시괴담":
                 return DataHouse.city2;
+            case "투고괴담":
+                return DataHouse.togo2;
         }
         return null;
     }
@@ -47,6 +49,8 @@ public class Which {
                 return DataHouse.sub.get(5);
             case "도시괴담":
                 return DataHouse.sub.get(6);
+            case "투고괴담":
+                return DataHouse.sub.get(7);
         }
         return null;
     }
@@ -69,6 +73,8 @@ public class Which {
                 return "understand";
             case "도시괴담":
                 return "city";
+            case "투고괴담":
+                return "togo";
         }
         return null;
     }
@@ -91,6 +97,8 @@ public class Which {
                 return "UNDERSTAND2";
             case "도시괴담":
                 return "CITY2";
+            case "투고괴담":
+                return "TOGO2";
         }
         return null;
     }

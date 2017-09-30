@@ -66,6 +66,12 @@ public class TabPagerAdapter extends FragmentStatePagerAdapter {
                 textFragment = new BoardTextFragment();
                 textFragment.setArguments(bundle);
                 return textFragment;
+            case 7:
+                bundle = new Bundle(1);
+                bundle.putString("name", "투고괴담");
+                textFragment = new BoardTextFragment();
+                textFragment.setArguments(bundle);
+                return textFragment;
         }
         return null;
     }

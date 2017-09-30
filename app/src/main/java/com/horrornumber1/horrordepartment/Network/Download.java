@@ -73,6 +73,9 @@ public class Download extends IntentService {
                         DataHouse.city2 = DataHouse.box.getBox().get(6).getContent();
                         Collections.sort(DataHouse.city2, comp);
 
+                        DataHouse.togo2 = DataHouse.box.getBox().get(7).getContent();
+                        Collections.sort(DataHouse.togo2, comp);
+
                         Intent broadcastIntent = new Intent();
                         broadcastIntent.setAction(FirstLogo.RequestReceiver.PROCESS_RESPONSE);
                         broadcastIntent.putExtra(RESPONSE_MESSAGE, FirstLogo.RequestReceiver.SUCEESS);

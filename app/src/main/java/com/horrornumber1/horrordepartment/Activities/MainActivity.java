@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         notification = (ImageView)findViewById(R.id.notification);
 
         //************************SQLite************************************************************
-        DataHouse.dbManager = new DBManager(getApplicationContext(), "myDB", null, 3);
+        DataHouse.dbManager = new DBManager(getApplicationContext(), "myDB", null, 4);
 
         if(DataHouse.dbManager.Notification()){
             FirebaseMessaging.getInstance().subscribeToTopic("news");

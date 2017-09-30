@@ -64,6 +64,7 @@ public class Board extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("로어"));
         tabLayout.addTab(tabLayout.newTab().setText("이무이"));
         tabLayout.addTab(tabLayout.newTab().setText("도시"));
+        tabLayout.addTab(tabLayout.newTab().setText("투고"));
 
         //ViewPager Fragment
         final ViewPager viewPager= (ViewPager) findViewById(R.id.board_viewpager);
