@@ -103,6 +103,16 @@ HorrorListActivity extends AppCompatActivity {
                 items.add(new ListItem(R.drawable.radio_main, "제36화 새벽 2시에 걸려온 전화"));
                 items.add(new ListItem(R.drawable.radio_main, "제37화 수박"));
                 items.add(new ListItem(R.drawable.radio_main, "제38화 공포택시"));
+                items.add(new ListItem(R.drawable.radio_main, "제39화 개와의 산책"));
+                items.add(new ListItem(R.drawable.radio_main, "제40화 내 딸을 위하여"));
+                items.add(new ListItem(R.drawable.radio_main, "제41화 두려움을 극복하는 방법"));
+                items.add(new ListItem(R.drawable.radio_main, "제42화 웅덩이"));
+                items.add(new ListItem(R.drawable.radio_main, "제43화 제발 술 때문이라고 하지마세요"));
+                items.add(new ListItem(R.drawable.radio_main, "제44화 내가 6살 때 했던 짓"));
+                items.add(new ListItem(R.drawable.radio_main, "제45화 헌병 시절에 겪었던 실화"));
+                items.add(new ListItem(R.drawable.radio_main, "제46화 나홀로 숨바꼭질"));
+                items.add(new ListItem(R.drawable.radio_main, "제47화 개그맨 염경환의 실화"));
+                items.add(new ListItem(R.drawable.radio_main, "제48화 M교수 낚시터 썰"));
 
 
                 break;
@@ -122,6 +132,7 @@ HorrorListActivity extends AppCompatActivity {
                 items.add(new ListItem(R.drawable.adult_radio, "제13화 김진홍님 경험담"));
                 items.add(new ListItem(R.drawable.adult_radio, "제14화 목욕탕을 훔쳐보다"));
                 items.add(new ListItem(R.drawable.adult_radio, "제15화 결혼은 신중히..."));
+
                 break;
             case 2:
                 items.add(new ListItem(R.drawable.my_honey, "제1화 첫 만남"));

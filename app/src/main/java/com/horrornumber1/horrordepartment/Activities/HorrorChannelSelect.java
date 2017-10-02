@@ -63,6 +63,12 @@ public class HorrorChannelSelect extends AppCompatActivity {
                             case 6:
                                 i.putExtra("whichContent", 6);
                                 break;
+                            case 7:
+                                i.putExtra("whichContent", 7);
+                                break;
+                            case 8:
+                                i.putExtra("whichContent", 8);
+                                break;
                             default:return;
                         }
                         startActivity(i);
@@ -103,6 +109,7 @@ public class HorrorChannelSelect extends AppCompatActivity {
                             case 6:
                                 i.putExtra("whichContent", 6);
                                 break;
+
                             default:return;
                         }
                         startActivity(i);

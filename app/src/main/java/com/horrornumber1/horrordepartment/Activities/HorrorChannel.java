@@ -49,6 +49,10 @@ public class HorrorChannel extends AppCompatActivity {
         games_arr.add("인디게임인데 진심 더럽게 무서움... 빨간마스크");
         games_arr.add("제발 집 좀 가자...아줌마 귀신 레전드.." +'\n'+
                 "Home Sweet Home");
+        games_arr.add("공포 띵작 \"아웃라스트1\"" +'\n'+
+                "Outlast1");
+        games_arr.add("일본에서 작정하고 만든 공포게임" +'\n'+
+                "그림자 복도");
 
 
         gameImage_arr.add(R.drawable.aooni);
@@ -58,6 +62,8 @@ public class HorrorChannel extends AppCompatActivity {
         gameImage_arr.add(R.drawable.monstrum);
         gameImage_arr.add(R.drawable.red_mask);
         gameImage_arr.add(R.drawable.home_sweet_home);
+        gameImage_arr.add(R.drawable.outlast);
+        gameImage_arr.add(R.drawable.shadow_corridor);
         // ---------HorrorGame Data Init----------- //
 
         // ---------HorrorRadio Data Init----------- //
