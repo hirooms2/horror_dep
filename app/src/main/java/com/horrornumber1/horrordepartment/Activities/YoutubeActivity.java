@@ -97,6 +97,12 @@ public class YoutubeActivity extends YouTubeBaseActivity implements
                 case 6:
                     titles.add("BpQHCduMagk");
                     break;
+                case 7:
+                    titles.add("FeVMObz5ctE");
+                    break;
+                case 8:
+                    titles.add("-TNepFWvvr8");
+                    break;
 
 
                 default:return;
@@ -142,6 +148,16 @@ public class YoutubeActivity extends YouTubeBaseActivity implements
                     titles.add("lgfyCci6WN0");
                     titles.add("5KjA9Xu55qU");
                     titles.add("ATSqiXJKhfc");
+                    titles.add("E058wCLAdbo");
+                    titles.add("AmZUCjpdNE4");
+                    titles.add("dFja8CCyKUE");
+                    titles.add("vHLTpbWAoXM");
+                    titles.add("50qohiB6oAU");
+                    titles.add("9dgxJ4gaLbg");
+                    titles.add("iqZFr5LDINI");
+                    titles.add("KKGtrRRyPyI");
+                    titles.add("gNcqowi2VCg");
+                    titles.add("w1oCr9DHXZY");
 
                     break;
                 case 1:
