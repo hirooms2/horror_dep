@@ -55,7 +55,11 @@ public class TabListViewAdapter extends ArrayAdapter<Model> {
         cal.setTime(date);
         cal.add(Calendar.DATE, 1);
 
-        if(sdf.format(new Date()).equals(model.getDate()) || sdf.format(cal.getTime()).equals(model.getDate())){
+        Calendar cal2 = Calendar.getInstance();
+        cal2.setTime(date);
+        cal2.add(Calendar.DATE, -1);
+
+        if(sdf.format(new Date()).equals(model.getDate()) || sdf.format(cal.getTime()).equals(model.getDate()) || sdf.format(cal2.getTime()).equals(model.getDate())){
             date_text.setText("new");
         } else {
             date_text.setText("");
