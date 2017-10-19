@@ -24,6 +24,7 @@ import com.horrornumber1.horrordepartment.DataModel.Model;
 import com.horrornumber1.horrordepartment.Module.ScrollViewListener;
 import com.horrornumber1.horrordepartment.Module.Which;
 import com.horrornumber1.horrordepartment.Network.HttpConnect;
+import com.horrornumber1.horrordepartment.Network.HttpConnect2;
 import com.horrornumber1.horrordepartment.R;
 import com.horrornumber1.horrordepartment.StaticData.DataHouse;
 import com.horrornumber1.horrordepartment.Widget.ScrollViewExt;
@@ -85,7 +86,13 @@ public class ContentTextFragment extends Fragment {
             position = getArguments().getInt("position");
             name = getArguments().getString("name");
             contents = w.whichContents(name);
-            no=contents.get(position).getNo();
+            if(position < contents.size() && position>=0)
+                no=contents.get(position).getNo();
+            else {
+                HttpConnect2 httpConnect2 = new HttpConnect2(getContext());
+                httpConnect2.connect(contents.size(), position);
+            }
+
         }
     }
 
@@ -93,6 +100,8 @@ public class ContentTextFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         rootView = (ViewGroup) inflater.inflate(R.layout.fragment_text_scroll, container, false);
+
+
 
 
         content_bottom = (LinearLayout) rootView.findViewById(R.id.content_bottom);
