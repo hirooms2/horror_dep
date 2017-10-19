@@ -141,6 +141,9 @@ public class HorrorChannelSelect extends AppCompatActivity {
                             case 3:
                                 i.putExtra("whichContent", 3);
                                 break;
+                            case 4:
+                                i.putExtra("whichContent", 4);
+                                break;
 
                             default:return;
                         }
