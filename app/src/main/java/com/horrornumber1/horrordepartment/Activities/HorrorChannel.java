@@ -90,11 +90,13 @@ public class HorrorChannel extends AppCompatActivity {
         horror_spot_arr.add("의정부 폐건물 탐방");
         horror_spot_arr.add("대전 충일여고 폐교 탐방");
         horror_spot_arr.add("서울 홍은동 폐가 탐방");
+        horror_spot_arr.add("천안 폐교 4인 스쿼드 의문의 소리의 정체는...?");
 
         horror_spot_img_arr.add(R.drawable.jookai);
         horror_spot_img_arr.add(R.drawable.euijungboo);
         horror_spot_img_arr.add(R.drawable.choongil);
         horror_spot_img_arr.add(R.drawable.hongeundong);
+        horror_spot_img_arr.add(R.drawable.cheonanghost);
 
 
         // ---------HorrorRadio Data Init----------- //
