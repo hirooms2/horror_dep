@@ -24,7 +24,6 @@ import com.horrornumber1.horrordepartment.DataModel.Model;
 import com.horrornumber1.horrordepartment.Module.ScrollViewListener;
 import com.horrornumber1.horrordepartment.Module.Which;
 import com.horrornumber1.horrordepartment.Network.HttpConnect;
-import com.horrornumber1.horrordepartment.Network.HttpConnect2;
 import com.horrornumber1.horrordepartment.R;
 import com.horrornumber1.horrordepartment.StaticData.DataHouse;
 import com.horrornumber1.horrordepartment.Widget.ScrollViewExt;
@@ -88,11 +87,6 @@ public class ContentTextFragment extends Fragment {
             contents = w.whichContents(name);
             if(position < contents.size() && position>=0)
                 no=contents.get(position).getNo();
-            else {
-                HttpConnect2 httpConnect2 = new HttpConnect2(getContext());
-                httpConnect2.connect(contents.size(), position);
-            }
-
         }
     }
 
