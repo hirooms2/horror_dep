@@ -113,7 +113,8 @@ HorrorListActivity extends AppCompatActivity {
                 items.add(new ListItem(R.drawable.radio_main, "제46화 나홀로 숨바꼭질"));
                 items.add(new ListItem(R.drawable.radio_main, "제47화 개그맨 염경환의 실화"));
                 items.add(new ListItem(R.drawable.radio_main, "제48화 M교수 낚시터 썰"));
-
+                items.add(new ListItem(R.drawable.radio_main, "제49화 귀신보다 무서운 것"));
+                items.add(new ListItem(R.drawable.radio_main, "제50화 반지하 원룸에서"));
 
                 break;
             case 1:

@@ -99,6 +99,8 @@ public class YoutubeActivity extends YouTubeBaseActivity implements
                     break;
                 case 7:
                     titles.add("FeVMObz5ctE");
+                    titles.add("x7-PvDE9Cq0");
+                    titles.add("qW5hzHCXsME");
                     break;
                 case 8:
                     titles.add("-TNepFWvvr8");
@@ -158,6 +160,8 @@ public class YoutubeActivity extends YouTubeBaseActivity implements
                     titles.add("KKGtrRRyPyI");
                     titles.add("gNcqowi2VCg");
                     titles.add("w1oCr9DHXZY");
+                    titles.add("Dw22nklFDmc");
+                    titles.add("aMewmcCjS5c");
 
                     break;
                 case 1:
@@ -449,6 +453,9 @@ public class YoutubeActivity extends YouTubeBaseActivity implements
                     break;
                 case 3:
                     titles.add("cMSAilkeXNI");
+                    break;
+                case 4:
+                    titles.add("vY4cU78nER4");
                     break;
 
                 default:return;

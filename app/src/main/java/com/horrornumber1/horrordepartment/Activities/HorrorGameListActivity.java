@@ -94,6 +94,8 @@ public class HorrorGameListActivity extends AppCompatActivity {
                 break;
             case 7:
                 items.add(new ListItem(R.drawable.outlast, "공포 띵작 \"아웃라스트1\" #1화 "));
+                items.add(new ListItem(R.drawable.outlast, "공포 띵작 \"아웃라스트1\" #2화 "));
+                items.add(new ListItem(R.drawable.outlast, "공포 띵작 \"아웃라스트1\" #3화 "));
                 break;
             case 8:
                 items.add(new ListItem(R.drawable.shadow_corridor, "일본에서 작정하고 만든 공포게임 #1화"));

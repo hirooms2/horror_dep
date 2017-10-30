@@ -63,6 +63,9 @@ public class HorrorSpotListActivity extends AppCompatActivity {
             case 3:
                 items.add(new ListItem(R.drawable.hongeundong, "서울 홍은동 폐가 탐방 #Full"));
                 break;
+            case 4:
+                items.add(new ListItem(R.drawable.cheonanghost, "천안 모 폐교 4인 스쿼드 #Full"));
+                break;
 
             default:return;
         }
