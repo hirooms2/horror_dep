@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +27,7 @@ import com.horrornumber1.horrordepartment.CounsilClass.Counsil;
 import com.horrornumber1.horrordepartment.DataModel.Box;
 import com.horrornumber1.horrordepartment.DataModel.Model;
 import com.horrornumber1.horrordepartment.Module.DBManager;
+import com.horrornumber1.horrordepartment.Network.Youtube_key_con;
 import com.horrornumber1.horrordepartment.R;
 import com.horrornumber1.horrordepartment.StaticData.DataHouse;
 
@@ -104,8 +106,25 @@ public class MainActivity extends AppCompatActivity {
         horrorChannel.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, HorrorChannel.class);
-                startActivity(intent);
+                final Intent intent = new Intent(MainActivity.this, HorrorChannel.class);
+
+                handler = new Handler() {
+                    @Override
+                    public void handleMessage(Message msg) {
+                        if(msg.what==1) {
+                            startActivity(intent);
+                        }
+                        else
+                            Toast.makeText(getApplicationContext(),"네트워크 연결이 불안정합니다",Toast.LENGTH_SHORT).show();
+                    }
+                };
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Youtube_key_con youtube_key_con = new Youtube_key_con(getApplicationContext(), handler);
+                        youtube_key_con.connect();
+                    }
+                }).start();
 
             }
         });

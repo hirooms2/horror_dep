@@ -61,7 +61,7 @@ public class Board extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("실화"));
         tabLayout.addTab(tabLayout.newTab().setText("대학"));
         //tabLayout.addTab(tabLayout.newTab().setText("만화"));
-        tabLayout.addTab(tabLayout.newTab().setText("로어"));
+        //tabLayout.addTab(tabLayout.newTab().setText("로어"));
         tabLayout.addTab(tabLayout.newTab().setText("이무이"));
         tabLayout.addTab(tabLayout.newTab().setText("도시"));
         tabLayout.addTab(tabLayout.newTab().setText("투고"));

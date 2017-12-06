@@ -2,7 +2,10 @@ package com.horrornumber1.horrordepartment.Activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,7 +15,10 @@ import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.horrornumber1.horrordepartment.Network.Download;
+import com.horrornumber1.horrordepartment.Network.Youtube_key_con;
 import com.horrornumber1.horrordepartment.R;
 
 import java.util.ArrayList;
