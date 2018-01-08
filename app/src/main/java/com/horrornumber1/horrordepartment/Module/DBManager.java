@@ -127,11 +127,21 @@ public class DBManager extends SQLiteOpenHelper {
     public boolean FindData(String board, int position) {
         SQLiteDatabase db = getReadableDatabase();
         try {
-            Cursor cursor = db.rawQuery("select * from " + board + " where title=" + Integer.toString(position), null);
-            if(cursor.getCount()==1)
-                return true;
-            else
-                return false;
+            Cursor cursor = null;
+
+            try{
+                cursor = db.rawQuery("select * from " + board + " where title=" + Integer.toString(position), null);
+                if(cursor.getCount()==1)
+                    return true;
+                else
+                    return false;
+            } finally {
+                if(cursor!=null){
+                    cursor.close();
+                }
+            }
+
+
         }catch(SQLiteException e) {
             return false;
         }
