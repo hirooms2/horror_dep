@@ -37,7 +37,7 @@ public class BoardTextFragment extends Fragment {
     RelativeLayout stickyView;
     TextView listview_title, listview_sub;
     String sub, name;
-    int[] ad = {R.drawable.ad_facebook, R.drawable.ad_youtube, R.drawable.magazine};
+    int[] ad = {R.drawable.ad_facebook, R.drawable.ad_youtube, R.drawable.magazine_ad};
     Which w = new Which();
     @Nullable
 
@@ -99,7 +99,7 @@ public class BoardTextFragment extends Fragment {
             imageView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/pg/horrorNo.1/shop/?rid=1519121441721036&rt=39")));
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://youtu.be/P8s6pR7NTKw")));
                 }
             });
         }
