@@ -22,7 +22,7 @@ public class HttpConnect2 {
 
     }
     public void connect(final int size, final int position ){
-        url = "http://13.124.22.112:8080/horrormagazine/errormsg?size="+size+"&position="+position;
+        url = "http://13.125.102.246:8080/horrormagazine/errormsg?size="+size+"&position="+position;
         RequestQueue postReqeustQueue = Volley.newRequestQueue(ctx);
         StringRequest postStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
