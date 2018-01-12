@@ -30,7 +30,7 @@ import java.util.Collections;
 public class Download extends IntentService {
 
     public static final String RESPONSE_MESSAGE = "ResponseMessage";
-    public static final String MYURL = "http://13.124.22.112:8080/horrormagazine/conn";
+    public static final String MYURL = "http://13.125.102.246:8080/horrormagazine/conn";
     public RequestQueue requestQueue;
     public Download() {
         super("download");

@@ -23,7 +23,7 @@ public class HttpConnect {
         this.ctx = ctx;
     }
     public void connect(final String uid, final String board, final int no){
-        url = "http://13.124.22.112:8080/horrormagazine/likeproc?uid="+uid+"&board="+board+"&no="+no;
+        url = "http://13.125.102.246:8080/horrormagazine/likeproc?uid="+uid+"&board="+board+"&no="+no;
         RequestQueue postReqeustQueue = Volley.newRequestQueue(ctx);
         StringRequest postStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
