@@ -2,8 +2,7 @@ package com.horrornumber1.horrordepartment.StaticData;
 
 import android.media.MediaPlayer;
 
-import com.horrornumber1.horrordepartment.DataModel.Youtube_conBox;
-import com.horrornumber1.horrordepartment.DataModel.Youtube_keyBox;
+import com.horrornumber1.horrordepartment.DataModel.Youtube_Box;
 import com.horrornumber1.horrordepartment.Module.DBManager;
 import com.horrornumber1.horrordepartment.DataModel.Box;
 import com.horrornumber1.horrordepartment.DataModel.Model;
@@ -20,8 +19,7 @@ public class DataHouse {
     public static Box box = new Box();
     public static DBManager dbManager;
 
-    public static Youtube_keyBox youtube_keyBox = new Youtube_keyBox();
-    public static Youtube_conBox youtube_conBox = new Youtube_conBox();
+    public static Youtube_Box youtube_box = new Youtube_Box();
 
     //**************************************Background Music****************************************
     public static boolean musicCheck = true;
