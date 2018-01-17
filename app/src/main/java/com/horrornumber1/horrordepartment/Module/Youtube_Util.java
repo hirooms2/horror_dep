@@ -14,8 +14,11 @@ import java.util.List;
 
 public class Youtube_Util {
 
-    List<Youtube_con> searchTab1(int whichBtn){
-        List<Youtube_con> list = new ArrayList<>();
+    public Youtube_Util(){
+
+    }
+    public ArrayList<Youtube_con> searchTab1(int whichBtn){
+        ArrayList<Youtube_con> list = new ArrayList<>();
 
         for(Youtube_con yc : DataHouse.youtube_box.getCon_box()) {
             if(yc.getWhichBtn()==whichBtn)
@@ -24,8 +27,8 @@ public class Youtube_Util {
         return list;
     }
 
-    List<Youtube_key> searchTab2(int whichBtn, int whichContent){
-        List<Youtube_key> list = new ArrayList<>();
+    ArrayList<Youtube_key> searchTab2(int whichBtn, int whichContent){
+        ArrayList<Youtube_key> list = new ArrayList<>();
 
         for(Youtube_key yk : DataHouse.youtube_box.getKey_box()) {
             if(yk.getWhichBtn()==whichBtn && yk.getWhichContent()==whichContent)
