@@ -17,7 +17,9 @@ import java.util.List;
 
 public class Youtube_Util {
 
-    List<Youtube_con> searchTab1_All(int whichBtn){
+    public Youtube_Util(){
+    }
+    public List<Youtube_con> searchTab1_All(int whichBtn){
         List<Youtube_con> list = new ArrayList<>();
 
         for(Youtube_con yc : DataHouse.youtube_box.getCon_box()) {
@@ -27,7 +29,7 @@ public class Youtube_Util {
         return list;
     }
 
-    Youtube_con searchTab1(int whichBtn, int whichContent){
+    public Youtube_con searchTab1(int whichBtn, int whichContent){
 
         for(Youtube_con yc : DataHouse.youtube_box.getCon_box()) {
             if(yc.getWhichBtn()==whichBtn && yc.getWhichContent()==whichContent)
@@ -36,7 +38,7 @@ public class Youtube_Util {
         return null;
     }
 
-    Youtube_key searchTab2(int whichBtn, int whichContent, int position){
+    public Youtube_key searchTab2(int whichBtn, int whichContent, int position){
 
         for(Youtube_key yk : DataHouse.youtube_box.getKey_box()) {
             if(yk.getWhichBtn()==whichBtn && yk.getWhichContent()==whichContent && yk.getPosition() == position)
@@ -45,7 +47,7 @@ public class Youtube_Util {
         return null;
     }
 
-    List<Youtube_key> searchTab2_All(int whichBtn, int whichContent){
+    public List<Youtube_key> searchTab2_All(int whichBtn, int whichContent){
         List<Youtube_key> list = new ArrayList<>();
 
         for(Youtube_key yk : DataHouse.youtube_box.getKey_box()) {
@@ -55,7 +57,7 @@ public class Youtube_Util {
         return list;
     }
 
-    String whichImg(int whichBtn, int whichContent){
+    public String whichImg(int whichBtn, int whichContent){
         float density = Resources.getSystem().getDisplayMetrics().density*160f;
 
         if(density== DisplayMetrics.DENSITY_XXHIGH)
