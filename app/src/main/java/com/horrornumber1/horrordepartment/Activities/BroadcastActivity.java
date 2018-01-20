@@ -17,11 +17,15 @@ import android.widget.TextView;
 
 import com.horrornumber1.horrordepartment.CounsilClass.ListItem;
 import com.horrornumber1.horrordepartment.CounsilClass.RecyclerItemClickListener;
+import com.horrornumber1.horrordepartment.DataModel.Youtube_key;
+import com.horrornumber1.horrordepartment.Module.Youtube_Util;
 import com.horrornumber1.horrordepartment.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class HorrorSpotListActivity extends AppCompatActivity {
+public class BroadcastActivity extends AppCompatActivity {
     Context mContext;
 
     RecyclerView recyclerView;
@@ -30,19 +34,28 @@ public class HorrorSpotListActivity extends AppCompatActivity {
 
     ArrayList<ListItem> items;
 
+    int whichBtn = -1;
     int whichContent=-1;
+    String img="";
+
+    List<Youtube_key> key_list = new ArrayList<>();
     Intent from;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_horror_spot_list);
+        setContentView(R.layout.activity_broadcast);
+
+        Youtube_Util youtube_util = new Youtube_Util();
+
         mContext = getApplicationContext();
 
         from = getIntent();
 
+        whichBtn = from.getIntExtra("whichBtn", -1);
         whichContent = from.getIntExtra("whichContent", -1);
+        img = youtube_util.whichImg(whichBtn, whichContent);
 
-        recyclerView = (RecyclerView)findViewById(R.id.spot_recycler_view);
+        recyclerView = (RecyclerView)findViewById(R.id.game_recycler_view);
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new StaggeredGridLayoutManager(2, GridLayoutManager.VERTICAL);
@@ -50,61 +63,50 @@ public class HorrorSpotListActivity extends AppCompatActivity {
 
         items = new ArrayList<>();
 
-        switch (whichContent){
-            case 0:
-                items.add(new ListItem(R.drawable.jookai, "자살숲 아오키가하라 #Full"));
-                break;
-            case 1:
-                items.add(new ListItem(R.drawable.euijungboo, "의정부 폐건물 탐방 #Full"));
-                break;
-            case 2:
-                items.add(new ListItem(R.drawable.choongil, "대전 충일여고 폐교 탐방 #Full"));
-                break;
-            case 3:
-                items.add(new ListItem(R.drawable.hongeundong, "서울 홍은동 폐가 탐방 #Full"));
-                break;
-            case 4:
-                items.add(new ListItem(R.drawable.cheonanghost, "천안 모 폐교 4인 스쿼드 #Full"));
-                break;
+        key_list = youtube_util.searchTab2_All(whichBtn, whichContent);
 
-            default:return;
+        for(int i=0; i<key_list.size(); i++){
+            items.add(new ListItem(img, key_list.get(i).getName()));
         }
-        Adapter = new ListAdapter(items, mContext);
+
+        Adapter = new BroadcastAdapter(items, mContext);
         recyclerView.setAdapter(Adapter);
 
         recyclerView.addOnItemTouchListener( new RecyclerItemClickListener(mContext, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         Intent intent = new Intent(getApplicationContext(), YoutubeActivity.class);
-                        intent.putExtra("whichContent", whichContent);
-                        intent.putExtra("position", position);
-                        intent.putExtra("fromWhere", 2);
+                        intent.putExtra("key", key_list.get(position).getKey());
                         startActivity(intent);
                     }
                 })
         );
     }
-    public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
+    public class BroadcastAdapter extends RecyclerView.Adapter<BroadcastAdapter.ViewHolder> {
 
         private Context context;
         private ArrayList<ListItem> mItems;
         private int lastPosition = -1;
 
-        public ListAdapter(ArrayList<ListItem> items, Context mContext) {
+        public BroadcastAdapter(ArrayList<ListItem> items, Context mContext) {
             mItems = items;
             context = mContext;
         }
 
         @Override
-        public ListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public BroadcastAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.countsil_item_cardview, parent, false);
-            return new ListAdapter.ViewHolder(v);
+            return new BroadcastAdapter.ViewHolder(v);
+
         }
 
         @Override
-        public void onBindViewHolder(ListAdapter.ViewHolder holder, final int position) {
-            holder.imageView.setImageResource(mItems.get(position).image);
+        public void onBindViewHolder(BroadcastAdapter.ViewHolder holder, final int position) {
+
+            Picasso.with(context).load(mItems.get(position).getImage()).into(holder.imageView);
             holder.textView.setText(mItems.get(position).imagetitle);
             setAnimation(holder.imageView, position);
+
         }
 
         @Override
@@ -132,4 +134,5 @@ public class HorrorSpotListActivity extends AppCompatActivity {
             }
         }
     }
+
 }

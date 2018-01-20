@@ -50,10 +50,10 @@ public class GhostSpotYoutube extends AppCompatActivity {
 
         items = new ArrayList<>();
 
-        items.add(new ListItem(R.drawable.ghostspot, "아오키가하라"));
+        /*items.add(new ListItem(R.drawable.ghostspot, "아오키가하라"));
         items.add(new ListItem(R.drawable.ghostspot, "의정부 폐가"));
         items.add(new ListItem(R.drawable.ghostspot, "홍은동 폐가"));
-        items.add(new ListItem(R.drawable.ghostspot, "충일여고"));
+        items.add(new ListItem(R.drawable.ghostspot, "충일여고"));*/
 
         layoutManager = new StaggeredGridLayoutManager(2, GridLayoutManager.VERTICAL);
 
@@ -91,7 +91,7 @@ public class GhostSpotYoutube extends AppCompatActivity {
         @Override
         public void onBindViewHolder(ViewHolder holder, final int position) {
 
-            holder.imageView.setImageResource(mItems.get(position).image);
+            //holder.imageView.setImageResource(mItems.get(position).image);
             holder.textView.setText(mItems.get(position).imagetitle);
             setAnimation(holder.imageView, position);
 

@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.horrornumber1.horrordepartment.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -27,9 +28,9 @@ public class ChannelAdapter extends ArrayAdapter<String> {
 
     ArrayList<String> descriptions_arr = new ArrayList<>();
 
-    ArrayList<Integer> images_arr = new ArrayList<>();
+    ArrayList<String> images_arr = new ArrayList<>();
 
-    public ChannelAdapter(Context context, int resource, ArrayList<String> descriptions_arr, ArrayList<Integer> images_arr) {
+    public ChannelAdapter(Context context, int resource, ArrayList<String> descriptions_arr, ArrayList<String> images_arr) {
         super(context, resource, descriptions_arr);
         this.context = context;
         this.descriptions_arr = descriptions_arr;
@@ -43,7 +44,8 @@ public class ChannelAdapter extends ArrayAdapter<String> {
         View row = inflater.inflate(R.layout.list_item_template,parent,false);
 
         gameImage = (ImageView) row.findViewById(R.id.game_image);
-        gameImage.setImageResource(images_arr.get(position));
+
+        Picasso.with(context).load(images_arr.get(position)).into(gameImage);
 
         gameDescription = (TextView) row.findViewById(R.id.txt_game_name);
         gameDescription.setText(descriptions_arr.get(position));

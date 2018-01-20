@@ -4,7 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://C:\Users\KIMTAEHO\AndroidStudioProjects\horror_dep\horror.iml" filepath="C:\Users\KIMTAEHO\AndroidStudioProjects\horror_dep\horror.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/horror_dep.iml" filepath="$PROJECT_DIR$/.idea/horror_dep.iml" />
+      <module fileurl="file://$PROJECT_DIR$/horror_dep.iml" filepath="$PROJECT_DIR$/horror_dep.iml" />
+      <module fileurl="file://C:\download\myapplication\horror_dep\.idea\horror_dep.iml" filepath="C:\download\myapplication\horror_dep\.idea\horror_dep.iml" />
       <module fileurl="file://C:\Users\KIMTAEHO\AndroidStudioProjects\horror_dep\horror_dep.iml" filepath="C:\Users\KIMTAEHO\AndroidStudioProjects\horror_dep\horror_dep.iml" />
     </modules>
   </component>
