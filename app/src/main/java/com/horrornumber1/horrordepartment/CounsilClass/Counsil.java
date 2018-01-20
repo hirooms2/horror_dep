@@ -1,7 +1,6 @@
 package com.horrornumber1.horrordepartment.CounsilClass;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
@@ -23,7 +22,6 @@ import android.widget.TextView;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-import com.horrornumber1.horrordepartment.Activities.HorrorListActivity;
 import com.horrornumber1.horrordepartment.Module.ApplicationController;
 import com.horrornumber1.horrordepartment.R;
 

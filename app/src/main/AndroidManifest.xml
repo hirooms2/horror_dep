@@ -86,15 +86,11 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Activities.HorrorListActivity"
-            android:launchMode="singleTop" />
-        <activity
             android:name=".CounsilClass.GhostSpotYoutube"
             android:launchMode="singleTop" />
         <activity android:name=".Activities.HorrorChannel" />
         <activity android:name=".Activities.HorrorChannelSelect" />
-        <activity android:name=".Activities.HorrorGameListActivity" />
-        <activity android:name=".Activities.HorrorSpotListActivity"></activity>
+        <activity android:name=".Activities.BroadcastActivity"></activity>
     </application>
 
 </manifest>

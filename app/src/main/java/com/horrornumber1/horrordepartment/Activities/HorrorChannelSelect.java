@@ -8,15 +8,21 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.horrornumber1.horrordepartment.Adapters.ChannelAdapter;
+import com.horrornumber1.horrordepartment.DataModel.Youtube_con;
+import com.horrornumber1.horrordepartment.Module.Youtube_Util;
 import com.horrornumber1.horrordepartment.R;
+import com.horrornumber1.horrordepartment.StaticData.DataHouse;
 
 import java.util.ArrayList;
+import java.util.List;
+
 
 public class HorrorChannelSelect extends AppCompatActivity {
 
     private ListView list;
     private ArrayList<String> string_arr = new ArrayList<>();
-    private ArrayList<Integer> image_arr = new ArrayList<>();
+    private ArrayList<String> image_arr = new ArrayList<>();
+    private List<Youtube_con> con_list = new ArrayList<>();
     private int whichBtn=-1;
     private ChannelAdapter adapter;
 
@@ -29,131 +35,28 @@ public class HorrorChannelSelect extends AppCompatActivity {
         whichBtn = i.getIntExtra("whichBtn", -1);
         list = (ListView) findViewById(R.id.horrorListView);
 
-        switch (whichBtn){
-            case 0:
-                string_arr = i.getStringArrayListExtra("horrorgameString");
-                image_arr = i.getIntegerArrayListExtra("horrorgameImg");
-                adapter = new ChannelAdapter(getApplication(), R.layout.list_item_template, string_arr, image_arr);
-                list.setAdapter(adapter);
+        Youtube_Util youtube_util = new Youtube_Util();
+        con_list = youtube_util.searchTab1_All(whichBtn);
 
-                list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent i = new Intent(HorrorChannelSelect.this, HorrorGameListActivity.class);
-
-                        switch (position){
-                            case 0:
-                                i.putExtra("whichContent", 0);
-                                break;
-                            case 1:
-                                i.putExtra("whichContent", 1);
-                                break;
-                            case 2:
-                                i.putExtra("whichContent", 2);
-                                break;
-                            case 3:
-                                i.putExtra("whichContent", 3);
-                                break;
-                            case 4:
-                                i.putExtra("whichContent", 4);
-                                break;
-                            case 5:
-                                i.putExtra("whichContent", 5);
-                                break;
-                            case 6:
-                                i.putExtra("whichContent", 6);
-                                break;
-                            case 7:
-                                i.putExtra("whichContent", 7);
-                                break;
-                            case 8:
-                                i.putExtra("whichContent", 8);
-                                break;
-                            default:return;
-                        }
-                        startActivity(i);
-                    }
-                });
-
-                break;
-            case 1:
-                string_arr = i.getStringArrayListExtra("horrorradioString");
-                image_arr = i.getIntegerArrayListExtra("horrorradioImg");
-                adapter = new ChannelAdapter(getApplication(), R.layout.list_item_template, string_arr, image_arr);
-                list.setAdapter(adapter);
-
-                list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent i = new Intent(HorrorChannelSelect.this, HorrorListActivity.class);
-
-                        switch (position){
-                            case 0:
-                                i.putExtra("whichContent", 0);
-                                break;
-                            case 1:
-                                i.putExtra("whichContent", 1);
-                                break;
-                            case 2:
-                                i.putExtra("whichContent", 2);
-                                break;
-                            case 3:
-                                i.putExtra("whichContent", 3);
-                                break;
-                            case 4:
-                                i.putExtra("whichContent", 4);
-                                break;
-                            case 5:
-                                i.putExtra("whichContent", 5);
-                                break;
-                            case 6:
-                                i.putExtra("whichContent", 6);
-                                break;
-
-                            default:return;
-                        }
-                        startActivity(i);
-                    }
-                });
-
-                break;
-            case 2:
-                string_arr = i.getStringArrayListExtra("horrorspotString");
-                image_arr = i.getIntegerArrayListExtra("horrorspotImg");
-                adapter = new ChannelAdapter(getApplication(), R.layout.list_item_template, string_arr, image_arr);
-                list.setAdapter(adapter);
-
-                list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent i = new Intent(HorrorChannelSelect.this, HorrorSpotListActivity.class);
-
-                        switch (position){
-                            case 0:
-                                i.putExtra("whichContent", 0);
-                                break;
-                            case 1:
-                                i.putExtra("whichContent", 1);
-                                break;
-                            case 2:
-                                i.putExtra("whichContent", 2);
-                                break;
-                            case 3:
-                                i.putExtra("whichContent", 3);
-                                break;
-                            case 4:
-                                i.putExtra("whichContent", 4);
-                                break;
-
-                            default:return;
-                        }
-                        startActivity(i);
-                    }
-                });
-
-                break;
-
-            default: return;
+        for(int k=0; k<con_list.size(); k++){
+            image_arr.add(youtube_util.whichImg(whichBtn,k));
+            string_arr.add(con_list.get(k).getName());
         }
-    }
+                adapter = new ChannelAdapter(getApplication(), R.layout.list_item_template, string_arr, image_arr);
+                list.setAdapter(adapter);
+
+                list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent i = new Intent(HorrorChannelSelect.this, BroadcastActivity.class);
+
+                                i.putExtra("whichBtn",whichBtn);
+                                i.putExtra("whichContent", position);
+
+                        startActivity(i);
+                    }
+                });
+
+        }
+
 }
