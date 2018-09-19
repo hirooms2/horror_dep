@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     ImageView majorImg, councilImg, email, horrorChannel;
     ImageView sound, notification;
+    TextView info;
     Handler handler;
 
     @Override
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         DataHouse.uid = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
 
         notification = (ImageView)findViewById(R.id.notification);
+        info = (TextView)findViewById(R.id.info);
 
         //************************SQLite************************************************************
         DataHouse.dbManager = new DBManager(getApplicationContext(), "myDB", null, 4);
@@ -74,6 +78,16 @@ public class MainActivity extends AppCompatActivity {
                     DataHouse.dbManager.update("UPDATE NOTIFICATION SET ck = 1");
                     notification.setImageResource(R.drawable.notification);
                 }
+            }
+        });
+
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://blog.naver.com/zakartayo/221362031157"));
+
+                startActivity(intent);
+
             }
         });
 
